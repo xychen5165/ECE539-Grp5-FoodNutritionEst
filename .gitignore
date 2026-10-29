@@ -1,0 +1,38 @@
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+build/
+dist/
+.DS_Store
+
+# Local data and large generated artifacts
+/data/raw/
+/data/processed/
+/data/cache/
+/data/downloads/
+checkpoints/
+artifacts/
+wandb/
+mlruns/
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.npy
+*.npz
+*.pkl
+*.zip
+*.tar
+*.tar.gz
+
+# Private submissions (prefer storage outside the repository)
+/private/
+/submissions/
