@@ -28,4 +28,4 @@ The team must also decide:
 
 ## Product integration
 
-Proposed integration: the product interface passes a meal image to the shared inference pipeline and displays its nutrition estimates. If a backend is needed, it will handle requests and invoke that pipeline. Define input validation, output fields, model loading, and failure handling when the team chooses the product scope.
+Proposed integration: the product interface passes a meal image to the shared inference pipeline and displays its nutrition estimates. If a backend is needed, it will handle requests and invoke that pipeline. Define input validation, output fields, model loading, and failure handling when the team chooses the product scope. 
