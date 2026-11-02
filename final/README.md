@@ -3,7 +3,7 @@
 This directory is reserved for the integrated public deliverable. Implementation and results are planned.
 
 ## Component flow
-A_food_isolation -> B_nutrition_estimation -> C_daily_tracking -> D_meal_planning
+A_food_segmentation -> B_nutrition_estimation -> C_daily_tracking -> D_meal_planning
 
 The photo-estimation path uses public meal data. Gordon menu nutrition is used for recommendations, not as labels for arbitrary meal photos.
 

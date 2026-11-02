@@ -3,13 +3,13 @@
 Component workspace for frozen CLIP features and a trainable nutrient regression head. Implementation is planned.
 
 ## Deliverables
-- Extract frozen CLIP embeddings of the original and component A masked views.
-- Train a 1024 -> 128 -> 5 regression head using public Nutrition5k labels.
-- Predict mass, calories, protein, carbohydrate and fat; do not infer unlabeled fiber or micronutrients.
-- Record the median baseline, masked-feature ablation, three training seeds, checkpoints and nutrient error metrics.
+- Extract 512-dimensional features with frozen CLIP ViT-B/32 for original and SAM-masked image experiments.
+- Train a 512 -> 128 (ReLU) -> 5 (Softplus) regression head using Nutrition5k labels.
+- Predict mass, energy, protein, carbohydrate, and fat.
+- Record the median baseline, original-versus-masked comparison, three training seeds, checkpoints and nutrient error metrics.
 
 ## Interface
-Input: original RGB image plus component A mask/masked view.
+Input: one RGB image, masked by component A in the proposed pipeline or original in the controlled comparison.
 Output: estimated mass (g), energy (kcal), protein (g), carbohydrate (g) and fat (g) for component C.
 
 Keep component experiments and notes here; reusable code belongs in ../src/ and run records in ../experiments/. Use shared group-separated splits. Do not commit datasets, model weights or private identity mappings.

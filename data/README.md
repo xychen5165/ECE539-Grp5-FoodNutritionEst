@@ -4,7 +4,7 @@
 
 [Nutrition5k](https://github.com/google-research-datasets/Nutrition5k) is the proposed source of overhead RGB meal images and dish-level nutrition labels.
 
-Intended input: one available overhead RGB image. Intended targets: calories (kcal), protein (g), carbohydrates (g), and fat (g). Dish ID is the matching and split unit. Total mass and ingredient information may support analysis; their role as training targets or inputs is not decided.
+Intended input: one available overhead RGB image. Regression targets: mass (g), energy (kcal), protein (g), carbohydrate (g), and fat (g). Dish IDs match images to labels; related incremental scans must be grouped by physical plate for splitting. Mass is evaluated separately from the four nutrients used for tracking and planning.
 
 ## Access checklist
 
@@ -18,4 +18,4 @@ Keep raw data under ignored `data/raw/` or an external location. Use configurabl
 
 ## Splits
 
-Store small versioned manifests in `splits/`. Keep all images of one dish in the same partition. Record dataset/subset version, split seed and method, counts, and manifest identifier/hash. Partition proportions remain to be decided. Use the same manifests for baseline and controlled comparison.
+Store small versioned manifests in `splits/`. Keep all images and related incremental scans of one physical plate in the same partition. Record dataset/subset version, split seed and method, counts, and manifest identifier/hash. We plan to use up to 800 eligible official training records, group-split into approximately 640 training and 160 development records, plus 200 official test records. Counts depend on verified eligibility and grouping. Use the same manifests for baseline and controlled comparison.

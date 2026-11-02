@@ -3,9 +3,9 @@
 Component workspace for joint menu recommendations and planner evaluation. Implementation is planned.
 
 ## Deliverables
-- Generate bounded food/portion combinations from Gordon menu entries and their supplied nutrition.
+- Generate combinations of 1–3 Gordon foods at 0.5, 1, or 1.5 listed servings, using complete energy and macronutrient values.
 - Apply user preferences, confirmed exclusions and nutrient/energy bounds.
-- Rank combinations by remaining protein and, only with complete intake coverage, fiber goals.
+- Rank projected daily totals by normalized energy-target deviation, protein shortfall, and carbohydrate/fat distance from their planning ranges; ties favor fewer foods.
 - Return portions, stations, projected totals and remaining gaps; handle infeasible or already-met goals explicitly.
 - Compare joint planning against protein-only ranking using identical menu candidates and constraints.
 

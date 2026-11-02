@@ -6,4 +6,4 @@ Copy [run-template.md](run-template.md) into the experiment directory as a run r
 
 Shared implementation belongs in `src/`. Notebooks and configuration files are optional; exact reproducible settings and commands are required for reported results. Store large artifacts externally and document access.
 
-The baseline and controlled comparison are pending method selection. Add links to their run records here when defined.
+The evaluation plan includes a training-set median baseline, an original-versus-SAM-masked image comparison, and joint meal ranking versus protein-only ranking. See the [evaluation plan](../docs/architecture.md#training-and-evaluation). Add run records and measured results here as experiments are executed.
