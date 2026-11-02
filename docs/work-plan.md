@@ -8,15 +8,15 @@ All listed times are Central.
 
 ### November 1, 2026, 11:59 p.m. - Proposal
 
-Submit a private PDF of at most three pages including references. Include the public repository link, architecture, training and evaluation plans, and member table. Owner: TBD.
+Submit a private PDF of at most three pages including references. Include the public repository link, architecture, training and evaluation plans, and member table. Owner: Yifei Yu.
 
 ### November 22, 2026, 11:59 p.m. - Progress
 
-Submit a report of at most two pages excluding references. Show the current pipeline, loaded data, baseline results, an executed neural or integration attempt, and a dated development log. Owner: TBD.
+Submit a report of at most two pages excluding references. Show the current pipeline, loaded data, baseline results, an executed neural or integration attempt, and a dated development log. Owner: Xinyi Chen,Lynn Huang.
 
 ### December 6, 2026 - Review ready
 
-Prepare the runnable repository, results, analysis, and presentation slides. Owner: TBD.
+Prepare the runnable repository, results, analysis, and presentation slides. Owner: Xiangyi Peng.
 
 ### December 7 or 9, 2026 - Demo
 
