@@ -14,7 +14,7 @@ Use the following format for each entry:
 
 ### 2026-11-18 - Build split files with plate grouping
 
-- Contributor: Xin Chen (xychen5165)
+- Contributor: xychen5165
 - Attempt: Built training/development/test files from the metadata. Removed 3 noisy dishes (zero energy, or 3,051 g / 3,943 kcal). Grouped repeat photos of the same plate so no plate crosses files. Tried three grouping rules:
   1. Ingredient names only (earlier ingredients a subset of later), 600 seconds or less.
   2. Ingredient weights: every earlier ingredient present in the next dish with at least the same weight (5% or 1 g), total mass not dropping (5% or 1 g).
@@ -25,7 +25,7 @@ Use the following format for each entry:
 
 ### 2026-11-18 - Visual review of plate links
 
-- Contributor: Xin Chen (xychen5165)
+- Contributor: xychen5165
 - Attempt: Downloaded 42 overhead photos and built a side-by-side review page of 22 dish pairs: linked pairs 61–120 seconds apart, unlinked pairs 121–600 seconds apart that pass the weight and mass checks, and two identical-label pairs about 20 minutes apart. Inspected 6 pairs.
 - Outcome: Linked pair at 111 s is the same plate (correct). Unlinked pairs at 282 s (an apple; one photo in test, one in training) and 331 s (carrots) are identical photos of the same plate: missed links, one causing train/test leakage. An identical-label pair at 18 minutes appears to be the same plate; one at 21 minutes is clearly different.
 - Lesson and next action: The 120-second cutoff misses re-photographs taken after a pause, and identical labels alone do not identify the same plate. Finish reviewing pairs 11–20, choose the cutoff (likely 600 seconds), and rebuild the splits.
