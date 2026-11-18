@@ -1,0 +1,56 @@
+{
+  "source": "Nutrition5k Cafe 1 metadata + overhead_dirs.txt + official rgb split lists",
+  "seed": 0,
+  "rules": {
+    "max_gap_seconds_for_plate_link": 120,
+    "ingredient_weight_tolerance": "5% or 1 g",
+    "total_mass_drop_tolerance": "5% or 1 g",
+    "min_mass_g": 5.0,
+    "max_mass_g": 2000.0,
+    "dev_fraction_of_official_train": 0.2
+  },
+  "counts": {
+    "cafe1_dishes_with_labels": 4768,
+    "cafe1_dishes_with_overhead_photo": 3262,
+    "kept_after_label_checks": 3259,
+    "train": 2189,
+    "dev": 550,
+    "test": 506,
+    "dropped": {
+      "zero energy": 2,
+      "mass over 2000 g": 1,
+      "same plate group as a test dish": 14
+    },
+    "plate_groups": {
+      "train": 839,
+      "dev": 219,
+      "test": 208
+    },
+    "deprecated_ingredient_flagged": {
+      "train": 18,
+      "dev": 5,
+      "test": 8
+    },
+    "energy_mismatch_flagged": {
+      "train": 76,
+      "dev": 33,
+      "test": 7
+    }
+  },
+  "plate_group_size_distribution_kept": {
+    "1": 484,
+    "2": 236,
+    "3": 179,
+    "4": 187,
+    "5": 101,
+    "6": 50,
+    "7": 21,
+    "8": 6,
+    "9": 2
+  },
+  "sha256_first16": {
+    "train.csv": "53487925d4e7f975",
+    "dev.csv": "a29c1a96a22eaeaf",
+    "test.csv": "97762afd34ca772c"
+  }
+}
