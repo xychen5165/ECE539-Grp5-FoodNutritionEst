@@ -51,6 +51,37 @@ This debug manifest is not yet the final train/development/evaluation split.
 Before model comparison, the team must agree on a plate-group mapping so related
 incremental scans cannot cross the internal train/development boundary.
 
+## SAM debug segmentation
+
+`run_sam_debug.py` runs the frozen SAM ViT-B checkpoint and saves a black-and-
+white mask, a neutral-background RGB image, an overlay, and selection metrics
+for each input. The current first-pass selector uses two reproducible paths:
+
+- If SAM finds a centered plate candidate, fill its outer contour and union
+  confident small candidates whose pixels lie at least 90% inside that plate.
+- If no plate candidate is available, select the largest plausible food cluster
+  in the middle of the image.
+
+Run the three local debug images from the repository root:
+
+```bash
+.venv/bin/python A_food_segmentation/run_sam_debug.py \
+  --checkpoint checkpoints/sam_vit_b_01ec64.pth \
+  --output-dir artifacts/sam_debug \
+  --device cpu \
+  --points-per-side 16 \
+  data/raw/nutrition5k/imagery/realsense_overhead/dish_1556572657/rgb.png \
+  data/raw/nutrition5k/imagery/realsense_overhead/dish_1556573514/rgb.png \
+  data/raw/nutrition5k/imagery/realsense_overhead/dish_1556575014/rgb.png
+```
+
+The November 19 debug run produced 29, 25, and 36 SAM candidates and completed
+each 640 x 480 image in about 14 seconds on CPU. Manual review found that the
+final masks capture the main olives in two images and the main salad cluster in
+the third. Thin onion strands in the salad are partly missed, so these masks are
+preliminary rather than segmentation ground truth. Generated images and the
+358 MB checkpoint remain in ignored local directories.
+
 ## Deliverables
 - Match Nutrition5k RGB images to nutrient labels and audit related plate groups.
 - Freeze shared train/development/final-evaluation manifests before model comparisons.

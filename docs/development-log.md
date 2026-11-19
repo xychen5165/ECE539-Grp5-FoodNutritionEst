@@ -19,3 +19,11 @@ Use the following format for each entry:
 - Outcome: Added a standard-library audit/manifest script and unit tests. The observed files contain 5,006 valid unique metadata rows, 4,059 official RGB train IDs, 709 official RGB test IDs, and zero train/test ID overlap. Three downloaded overhead examples matched metadata and official-train entries. The script records missing-label counts, local image availability, deterministic sampling settings, and input hashes.
 - Lesson and next action: Metadata and selective public-image access are feasible, but a final internal train/development split still needs a verified physical-plate grouping rule. Next, expand the verified local image subset and run frozen SAM on a few examples while keeping the original-versus-masked comparison reproducible.
 - Evidence: `A_food_segmentation/audit_nutrition5k.py`, `tests/test_audit_nutrition5k.py`, `data/splits/nutrition5k_debug_images_seed539.csv`, and its summary JSON.
+
+### 2026-11-19 - Frozen SAM debug segmentation
+
+- Contributor: YifeiDorthy
+- Attempt: Loaded the official SAM ViT-B checkpoint and ran automatic mask generation on three 640 x 480 Nutrition5k overhead RGB images using a 16 x 16 point grid on CPU. Developed a deterministic first-pass selector based on candidate size, position, predicted IoU, stability, and containment within a filled plate silhouette.
+- Outcome: All three images completed in about 14 seconds each and generated `mask.png`, `masked_rgb.png`, `overlay.png`, and selection metrics. The first rule selected the plate instead of the olives; a later rule selected white paper below the plate. Filling the plate's outer contour before filtering small candidates corrected both failure modes. Final visual review captured the main olives in two images and the main salad cluster in the third, although thin onion strands were partly missed.
+- Lesson and next action: A single largest centered mask is not a reliable food selector. Disconnected foods need a union of candidates constrained by the plate silhouette, while a connected salad can use a centered cluster fallback. Next, keep these rules fixed and evaluate them on additional images selected from the team's canonical split.
+- Evidence: `A_food_segmentation/run_sam_debug.py`; local ignored outputs under `artifacts/sam_debug/`.
