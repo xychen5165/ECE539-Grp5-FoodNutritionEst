@@ -1,0 +1,4 @@
+dish_id,calories_kcal,mass_g,fat_g,carb_g,protein_g,official_split,image_path,image_exists
+dish_1556572657,41.399998,36.0,3.852,2.268,0.288,train,imagery/realsense_overhead/dish_1556572657/rgb.png,True
+dish_1556573514,6.44,23.0,0.092,1.219,0.506,train,imagery/realsense_overhead/dish_1556573514/rgb.png,True
+dish_1556575014,71.299995,62.0,6.634,3.906,0.496,train,imagery/realsense_overhead/dish_1556575014/rgb.png,True

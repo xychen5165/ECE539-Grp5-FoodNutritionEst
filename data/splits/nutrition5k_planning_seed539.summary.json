@@ -1,0 +1,22 @@
+{
+  "input_sha256": {
+    "dish_metadata_cafe1.csv": "881df31f27c2343d0ce219964527e0796f6ddadd60701ce6840fa801e8c2a960",
+    "dish_metadata_cafe2.csv": "ef9f800d7b9c2e7e9a9e7cda5cbb4cfe51c760a8c1af4c05786ccf051bf5d77d",
+    "rgb_test_ids.txt": "560ff0eedb1a2027c21f5da3a4c38a53fa201c87d108e76b11cceaa1d956ac8e",
+    "rgb_train_ids.txt": "efd34a682b5483b01e6bd0a7c1267efec28440a8194985f9d3817d8ebc8169bd"
+  },
+  "local_overhead_images_matched": 3,
+  "manifest_rows": 25,
+  "manifest_test_rows": 5,
+  "manifest_train_rows": 20,
+  "metadata_duplicate_ids": 0,
+  "metadata_rows_invalid": 0,
+  "metadata_rows_valid": 5006,
+  "official_test_ids": 709,
+  "official_train_ids": 4059,
+  "require_images": false,
+  "seed": 539,
+  "test_ids_missing_metadata": 0,
+  "train_ids_missing_metadata": 0,
+  "train_test_overlap": 0
+}
