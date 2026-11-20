@@ -1,0 +1,21 @@
+{
+  "source": "https://tfhub.dev/google/seefood/segmenter/mobile_food_segmenter_V1/1",
+  "archive_url": "https://tfhub.dev/google/seefood/segmenter/mobile_food_segmenter_V1/1?tf-hub-format=compressed",
+  "files": [
+    {
+      "name": "labelmap.csv",
+      "bytes": 568,
+      "sha256": "134c1149cd51975915ce1b87742047b64a55ef8aaf91fbe160af889c0f79906d"
+    },
+    {
+      "name": "saved_model.pb",
+      "bytes": 11296617,
+      "sha256": "e3c23c800d35e403698c7b0396ebac12c8ddf5535c511393103652ebb89e51d1"
+    },
+    {
+      "name": "tfhub_module.pb",
+      "bytes": 2,
+      "sha256": "2d88972e9536ba54deed37db380728b3c58eab9bca1d173ae523098b0774cdf5"
+    }
+  ]
+}
