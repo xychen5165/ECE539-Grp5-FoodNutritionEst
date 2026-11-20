@@ -1,0 +1,47 @@
+{
+  "implementation_commit": "aa44984",
+  "source_commit": "dcde4c8330b5ad663845c25f611f096b08a462b2",
+  "source_path": "data/splits/dev.csv",
+  "source_sha256": "8139d182230208914fbc7ffde2df4d31e9a2053bfb46cca63dddf2166cd7bbf8",
+  "seed": 53920261119,
+  "excluded_prior_dish_ids": [
+    "dish_1556572657",
+    "dish_1556573514",
+    "dish_1556575014",
+    "dish_1558373284",
+    "dish_1558459462",
+    "dish_1559674866",
+    "dish_1560543704",
+    "dish_1560799615",
+    "dish_1561392410",
+    "dish_1562689519",
+    "dish_1563811515",
+    "dish_1564691450"
+  ],
+  "excluded_plate_groups": [
+    "group_00797",
+    "group_00798",
+    "group_00799",
+    "group_00917",
+    "group_00979",
+    "group_01342",
+    "group_01433",
+    "group_01441",
+    "group_01474",
+    "group_01636",
+    "group_01806",
+    "group_01896"
+  ],
+  "selected_count": 12,
+  "unique_selected_groups": 12,
+  "strata": {
+    "single": "1 ingredient",
+    "medium": "2-4 ingredients",
+    "complex": "5+ ingredients"
+  },
+  "samples_per_stratum": 4,
+  "selector_sha256": "93ae98087291e1a8ad17575765fb7c30cb991fb1da525eb1ca626bd8659c033b",
+  "runner_sha256": "2a4cd93974526b6925d55e0e7f8bf21b94511962e4fbd102de1d892360fa2fe2",
+  "selection_sha256": "636a31072791939f6e6baa5c2ae405f3d9053b3c4338a4bcbab03dda36dd64da",
+  "note": "Groups are inferred by the pinned source pipeline; group disjointness is not proof of physical identity."
+}

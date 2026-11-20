@@ -1,0 +1,13 @@
+dish_id,program_status,manual_rating,reason
+dish_1563309189,completed,pass,main scattered food regions retained with exposed plate and background excluded
+dish_1558639089,completed,pass,main grape cluster retained with plate excluded
+dish_1558723777,completed,pass,main apple region retained with plate excluded
+dish_1559245848,completed,partial,apple retained but two small extra regions on plate remain
+dish_1560961261,completed,partial,main meal retained but a small plate reflection is included
+dish_1558463690,completed,pass,multiple separated food groups retained with bowl excluded
+dish_1564086658,completed,partial,main meal retained but bread near top plate boundary is clipped
+dish_1559238608,completed,pass,main separated fruit regions retained with exposed plate excluded
+dish_1561405934,completed,fail,mask selects gaps around vegetables while missing bread meat and most other food
+dish_1562876674,completed,partial,most food retained but plate boundary clips protruding meat and lower bread
+dish_1562963484,completed,pass,main mixed salad retained with plate excluded
+dish_1559678651,completed,pass,main salad and bread retained together with exposed plate excluded

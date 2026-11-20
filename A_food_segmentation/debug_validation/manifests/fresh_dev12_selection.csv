@@ -1,0 +1,13 @@
+dish_id,split,plate_group,image_path,mass_g,energy_kcal,protein_g,carbohydrate_g,fat_g,n_ingredients,energy_mismatch_flag,deprecated_ingredient_flag,complexity_group
+dish_1563309189,dev,group_01753,imagery/realsense_overhead/dish_1563309189/rgb.png,33.0,37.95,0.264,2.079,3.531,1,0,0,single
+dish_1558639089,dev,group_01103,imagery/realsense_overhead/dish_1558639089/rgb.png,28.0,19.32,0.196,5.04,0.056,1,0,0,single
+dish_1558723777,dev,group_01233,imagery/realsense_overhead/dish_1558723777/rgb.png,143.0,74.36,0.429,20.02,0.286,1,0,0,single
+dish_1559245848,dev,group_01323,imagery/realsense_overhead/dish_1559245848/rgb.png,127.0,59.69,1.143,15.24,0.127,1,0,0,single
+dish_1560961261,dev,group_01453,imagery/realsense_overhead/dish_1560961261/rgb.png,218.0,192.52,12.031,10.294,11.831,3,0,0,medium
+dish_1558463690,dev,group_00999,imagery/realsense_overhead/dish_1558463690/rgb.png,241.0,432.954,15.807,30.032,32.034,3,0,0,medium
+dish_1564086658,dev,group_01851,imagery/realsense_overhead/dish_1564086658/rgb.png,230.0,260.853,11.198,38.712,8.653,3,0,0,medium
+dish_1559238608,dev,group_01293,imagery/realsense_overhead/dish_1559238608/rgb.png,438.0,237.364,2.714,61.204,0.656,3,0,0,medium
+dish_1561405934,dev,group_01482,imagery/realsense_overhead/dish_1561405934/rgb.png,243.0,287.3318,25.2681,21.3465,11.3623,21,0,0,complex
+dish_1562876674,dev,group_01695,imagery/realsense_overhead/dish_1562876674/rgb.png,157.0,289.1926,23.7705,30.0659,10.2113,16,0,0,complex
+dish_1562963484,dev,group_01719,imagery/realsense_overhead/dish_1562963484/rgb.png,80.0,100.5394,2.0848,5.1365,8.5709,9,0,0,complex
+dish_1559678651,dev,group_01346,imagery/realsense_overhead/dish_1559678651/rgb.png,122.0,107.8567,10.9661,7.95,9.3278,13,1,0,complex

@@ -12,9 +12,10 @@ def main():
                         choices=['candidate_union', 'plate_complement', 'plate_appearance'])
     parser.add_argument('--output-dir', type=Path, required=True)
     parser.add_argument('--checkpoint', type=Path, default=Path('checkpoints/sam_vit_b_01ec64.pth'))
+    parser.add_argument('--manifest', type=Path, help='Alternative recorded subset CSV; default: dev9_selection.csv')
     args = parser.parse_args()
     base = Path(__file__).resolve().parent
-    with (base / 'manifests/dev9_selection.csv').open(newline='') as handle:
+    with (args.manifest or base / 'manifests/dev9_selection.csv').open(newline='') as handle:
         rows = list(csv.DictReader(handle))
     command = [sys.executable, '-u', str(base / 'run_sam_debug.py'),
                '--selector', args.selector, '--output-dir', str(args.output_dir),

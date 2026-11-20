@@ -165,6 +165,66 @@ third method's manual judgments. Run tests with:
 .venv/bin/python -m unittest discover -s A_food_segmentation/debug_validation/tests -v
 ```
 
+## Frozen third-selector check on new development groups
+
+On November 19, the `plate_appearance` implementation from commit `aa44984`
+was frozen and tested on 12 additional images selected before viewing their RGB
+content. `prepare_fresh_dev.py` pins the source split at commit `dcde4c8`, uses
+seed 53920261119, and excludes every inferred plate group associated with the
+previous nine development images and the original three feasibility examples.
+It selects one representative per group, then samples four single-ingredient,
+four two-to-four-ingredient, and four five-or-more-ingredient representatives.
+All 12 new groups are distinct. This is a validation subset of the source dev
+split, not a new team split.
+
+No selector thresholds changed during this check. Code and input hashes are in
+`manifests/fresh_dev12_provenance.json`; image source URLs, hashes, and sizes are
+in `manifests/fresh_dev12_downloads.json`. All 12 executions completed.
+
+| Ingredient-count stratum | Images | Visual pass | Visual partial | Visual fail |
+|---|---:|---:|---:|---:|
+| Single | 4 | 3 | 1 | 0 |
+| Medium | 4 | 2 | 2 | 0 |
+| Complex | 4 | 2 | 1 | 1 |
+| Total | 12 | 7 | 4 | 1 |
+
+The assistant inspected every overlay with the original image visible beneath
+it, using the earlier pass/partial/fail definitions. Ratings await teammate
+confirmation and are qualitative rather than pixel accuracy or IoU. Seven
+images retain the main food without major plate/background inclusion. Two
+partial masks retain small plate artifacts; two clip food extending toward the
+inferred plate boundary. The failed image selects gaps around vegetables and
+misses most of the meal, consistent with an incorrect plate hypothesis.
+
+The sample is small and balanced by ingredient count rather than reflecting
+the full dataset distribution. Groups come from an inferred grouping pipeline;
+disjoint group IDs do not prove different physical plates. These outcomes
+support trying a controlled original-versus-masked Part B comparison but do not
+show that nutrient prediction improves. Any later selector changes would make
+these 12 images part of method development and require another fresh check.
+
+Evidence:
+
+- `manifests/fresh_dev12_selection.csv`: all IDs, groups, source labels and strata.
+- `manifests/fresh_dev12_review.csv`: each visual rating and its reason.
+- `manifests/fresh_dev12_results.json`: verified counts, settings, package versions and hashes.
+- `outputs/fresh_dev12_plate_appearance_v1/`: local ignored masks, overlays and execution summaries.
+
+Reproduce from the repository root, keeping output directories separate:
+
+```bash
+.venv/bin/python A_food_segmentation/debug_validation/prepare_fresh_dev.py --download
+.venv/bin/python A_food_segmentation/debug_validation/run_dev9.py \
+  --selector plate_appearance \
+  --manifest A_food_segmentation/debug_validation/manifests/fresh_dev12_selection.csv \
+  --output-dir A_food_segmentation/debug_validation/outputs/fresh_dev12_plate_appearance_v1
+.venv/bin/python A_food_segmentation/debug_validation/summarize_fresh_dev.py
+```
+
+The summary command verifies code hashes and the agreement between the selected
+IDs, program status and recorded visual review. Re-running inference does not
+constitute a new independent visual review.
+
 ## Canonical data source
 
 Do not use `manifests/nutrition5k_planning_seed539.csv` for model training or

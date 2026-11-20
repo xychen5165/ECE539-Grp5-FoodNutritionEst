@@ -1,0 +1,122 @@
+[
+  {
+    "dish_id": "dish_1563309189",
+    "url": "https://storage.googleapis.com/nutrition5k_dataset/nutrition5k_dataset/imagery/realsense_overhead/dish_1563309189/rgb.png",
+    "bytes": 221737,
+    "sha256": "0c59282ae23c5813198de8731e18cc4b401343cb6b569a473309912c1f7ab8c5",
+    "image_size": [
+      640,
+      480
+    ]
+  },
+  {
+    "dish_id": "dish_1558639089",
+    "url": "https://storage.googleapis.com/nutrition5k_dataset/nutrition5k_dataset/imagery/realsense_overhead/dish_1558639089/rgb.png",
+    "bytes": 407616,
+    "sha256": "296a938128bb1d711089bf9305a5cc05973bde7b1d1bab298fa3127ecf413555",
+    "image_size": [
+      640,
+      480
+    ]
+  },
+  {
+    "dish_id": "dish_1558723777",
+    "url": "https://storage.googleapis.com/nutrition5k_dataset/nutrition5k_dataset/imagery/realsense_overhead/dish_1558723777/rgb.png",
+    "bytes": 386800,
+    "sha256": "8f444e62ec0d5473c7279380e351c3ee1e98a059f96b1a8bc19233ea49e37e42",
+    "image_size": [
+      640,
+      480
+    ]
+  },
+  {
+    "dish_id": "dish_1559245848",
+    "url": "https://storage.googleapis.com/nutrition5k_dataset/nutrition5k_dataset/imagery/realsense_overhead/dish_1559245848/rgb.png",
+    "bytes": 443871,
+    "sha256": "a66db0f9d7f5e48b370e5d37baa3a6e39732908679e1a0017c980f622359d3a3",
+    "image_size": [
+      640,
+      480
+    ]
+  },
+  {
+    "dish_id": "dish_1560961261",
+    "url": "https://storage.googleapis.com/nutrition5k_dataset/nutrition5k_dataset/imagery/realsense_overhead/dish_1560961261/rgb.png",
+    "bytes": 552145,
+    "sha256": "170b506a2a06476ae283d8c0f5373b8f56a0ed89e754eca7a8d3c2a1386d8490",
+    "image_size": [
+      640,
+      480
+    ]
+  },
+  {
+    "dish_id": "dish_1558463690",
+    "url": "https://storage.googleapis.com/nutrition5k_dataset/nutrition5k_dataset/imagery/realsense_overhead/dish_1558463690/rgb.png",
+    "bytes": 562249,
+    "sha256": "3bd158eeb5f94beae4f6ab82b4f3c9c89d051062b3fb7474e7f2adf5c2ef9d1b",
+    "image_size": [
+      640,
+      480
+    ]
+  },
+  {
+    "dish_id": "dish_1564086658",
+    "url": "https://storage.googleapis.com/nutrition5k_dataset/nutrition5k_dataset/imagery/realsense_overhead/dish_1564086658/rgb.png",
+    "bytes": 381193,
+    "sha256": "978da0bfed78c6201bb1ccc701ef1782ea52340cb46d0456187f3facd6155f7b",
+    "image_size": [
+      640,
+      480
+    ]
+  },
+  {
+    "dish_id": "dish_1559238608",
+    "url": "https://storage.googleapis.com/nutrition5k_dataset/nutrition5k_dataset/imagery/realsense_overhead/dish_1559238608/rgb.png",
+    "bytes": 542427,
+    "sha256": "67dd2172ffed94503adaac661dc06302ac36527fd580241db5fd694a77d6f166",
+    "image_size": [
+      640,
+      480
+    ]
+  },
+  {
+    "dish_id": "dish_1561405934",
+    "url": "https://storage.googleapis.com/nutrition5k_dataset/nutrition5k_dataset/imagery/realsense_overhead/dish_1561405934/rgb.png",
+    "bytes": 482386,
+    "sha256": "d58dd655ae5586f37e7d1ce4762a39c2f24661fb59efda943967ac9b4ca566bf",
+    "image_size": [
+      640,
+      480
+    ]
+  },
+  {
+    "dish_id": "dish_1562876674",
+    "url": "https://storage.googleapis.com/nutrition5k_dataset/nutrition5k_dataset/imagery/realsense_overhead/dish_1562876674/rgb.png",
+    "bytes": 285780,
+    "sha256": "d3a30b32f052fc4c7d61ba5e96015ce527960acde5e8c8b6f24ba9023bc6b681",
+    "image_size": [
+      640,
+      480
+    ]
+  },
+  {
+    "dish_id": "dish_1562963484",
+    "url": "https://storage.googleapis.com/nutrition5k_dataset/nutrition5k_dataset/imagery/realsense_overhead/dish_1562963484/rgb.png",
+    "bytes": 305645,
+    "sha256": "7ccfa139c80aa4e12959047487d649614e237dcc5fc04711a3b328ed87cc1b1a",
+    "image_size": [
+      640,
+      480
+    ]
+  },
+  {
+    "dish_id": "dish_1559678651",
+    "url": "https://storage.googleapis.com/nutrition5k_dataset/nutrition5k_dataset/imagery/realsense_overhead/dish_1559678651/rgb.png",
+    "bytes": 428369,
+    "sha256": "3b053dd689ba802a854af223b672ece6a1ddae9d0124f40b8788e256b320a8c9",
+    "image_size": [
+      640,
+      480
+    ]
+  }
+]

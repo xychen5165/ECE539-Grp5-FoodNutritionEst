@@ -1,0 +1,170 @@
+{
+  "implementation_commit": "aa44984",
+  "source_commit": "dcde4c8330b5ad663845c25f611f096b08a462b2",
+  "selector_sha256": "93ae98087291e1a8ad17575765fb7c30cb991fb1da525eb1ca626bd8659c033b",
+  "runner_sha256": "2a4cd93974526b6925d55e0e7f8bf21b94511962e4fbd102de1d892360fa2fe2",
+  "selection_sha256": "636a31072791939f6e6baa5c2ae405f3d9053b3c4338a4bcbab03dda36dd64da",
+  "sample_count": 12,
+  "unique_plate_groups": 12,
+  "sam_settings": {
+    "device": "cpu",
+    "points_per_side": 16,
+    "pred_iou_thresh": 0.86,
+    "stability_score_thresh": 0.92,
+    "crop_n_layers": 0,
+    "min_mask_region_area": 100
+  },
+  "program_counts": {
+    "completed": 12
+  },
+  "manual_counts": {
+    "pass": 7,
+    "partial": 4,
+    "fail": 1
+  },
+  "by_complexity": {
+    "single": {
+      "pass": 3,
+      "partial": 1
+    },
+    "medium": {
+      "partial": 2,
+      "pass": 2
+    },
+    "complex": {
+      "fail": 1,
+      "partial": 1,
+      "pass": 2
+    }
+  },
+  "environment": {
+    "torch": "2.14.1",
+    "torchvision": "0.29.2",
+    "numpy": "2.2.6",
+    "Pillow": "12.3.0",
+    "opencv-python-headless": "4.11.0.86"
+  },
+  "review_method": "Assistant visual inspection of original and overlay; teammate confirmation pending; no pixel ground truth or IoU.",
+  "images": [
+    {
+      "dish_id": "dish_1563309189",
+      "plate_group": "group_01753",
+      "complexity_group": "single",
+      "program_status": "completed",
+      "manual_rating": "pass",
+      "reason": "main scattered food regions retained with exposed plate and background excluded",
+      "candidate_count": 22,
+      "food_area_ratio": 0.03668
+    },
+    {
+      "dish_id": "dish_1558639089",
+      "plate_group": "group_01103",
+      "complexity_group": "single",
+      "program_status": "completed",
+      "manual_rating": "pass",
+      "reason": "main grape cluster retained with plate excluded",
+      "candidate_count": 28,
+      "food_area_ratio": 0.043008
+    },
+    {
+      "dish_id": "dish_1558723777",
+      "plate_group": "group_01233",
+      "complexity_group": "single",
+      "program_status": "completed",
+      "manual_rating": "pass",
+      "reason": "main apple region retained with plate excluded",
+      "candidate_count": 13,
+      "food_area_ratio": 0.041348
+    },
+    {
+      "dish_id": "dish_1559245848",
+      "plate_group": "group_01323",
+      "complexity_group": "single",
+      "program_status": "completed",
+      "manual_rating": "partial",
+      "reason": "apple retained but two small extra regions on plate remain",
+      "candidate_count": 15,
+      "food_area_ratio": 0.03931
+    },
+    {
+      "dish_id": "dish_1560961261",
+      "plate_group": "group_01453",
+      "complexity_group": "medium",
+      "program_status": "completed",
+      "manual_rating": "partial",
+      "reason": "main meal retained but a small plate reflection is included",
+      "candidate_count": 28,
+      "food_area_ratio": 0.172594
+    },
+    {
+      "dish_id": "dish_1558463690",
+      "plate_group": "group_00999",
+      "complexity_group": "medium",
+      "program_status": "completed",
+      "manual_rating": "pass",
+      "reason": "multiple separated food groups retained with bowl excluded",
+      "candidate_count": 56,
+      "food_area_ratio": 0.21418
+    },
+    {
+      "dish_id": "dish_1564086658",
+      "plate_group": "group_01851",
+      "complexity_group": "medium",
+      "program_status": "completed",
+      "manual_rating": "partial",
+      "reason": "main meal retained but bread near top plate boundary is clipped",
+      "candidate_count": 38,
+      "food_area_ratio": 0.244323
+    },
+    {
+      "dish_id": "dish_1559238608",
+      "plate_group": "group_01293",
+      "complexity_group": "medium",
+      "program_status": "completed",
+      "manual_rating": "pass",
+      "reason": "main separated fruit regions retained with exposed plate excluded",
+      "candidate_count": 25,
+      "food_area_ratio": 0.180895
+    },
+    {
+      "dish_id": "dish_1561405934",
+      "plate_group": "group_01482",
+      "complexity_group": "complex",
+      "program_status": "completed",
+      "manual_rating": "fail",
+      "reason": "mask selects gaps around vegetables while missing bread meat and most other food",
+      "candidate_count": 34,
+      "food_area_ratio": 0.052702
+    },
+    {
+      "dish_id": "dish_1562876674",
+      "plate_group": "group_01695",
+      "complexity_group": "complex",
+      "program_status": "completed",
+      "manual_rating": "partial",
+      "reason": "most food retained but plate boundary clips protruding meat and lower bread",
+      "candidate_count": 18,
+      "food_area_ratio": 0.153542
+    },
+    {
+      "dish_id": "dish_1562963484",
+      "plate_group": "group_01719",
+      "complexity_group": "complex",
+      "program_status": "completed",
+      "manual_rating": "pass",
+      "reason": "main mixed salad retained with plate excluded",
+      "candidate_count": 21,
+      "food_area_ratio": 0.197116
+    },
+    {
+      "dish_id": "dish_1559678651",
+      "plate_group": "group_01346",
+      "complexity_group": "complex",
+      "program_status": "completed",
+      "manual_rating": "pass",
+      "reason": "main salad and bread retained together with exposed plate excluded",
+      "candidate_count": 33,
+      "food_area_ratio": 0.147617
+    }
+  ]
+}
