@@ -2,7 +2,7 @@
 
 Status: Completed
 
-**Result:** normalized nutrient error **0.727** on the development split (95% interval 0.652–0.808). A photo model is useful only if it scores clearly below this.
+**Result:** normalized nutrient error **0.737** on the development split (95% interval 0.672–0.812). A photo model is useful only if it scores clearly below this.
 
 ## Purpose
 
@@ -14,69 +14,69 @@ Run with `python src/baseline_median.py`. Scoring code is in [src/evaluate.py](.
 
 ### Step 1: Compute the guess from the training split
 
-For each target separately, sort the values of the 2,189 training dishes and take the middle one (position 1,095). This median is the guess for every development dish.
+For each target separately, sort the values of the 2,135 training dishes and take the middle one (position 1,068). This median is the guess for every development dish.
 
 | Target | Training median (guess) |
 |---|---|
-| Mass | 177.0 g |
-| Energy | 204.4 kcal |
-| Protein | 11.2 g |
+| Mass | 184.0 g |
+| Energy | 213.9 kcal |
+| Protein | 12.5 g |
 | Carbohydrate | 15.4 g |
-| Fat | 8.5 g |
+| Fat | 9.1 g |
 
 The median is used because it is the constant guess with the lowest average absolute error. Each median comes from its own column, so the five values together do not describe one real dish.
 
 ### Step 2: Measure the average error on the development split
 
-For each of the 550 development dishes, take the absolute gap between the true value and the guess. Average the gaps.
+For each of the 538 development dishes, take the absolute gap between the true value and the guess. Average the gaps.
 
-Energy example (guess 204.4 kcal):
+Energy example (guess 213.9 kcal):
 
 | Dish | True | Guess | Gap |
 |---|---|---|---|
-| dish_1557853229 | 195.9 | 204.4 | 8.4 |
-| dish_1557853314 | 115.4 | 204.4 | 89.0 |
-| dish_1557853429 | 330.2 | 204.4 | 125.8 |
-| dish_1557862829 | 5.5 | 204.4 | 198.8 |
-| … 546 more dishes | | | |
+| dish_1557853229 | 195.9 | 213.9 | 17.9 |
+| dish_1557861697 | 13.1 | 213.9 | 200.7 |
+| dish_1557863012 | 3.1 | 213.9 | 210.8 |
+| dish_1558028690 | 23.8 | 213.9 | 190.1 |
+| … 534 more dishes | | | |
 
-Sum of all 550 gaps = 89,049.4 kcal, so the average error = 89,049.4 ÷ 550 = **161.9 kcal**.
+Sum of all 538 gaps = 92,583.9 kcal, so the average error = 92,583.9 ÷ 538 = **172.1 kcal**.
 
 The same calculation for every target:
 
 | Target | Average error |
 |---|---|
-| Mass | 118.8 g |
-| Energy | 161.9 kcal |
-| Protein | 15.5 g |
-| Carbohydrate | 11.2 g |
-| Fat | 10.0 g |
+| Mass | 120.3 g |
+| Energy | 172.1 kcal |
+| Protein | 15.1 g |
+| Carbohydrate | 12.0 g |
+| Fat | 10.6 g |
 
 ### Step 3: Combine the four nutrients into one score
 
-**Training average:** the average true value of a nutrient over the 2,189 training dishes (for energy, 251.1 kcal).
+**Training average:** the average true value of a nutrient over the 2,135 training dishes (for energy, 255.9 kcal).
 
 Divide each nutrient's average error by its training average, then average the four results. Mass is reported separately because daily tracking and meal planning use only energy and macronutrients. The training averages are fixed, so every model is scaled the same way.
 
 | Nutrient | Average error | Training average | Error ÷ training average |
 |---|---|---|---|
-| Energy | 161.9 kcal | 251.1 kcal | 0.645 |
-| Protein | 15.5 g | 17.7 g | 0.878 |
-| Carbohydrate | 11.2 g | 19.2 g | 0.587 |
-| Fat | 10.0 g | 12.5 g | 0.797 |
+| Energy | 172.1 kcal | 255.9 kcal | 0.673 |
+| Protein | 15.1 g | 18.4 g | 0.823 |
+| Carbohydrate | 12.0 g | 19.2 g | 0.623 |
+| Fat | 10.6 g | 12.7 g | 0.830 |
 
-Normalized nutrient error = (0.645 + 0.878 + 0.587 + 0.797) ÷ 4 = **0.727**.
+Normalized nutrient error = (0.673 + 0.823 + 0.623 + 0.830) ÷ 4 = **0.737**.
 
 ### Step 4: Estimate the uncertainty
 
-Draw 219 development plates at random with replacement, recompute the normalized nutrient error from the saved predictions, and repeat 1,000 times (seed 0). The middle 95% of these scores gives the interval **0.652–0.808**. Whole plates are resampled, not single photos, because photos of the same plate are not independent.
+Draw 182 development plates at random with replacement, recompute the normalized nutrient error from the saved predictions, and repeat 1,000 times (seed 0). The middle 95% of these scores gives the interval **0.672–0.812**. Whole plates are resampled, not single photos, because photos of the same plate are not independent.
 
 ## Setup
 
 - Contributor: xychen5165
-- Date: 2026-11-19 (America/Chicago)
-- Code: commit `37b8307` plus `src/evaluate.py` and `src/baseline_median.py`
-- Data: [data/splits/train.csv](../../data/splits/train.csv) (hash `53487925d4e7f975`) and [data/splits/dev.csv](../../data/splits/dev.csv) (hash `a29c1a96a22eaeaf`). The test split is not used.
+- Date: 2026-11-20 (America/Chicago), rerun on the combined-grouping splits
+- Code: `src/evaluate.py` and `src/baseline_median.py` (commit `dcde4c8`), splits from `src/build_splits.py` with combined grouping
+- Data: [data/splits/train.csv](../../data/splits/train.csv) (hash `b4713f8b5125b1f7`) and [data/splits/dev.csv](../../data/splits/dev.csv) (hash `e3025e1a9f47e963`). The test split is not used.
 
 ## Evidence
 
@@ -85,5 +85,6 @@ Draw 219 development plates at random with replacement, recompute the normalized
 
 ## Notes
 
-- If the split files change (the plate-grouping time cutoff is still under review), rerun the script; it takes seconds.
+- Earlier run on the first splits (ingredient rule only, 2,189 training / 550 development dishes): 0.727 (0.652–0.808). The new splits remove more plate leakage, so the scores are not directly comparable.
+- If the split files change, rerun the script; it takes seconds.
 - Next: extract CLIP features from the overhead photos and train the regression head and a linear model, scored with the same code.
