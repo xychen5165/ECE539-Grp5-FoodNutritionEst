@@ -83,6 +83,33 @@ The next Part A experiment should keep this nine-image set fixed and compare a
 second selection method against the recorded first-pass results. Do not tune a
 different rule for each image.
 
+## Selector comparison
+
+The first method is retained as the `candidate_union` baseline. A second
+`plate_complement` selector fills the outer plate contour, subtracts the SAM
+plate-surface mask, erodes the rim, and removes components that are too small or
+too large. Both selectors use the same SAM ViT-B checkpoint, 16 x 16 point grid,
+input images, and automatic-mask thresholds.
+
+| Selector | Program completed | Program failed | Manual pass | Manual partial | Manual fail |
+|---|---:|---:|---:|---:|---:|
+| `candidate_union` | 6 | 3 | 0 | 2 | 7 |
+| `plate_complement` | 5 | 4 | 0 | 2 | 7 |
+
+The second method produced more coherent central masks on two medium-complexity
+dishes, but it did not improve the overall manual ratings and failed to produce
+a mask on one additional image. On other complex meals it still selected plate
+surface or only one small item. Therefore `plate_complement` is recorded as a
+negative result, not as a replacement for the baseline.
+
+Detailed ratings are stored in `manifests/dev9_qualitative_review.csv` and
+`manifests/dev9_plate_complement_review.csv`; the compact comparison is in
+`manifests/dev9_selector_comparison.csv`.
+
+Run either method with `--selector candidate_union` or
+`--selector plate_complement`, using separate output directories so the
+baseline evidence is not overwritten.
+
 ## Canonical data source
 
 Do not use `manifests/nutrition5k_planning_seed539.csv` for model training or

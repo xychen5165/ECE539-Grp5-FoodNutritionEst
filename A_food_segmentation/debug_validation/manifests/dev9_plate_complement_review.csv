@@ -1,0 +1,10 @@
+dish_id,program_status,manual_rating,reason
+dish_1562689519,failed,fail,plate complement produced no food-sized components
+dish_1558459462,failed,fail,plate complement produced no food-sized components
+dish_1558373284,failed,fail,plate complement produced no food-sized components
+dish_1560543704,completed,partial,more coherent central food mask but still misses food regions
+dish_1561392410,completed,partial,more coherent central food mask but includes a small non-food region
+dish_1559674866,completed,fail,selected plate surface along with food
+dish_1564691450,completed,fail,selected only a lime slice and missed most of the meal
+dish_1563811515,completed,fail,selected only one small food region and missed most of the meal
+dish_1560799615,failed,fail,plate complement produced no food-sized components
