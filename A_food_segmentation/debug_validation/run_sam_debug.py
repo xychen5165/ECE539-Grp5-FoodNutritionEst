@@ -20,6 +20,7 @@ import numpy as np
 import torch
 from PIL import Image
 from segment_anything import SamAutomaticMaskGenerator, sam_model_registry
+from appearance_selector import select_appearance
 
 
 def choose_device(requested: str) -> str:
@@ -267,12 +268,16 @@ def process_image(mask_generator, image_path: Path, output_root: Path, selector:
         food_mask, selection = select_candidate_union(candidates, height, width)
     elif selector == "plate_complement":
         food_mask, selection = select_plate_complement(candidates, height, width)
+    elif selector == "plate_appearance":
+        food_mask, selection = select_appearance(candidates, image)
     else:
         raise ValueError(f"Unknown selector: {selector}")
 
     dish_id = image_path.parent.name
     output_dir = output_root / dish_id
     save_outputs(image, food_mask, output_dir)
+    # A successful retry supersedes the failure marker for this same run folder.
+    (output_dir / "failure.json").unlink(missing_ok=True)
 
     ranked = sorted(scored, reverse=True)[:10]
     result = {
@@ -315,7 +320,7 @@ def main() -> int:
     parser.add_argument("--points-per-side", type=int, default=16)
     parser.add_argument(
         "--selector",
-        choices=["candidate_union", "plate_complement"],
+        choices=["candidate_union", "plate_complement", "plate_appearance"],
         default="candidate_union",
     )
     parser.add_argument("--fail-fast", action="store_true", help="Stop after the first failed image")

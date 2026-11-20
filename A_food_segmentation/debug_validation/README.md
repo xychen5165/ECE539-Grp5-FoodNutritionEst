@@ -110,6 +110,61 @@ Run either method with `--selector candidate_union` or
 `--selector plate_complement`, using separate output directories so the
 baseline evidence is not overwritten.
 
+## Third selector using plate geometry and appearance
+
+`appearance_selector.py` implements `plate_appearance`. It scores convex hulls
+of SAM candidates using centered position, aspect ratio, compactness, neutral
+surface color, and contact with image edges. A seven-pixel inward margin
+reduces plate-rim contamination. It estimates the plate's Lab color from
+neutral pixels and retains SAM regions with sufficient color/darkness contrast
+or support from holes in the plate surface. It unions multiple accepted regions
+and removes connected components smaller than 100 pixels. All parameters apply
+equally to all nine images; dish IDs and nutrition targets are not selector inputs.
+
+The candidate-union and plate-complement functions are unchanged from commit
+`fcd8937`. Their original output directories are retained. The third method's
+outputs are in `outputs/sam_dev9_plate_appearance_v1/`.
+
+| Selector | Completed | Program failed | Manual pass | Manual partial | Manual fail |
+|---|---:|---:|---:|---:|---:|
+| Candidate union baseline | 6 | 3 | 0 | 2 | 7 |
+| Plate complement | 5 | 4 | 0 | 2 | 7 |
+| Plate appearance v1 | 7 | 2 | 4 | 3 | 2 |
+
+Ratings use the same informal visual criteria as the earlier runs. Pass means
+the main visible food is covered without a major non-food region; partial
+means useful coverage with visible omissions or extra regions; fail includes
+missing output or predominantly incorrect selection. These are one-reviewer
+qualitative judgments, not IoU measurements. Images with a runtime failure count
+as fail rather than being excluded from the denominator.
+
+This method captures pale food, grapes, sliced food, and the combined
+salad/fruit example better. Two complex meals have no plausible plate candidate;
+another meal is clipped by the estimated plate hull. The method assumes a
+light plate and can still confuse shadows, reflection, and pale food. These
+nine images have informed method development, so this is a development result,
+not an independent estimate of generalization. Freeze the parameters and use a
+new group-disjoint development sample before claiming broader improvement.
+
+Reproduce the fixed subset from the repository root:
+
+```bash
+.venv/bin/python A_food_segmentation/debug_validation/run_dev9.py \
+  --selector plate_appearance \
+  --output-dir A_food_segmentation/debug_validation/outputs/sam_dev9_plate_appearance_rerun
+```
+
+The same wrapper accepts `candidate_union` and `plate_complement`. Use a fresh
+output directory for each run. All runs use frozen SAM ViT-B, CPU, a 16 x 16
+grid, predicted-IoU threshold 0.86, stability threshold 0.92, no crop layers,
+and minimum mask region area 100. The JSON summaries and per-image selections
+are local evidence; `manifests/dev9_plate_appearance_review.csv` records the
+third method's manual judgments. Run tests with:
+
+```bash
+.venv/bin/python -m unittest discover -s A_food_segmentation/debug_validation/tests -v
+```
+
 ## Canonical data source
 
 Do not use `manifests/nutrition5k_planning_seed539.csv` for model training or

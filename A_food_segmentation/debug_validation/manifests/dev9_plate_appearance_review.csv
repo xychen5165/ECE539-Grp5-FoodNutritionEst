@@ -1,0 +1,10 @@
+dish_id,program_status,manual_rating,reason
+dish_1562689519,completed,pass,main pale food region covered and bowl and fixtures excluded
+dish_1558459462,completed,pass,main grape cluster covered and bowl excluded
+dish_1558373284,completed,pass,main sliced food cluster covered and bowl excluded
+dish_1560543704,completed,partial,main food coverage improved but small omissions and reflection remain
+dish_1561392410,completed,partial,main food covered but small unwanted regions and uncertain edges remain
+dish_1559674866,completed,pass,salad and fruit covered together while exposed plate surface excluded
+dish_1564691450,failed,fail,no geometrically plausible light plate candidate
+dish_1563811515,failed,fail,no geometrically plausible light plate candidate
+dish_1560799615,completed,partial,several food types retained but large left region clipped by inferred plate hull

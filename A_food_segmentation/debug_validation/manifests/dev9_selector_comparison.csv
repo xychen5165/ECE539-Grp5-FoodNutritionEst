@@ -1,3 +1,4 @@
 selector,completed,program_failed,manual_pass,manual_partial,manual_fail,conclusion
 candidate_union,6,3,0,2,7,baseline does not generalize beyond simple feasibility images
 plate_complement,5,4,0,2,7,no overall improvement; two masks are more coherent but failure coverage is worse
+plate_appearance,7,2,4,3,2,improved on this development subset; complex plate geometry remains a limitation
