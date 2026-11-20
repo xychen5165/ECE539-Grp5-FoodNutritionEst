@@ -18,6 +18,8 @@ dist/
 /data/processed/
 /data/cache/
 /data/downloads/
+A_food_segmentation/debug_validation/local_data/
+A_food_segmentation/debug_validation/outputs/
 checkpoints/
 artifacts/
 wandb/

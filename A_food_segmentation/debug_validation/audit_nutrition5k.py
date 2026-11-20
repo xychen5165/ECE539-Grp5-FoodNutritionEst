@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Audit Nutrition5k metadata and create a reproducible RGB manifest.
+"""Audit Nutrition5k metadata and create an exploratory RGB manifest.
 
 This script intentionally uses only the Python standard library. Raw data stay
 under data/raw/ (ignored by Git); the generated manifest is small and may be
-versioned for team experiments.
+versioned as debug evidence. These manifests are not the team's canonical split.
 """
 
 from __future__ import annotations
