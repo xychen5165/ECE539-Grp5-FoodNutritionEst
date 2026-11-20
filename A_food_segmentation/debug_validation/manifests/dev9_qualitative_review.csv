@@ -1,0 +1,10 @@
+dish_id,program_status,manual_rating,reason
+dish_1562689519,completed,fail,selected background fixtures instead of the food
+dish_1558459462,failed,fail,no confident food candidates inside the plate candidate
+dish_1558373284,failed,fail,no confident food candidates inside the plate candidate
+dish_1560543704,completed,partial,selected several food regions but missed substantial food
+dish_1561392410,completed,partial,selected much of the central food but also small non-food regions
+dish_1559674866,completed,fail,selected plate surface along with food
+dish_1564691450,completed,fail,selected only a lime slice and missed most of the meal
+dish_1563811515,completed,fail,selected only one small food region and missed most of the meal
+dish_1560799615,failed,fail,no confident food candidates inside the plate candidate

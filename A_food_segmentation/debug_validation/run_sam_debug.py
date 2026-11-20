@@ -236,6 +236,7 @@ def main() -> int:
     parser.add_argument("--output-dir", type=Path, default=Path("artifacts/sam_debug"))
     parser.add_argument("--device", choices=["auto", "cpu", "mps", "cuda"], default="auto")
     parser.add_argument("--points-per-side", type=int, default=16)
+    parser.add_argument("--fail-fast", action="store_true", help="Stop after the first failed image")
     args = parser.parse_args()
 
     if not args.checkpoint.is_file():
@@ -260,18 +261,39 @@ def main() -> int:
     results = []
     for image_path in args.inputs:
         print(f"Processing {image_path}...")
-        result = process_image(mask_generator, image_path, args.output_dir)
-        results.append(result)
-        print(
-            f"  {result['candidate_count']} candidates; selected area "
-            f"{result['selected']['food_area_ratio']:.1%}; {result['elapsed_seconds']:.1f}s"
-        )
+        try:
+            result = process_image(mask_generator, image_path, args.output_dir)
+            result["status"] = "completed"
+            results.append(result)
+            print(
+                f"  {result['candidate_count']} candidates; selected area "
+                f"{result['selected']['food_area_ratio']:.1%}; {result['elapsed_seconds']:.1f}s"
+            )
+        except Exception as error:
+            failure = {
+                "dish_id": image_path.parent.name,
+                "input_path": image_path.as_posix(),
+                "status": "failed",
+                "error_type": type(error).__name__,
+                "error": str(error),
+            }
+            results.append(failure)
+            failure_dir = args.output_dir / image_path.parent.name
+            failure_dir.mkdir(parents=True, exist_ok=True)
+            (failure_dir / "failure.json").write_text(
+                json.dumps(failure, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+            )
+            print(f"  FAILED: {type(error).__name__}: {error}")
+            if args.fail_fast:
+                raise
 
     summary = {
         "checkpoint": args.checkpoint.as_posix(),
         "device": device,
         "points_per_side": args.points_per_side,
         "selector_status": "automatic first pass; manual review required",
+        "completed_count": sum(result["status"] == "completed" for result in results),
+        "failed_count": sum(result["status"] == "failed" for result in results),
         "images": results,
     }
     args.output_dir.mkdir(parents=True, exist_ok=True)

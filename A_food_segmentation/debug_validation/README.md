@@ -57,6 +57,32 @@ seconds per 640 x 480 image on CPU. Manual review found that the final masks
 captured the main olives in two images and the main salad cluster in the third.
 Thin onion strands in the salad were partly missed.
 
+## Fixed-rule development check
+
+After the three-image feasibility run, the selector was kept fixed and tested
+on nine additional images sampled from the canonical development split: three
+single-ingredient dishes, three dishes with two to four ingredients, and three
+dishes with at least five ingredients. See `manifests/dev9_selection.csv`.
+
+Program execution completed on six images and recorded failures on three rather
+than stopping the batch. Manual review of the saved overlays found:
+
+| Rating | Images | Meaning |
+|---|---:|---|
+| Pass | 0 | Main food region selected without a major non-food region |
+| Partial | 2 | Some useful food coverage, but substantial misses or extra regions |
+| Fail | 7 | No mask, mostly non-food, or only a small fraction of the meal |
+
+The detailed review is in `manifests/dev9_qualitative_review.csv`. This check
+shows that the first selector worked on the simple feasibility examples but
+does not generalize to diverse development images. In particular, SAM candidate
+confidence alone does not distinguish food from plate surface, fixtures, or a
+single small item in a multi-food meal.
+
+The next Part A experiment should keep this nine-image set fixed and compare a
+second selection method against the recorded first-pass results. Do not tune a
+different rule for each image.
+
 ## Canonical data source
 
 Do not use `manifests/nutrition5k_planning_seed539.csv` for model training or

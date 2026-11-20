@@ -1,0 +1,10 @@
+dish_id,complexity_group,mass_g,energy_kcal,n_ingredients,source_split
+dish_1562689519,single,173.0,169.54,1,dev
+dish_1558459462,single,85.0,58.65,1,dev
+dish_1558373284,single,113.0,389.398,1,dev
+dish_1560543704,medium,161.0,140.01,2,dev
+dish_1561392410,medium,84.0,187.296,2,dev
+dish_1559674866,medium,303.0,125.66,3,dev
+dish_1564691450,complex,366.0,542.3267,17,dev
+dish_1563811515,complex,491.0,298.1194,6,dev
+dish_1560799615,complex,283.0,332.7498,10,dev
