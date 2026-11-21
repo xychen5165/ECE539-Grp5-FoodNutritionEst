@@ -1,0 +1,23 @@
+{
+  "method": "finetuned_no_prompt",
+  "architecture": "SAM ViT-B",
+  "trainable_component": "mask_decoder",
+  "frozen_components": ["image_encoder", "prompt_encoder"],
+  "external_points": null,
+  "external_boxes": null,
+  "external_mask_input": null,
+  "multimask_output": false,
+  "logit_threshold": 0.0,
+  "embedding_roundtrip": "float16 storage then float32 decoder input",
+  "official_sam_sha256": "ec2df62732614e57411cdcf32a23ffdf28910380d03139ee0f4fcbe91eb8c912",
+  "reference_decoder_sha256": "456c7afdc12dcb8e6ec009526178f5bc542f35493492904f09bc3a1d6af2c4ba",
+  "reference_best_epoch": 12,
+  "train_dishes": 454,
+  "dev_dishes": 103,
+  "split_commit": "aec9a6c0f6ef6826185529602a7c6af72b638a80",
+  "annotation_commit": "0997586b5c177fa8f2c0a61eb7f958ab18605362",
+  "reference_dev_mean_iou": 0.9717163842152501,
+  "final_test_evaluated": false,
+  "checkpoint_storage": "local-only; see README.md",
+  "raw_data_and_weights_in_git": false
+}

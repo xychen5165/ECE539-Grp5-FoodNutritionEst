@@ -1,0 +1,122 @@
+{
+  "status": "historical measured development results; source reorganized without full retraining",
+  "sample_counts": {
+    "train": 454,
+    "dev": 103,
+    "train_plate_groups": 357,
+    "dev_plate_groups": 81
+  },
+  "test_evaluated": false,
+  "split_commit": "aec9a6c0f6ef6826185529602a7c6af72b638a80",
+  "annotation_commit": "0997586b5c177fa8f2c0a61eb7f958ab18605362",
+  "methods": {
+    "01_pretrained_no_prompt": {
+      "count": 103,
+      "plate_group_count": 81,
+      "mean_iou": 4.5666687977787724e-07,
+      "mean_precision": 0.009708737864077669,
+      "mean_recall": 4.5666687977787724e-07,
+      "mean_dice": 9.132908013807131e-07,
+      "plate_macro_mean_iou": 5.80699859470634e-07,
+      "rating_counts": {
+        "fail": 103
+      },
+      "seconds_excluding_image_encoding": 1.6254133731126785
+    },
+    "02_pretrained_auto_prompt": {
+      "count": 103,
+      "plate_group_count": 81,
+      "mean_iou": 0.7189927967757945,
+      "mean_precision": 0.7897623099521822,
+      "mean_recall": 0.7914598067544981,
+      "mean_dice": 0.7737597062124683,
+      "plate_macro_mean_iou": 0.7425175899422443,
+      "rating_counts": {
+        "pass": 62,
+        "partial": 18,
+        "fail": 23
+      },
+      "annotation_regions_below_90pct_recall": 125,
+      "images_with_region_below_90pct_recall": 44
+    },
+    "03_finetuned_no_prompt": {
+      "count": 103,
+      "plate_group_count": 81,
+      "mean_iou": 0.9717163842152501,
+      "mean_precision": 0.9862759125660866,
+      "mean_recall": 0.9850257249785147,
+      "mean_dice": 0.9856048200062587,
+      "plate_macro_mean_iou": 0.9713089627516799,
+      "rating_counts": {
+        "pass": 103
+      },
+      "seconds_excluding_image_encoding": 1.67999111674726
+    },
+    "04_finetuned_auto_prompt": {
+      "count": 103,
+      "plate_group_count": 81,
+      "mean_iou": 0.97099081113543,
+      "mean_precision": 0.98564733808758,
+      "mean_recall": 0.9849387697424667,
+      "mean_dice": 0.9852298987092625,
+      "plate_macro_mean_iou": 0.9706990708194577,
+      "rating_counts": {
+        "pass": 103
+      },
+      "annotation_regions_below_90pct_recall": 5,
+      "images_with_region_below_90pct_recall": 4
+    }
+  },
+  "extra_added_prompts": {
+    "count": 103,
+    "plate_group_count": 81,
+    "mean_iou": 0.9666675830850135,
+    "mean_precision": 0.9850100853232184,
+    "mean_recall": 0.9811409484052225,
+    "mean_dice": 0.9829907546389899,
+    "plate_macro_mean_iou": 0.9662535111818392,
+    "rating_counts": {
+      "pass": 103
+    },
+    "annotation_regions_below_90pct_recall": 10,
+    "images_with_region_below_90pct_recall": 10
+  },
+  "checkpoint_sha256": {
+    "official_sam": "ec2df62732614e57411cdcf32a23ffdf28910380d03139ee0f4fcbe91eb8c912",
+    "no_prompt_decoder": "456c7afdc12dcb8e6ec009526178f5bc542f35493492904f09bc3a1d6af2c4ba",
+    "auto_prompt_decoder": "8333f1a5b333f60a707191284e7ad787a06945c0554698407b268d49ae562413"
+  },
+  "original_execution_source_hashes": {
+    "no_prompt": {
+      "common.py": "4be1330762b0d727e1d5603e84a849607412a6626bf51eaaae3835c704d88944",
+      "prepare_data.py": "605e963f93bf092039baef71d3e2c81464b31aeb7253a65da2f6a4388d22eb56",
+      "run_experiment.py": "54950baa411067cffbb003ee4dc10c1047ddac9376fe8426f6f1ae7469f3e8c5",
+      "server_pipeline.py": "438a085f38787c2ff6670c30f1073e383fe4331d44bbaba4461b480df1387d10"
+    },
+    "auto_prompt": {
+      "automatic_prompts.py": "f4199093c73f091c467135638fade8d3fc282fc9b87118c22387b8a842017d61",
+      "run_prompted_experiment.py": "bc92dd303034d45f0fd68dc50c516512734d7a029c96f30a1acd3f164ed46cbc"
+    }
+  },
+  "no_prompt_training": {
+    "best_epoch": 12,
+    "epochs": 12,
+    "gradient_norm": 399.496826171875
+  },
+  "auto_prompt_training": {
+    "best_epoch": 5,
+    "epochs": 9,
+    "gradient_norm": 108.41889190673828
+  },
+  "thresholds": {
+    "pass_iou_min": 0.85,
+    "pass_precision_min": 0.9,
+    "pass_recall_min": 0.9,
+    "fail_iou_below": 0.5
+  },
+  "caveats": [
+    "Dev-selected single-seed comparison, not final-test performance.",
+    "Small ingredient omissions can remain in a whole-image pass.",
+    "No nutrient-prediction improvement has been evaluated."
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "measured_before_reorganization": true,
+  "all_206_no_prompt_predictions_rescored": true,
+  "all_309_prompted_run_predictions_rescored": true,
+  "no_exact_train_dev_rgb_hash_overlap": true,
+  "no_prompt_rgb_only_reproduction_changed_pixels": 0,
+  "auto_prompt_rgb_only_reproduction_changed_pixels": 0,
+  "all_557_prompt_hashes_fixed_during_training": true,
+  "frozen_encoders_unchanged": true,
+  "raw_data_or_checkpoints_in_results": false
+}

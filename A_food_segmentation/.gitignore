@@ -1,0 +1,5 @@
+# Local-only datasets, weights, caches and generated images.
+/_local/
+/debug_validation/
+__pycache__/
+*.py[cod]
