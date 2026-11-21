@@ -18,6 +18,8 @@
   "annotation_commit": "0997586b5c177fa8f2c0a61eb7f958ab18605362",
   "reference_dev_mean_iou": 0.9717163842152501,
   "final_test_evaluated": false,
-  "checkpoint_storage": "local-only; see README.md",
-  "raw_data_and_weights_in_git": false
+  "checkpoint_storage": "Selected decoder tracked in model_weights/food_decoder_no_prompt.pt; official SAM remains an external download",
+  "raw_data_in_git": false,
+  "official_sam_weights_in_git": false,
+  "selected_decoder_weights_in_git": true
 }

@@ -1,8 +1,10 @@
 # Checkpoints, datasets and larger run artifacts
 
-Raw images, human masks, model weights, generated images and feature caches are
-not stored in Git. `_local/` is ignored. The public Git records contain only
-code, curated manifests, small metric tables and provenance.
+The two selected trained decoder weights are stored in
+[../model_weights/](../model_weights/README.md), at the project owner's explicit
+request. This is a scoped exception to the contribution guide's checkpoint rule.
+Raw images, human masks, the official SAM checkpoint, generated images and
+feature caches remain outside Git. `_local/` is ignored.
 
 ## Official model and raw inputs
 
@@ -18,8 +20,20 @@ in [COMPARISON.md](COMPARISON.md). No dataset photos are included in this change
 
 ## Team-trained decoder weights
 
-The current external copies are on the team's authorized GPU server, under the
-following paths relative to the authorized account's home directory:
+A normal checkout contains both selected decoder files. Copy them into the
+existing default runtime locations, or pass their tracked paths explicitly:
+
+```bash
+mkdir -p A_food_segmentation/_local/checkpoints
+cp A_food_segmentation/model_weights/food_decoder_no_prompt.pt A_food_segmentation/_local/checkpoints/
+cp A_food_segmentation/model_weights/food_decoder_prompted.pt A_food_segmentation/_local/checkpoints/
+```
+
+These files contain decoder parameters and training metadata, not the frozen
+SAM encoders. The official SAM ViT-B checkpoint is still required.
+
+Backup copies remain on the team's authorized GPU server, under the following
+paths relative to the authorized account's home directory:
 
 | Artifact | Home-relative server path | Local filename |
 |---|---|---|
@@ -31,7 +45,7 @@ input checksums and configuration. The no-prompt run also retains frozen image
 feature caches. Server addresses, account credentials and private identity
 mappings are intentionally not published; obtain authorized team access privately.
 
-With that access, replace the placeholders in these commands:
+For server backup retrieval, replace the placeholders in these commands:
 
 ```bash
 mkdir -p A_food_segmentation/_local/checkpoints
@@ -47,6 +61,7 @@ Expected hashes are in [results/summary.json](results/summary.json):
 - No-prompt decoder: `456c7afdc12dcb8e6ec009526178f5bc542f35493492904f09bc3a1d6af2c4ba`.
 - Prompted decoder: `8333f1a5b333f60a707191284e7ad787a06945c0554698407b268d49ae562413`.
 
-A collaborator without server access can reproduce training using the public
-inputs and the commands in [README.md](README.md). Retraining can legitimately
-produce a different checkpoint hash. Never add the copied weights to Git.
+A collaborator can use the tracked reference decoders without server access,
+or reproduce training using the public inputs and the commands in
+[README.md](README.md). Retraining can legitimately produce a different
+checkpoint hash. Additional checkpoints remain excluded from Git.

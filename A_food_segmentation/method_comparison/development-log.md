@@ -65,3 +65,16 @@ changed by this branch.
   pending before merge/submission as applicable.
 - Evidence: [contribution review](CONTRIBUTING_REVIEW.md),
   [artifact access](ARTIFACTS.md).
+
+## 2026-11-20 - Publish the two selected decoder weights
+
+- Request: include both trained decoder checkpoints in the existing Part A
+  branch so collaborators can use them without GPU-server access.
+- Change: add the original selected no-prompt and automatic-prompt decoder
+  files under `model_weights/`, with explicit per-file ignore exceptions.
+  Document this owner-requested exception to the contribution guide.
+- Verification: both SHA256 hashes match the recorded experiments; both load
+  using `torch.load(..., weights_only=True)` and contain decoder tensors and
+  training metadata. No model retraining or metric change is claimed.
+- Scope: no raw images, human masks, full SAM weights or other component changes.
+  The official SAM checkpoint still requires its documented download.

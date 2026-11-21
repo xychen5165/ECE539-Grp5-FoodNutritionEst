@@ -19,19 +19,20 @@ python A_food_segmentation/segment_food.py \
   --output-dir A_food_segmentation/_local/outputs/my_meal
 ```
 
-The default checkpoints are local-only:
+The default runtime checkpoint paths are:
 
 ```text
 A_food_segmentation/_local/checkpoints/sam_vit_b_01ec64.pth
 A_food_segmentation/_local/checkpoints/food_decoder_no_prompt.pt
 ```
 
-The current workspace has these weights available. A fresh checkout needs the
-official SAM ViT-B checkpoint and the team's trained decoder, or a newly trained
-decoder. See [artifact access](method_comparison/ARTIFACTS.md) for authorized
-copy/reproduction steps. Weight files are not committed. [model_info.json](model_info.json)
-records the reference hashes and training configuration. Different retraining
-runs can legitimately produce a different decoder hash.
+Both trained decoder weights are included in [model_weights/](model_weights/README.md).
+A fresh checkout needs the official SAM ViT-B checkpoint and the setup commands
+below to copy the decoders into the default runtime directory. Alternatively,
+pass a tracked decoder directly with `--decoder-checkpoint`.
+See [artifact access](method_comparison/ARTIFACTS.md) for hashes and backup access.
+[model_info.json](model_info.json) records the reference training configuration.
+Different retraining runs can legitimately produce a different decoder hash.
 
 Use `--sam-checkpoint` / `--decoder-checkpoint` to supply other locations.
 `--device auto` selects CUDA, then MPS, then CPU; an explicit device is also
@@ -50,6 +51,8 @@ For a new environment:
 ```bash
 python -m pip install -r A_food_segmentation/requirements.txt
 mkdir -p A_food_segmentation/_local/checkpoints
+cp A_food_segmentation/model_weights/food_decoder_no_prompt.pt A_food_segmentation/_local/checkpoints/
+cp A_food_segmentation/model_weights/food_decoder_prompted.pt A_food_segmentation/_local/checkpoints/
 curl -fL https://dl.fbaipublicfiles.com/segment_anything/sam_vit_b_01ec64.pth \
   -o A_food_segmentation/_local/checkpoints/sam_vit_b_01ec64.pth
 ```
@@ -86,6 +89,8 @@ second copy of the model logic.
 
 Reported scores are **development** evidence, not final test or nutrient
 prediction results. A whole-image pass can still hide small ingredient omissions.
-Data, model weights, caches and generated images belong under `_local/`, which
-is ignored by Git. The previous exploration data remains local-only and is not
-part of this branch's public implementation.
+Data, newly trained model weights, caches and generated images belong under
+`_local/`, which is ignored by Git. The two selected reference decoders in
+`model_weights/` are the explicitly requested exception; the original SAM
+checkpoint remains an external download. The previous exploration data remains
+local-only and is not part of this branch's public implementation.

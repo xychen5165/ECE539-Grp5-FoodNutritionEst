@@ -3,3 +3,7 @@
 /debug_validation/
 __pycache__/
 *.py[cod]
+
+# Explicitly requested trained decoder artifacts; other model files stay ignored.
+!/model_weights/food_decoder_no_prompt.pt
+!/model_weights/food_decoder_prompted.pt
