@@ -38,3 +38,19 @@ Use the following format for each entry:
 - Outcome: All 3,245 split dishes have valid 640 × 480 photos. The two groupings miss opposite links: ours misses 153 links over 2 minutes apart, theirs misses 261 under 2 minutes. Combining them removes 79 training dishes that share a plate with test (was 14), including the apple leak. Also removed a training photo that shows a phone instead of food. New splits: 2,135 training / 538 development / 506 test. Median baseline: normalized nutrient error 0.737 (95% interval 0.672–0.812); energy error 172.1 kcal.
 - Lesson and next action: An independent grouping found leaks our rule could not, and a photo-level error that label checks could not. Next: CLIP features and the regression head.
 - Evidence: `src/build_splits.py`, [data/splits/README.md](../data/splits/README.md), [experiments/001-median-baseline](../experiments/001-median-baseline/README.md).
+
+### 2026-11-21 - CLIP features for the original photos
+
+- Contributor: xychen5165
+- Attempt: Set up a Python environment (`requirements.txt`) and extracted frozen CLIP ViT-B/32 features (OpenAI weights) for all 3,262 overhead photos. Photos are padded to a square instead of center-cropped so food at the edges and the sense of scale are kept.
+- Outcome: 3,262 × 512 features, no missing values. A 64-photo test ran in 5 seconds, but the full run took about 16 hours, most likely because the laptop slept or throttled.
+- Lesson and next action: Keep the computer awake for long runs (or use CHTC). Next: train the linear model and the regression head on these features.
+- Evidence: `src/extract_clip_features.py`, [B_nutrition_estimation/README.md](../B_nutrition_estimation/README.md).
+
+### 2026-11-21 - Regression head on CLIP features
+
+- Contributor: xychen5165
+- Attempt: Trained a linear model and the planned 512 → 128 → 5 network on the CLIP features (absolute and squared loss, seeds 0–2), then a weight decay × dropout grid.
+- Outcome: The network with absolute loss scores 0.360 (energy error 74.7 kcal) against 0.737 for the median baseline; the linear model scores 0.397 and squared loss 0.372. The network overfits after about 10 epochs. Weight decay 0.001 + dropout 0.5 gives 0.354, within noise, but steadier across seeds.
+- Lesson and next action: Overfitting is not the main limit; the input is. Next: food-only photos from part A, and log targets.
+- Evidence: [experiments/002-clip-head-original](../experiments/002-clip-head-original/README.md), [experiments/003-regularization](../experiments/003-regularization/README.md).

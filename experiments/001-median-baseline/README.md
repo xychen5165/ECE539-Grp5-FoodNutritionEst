@@ -2,7 +2,9 @@
 
 Status: Completed
 
-**Result:** normalized nutrient error **0.737** on the development split (95% interval 0.672–0.812). A photo model is useful only if it scores clearly below this.
+**Result:** normalized nutrient error **0.737** on the development split (95% interval 0.672–0.812): guessing the median is off by about **74% of a typical dish's amount**, averaged over energy, protein, carbohydrate and fat. In real units, energy is off by 172 kcal per dish on average. A photo model is useful only if it scores clearly below this.
+
+**Reading the normalized nutrient error:** for each of the four nutrients, the average error divided by the training average (a typical dish's amount); then the average of the four. Read it as a percentage of a typical dish: 0.737 ≈ 74% off, 0.50 = half, 0.25 = a quarter, 0 = perfect. Lower is better. It gives one number for choosing between models; the per-nutrient errors in real units (Step 2) are easier to interpret.
 
 ## Purpose
 
@@ -65,7 +67,7 @@ Divide each nutrient's average error by its training average, then average the f
 | Carbohydrate | 12.0 g | 19.2 g | 0.623 |
 | Fat | 10.6 g | 12.7 g | 0.830 |
 
-Normalized nutrient error = (0.673 + 0.823 + 0.623 + 0.830) ÷ 4 = **0.737**.
+Normalized nutrient error = (0.673 + 0.823 + 0.623 + 0.830) ÷ 4 = **0.737**, i.e. errors average about 74% of a typical dish's amount. For energy alone: 172.1 kcal off against a typical 255.9 kcal = 0.673 (67%).
 
 ### Step 4: Estimate the uncertainty
 
