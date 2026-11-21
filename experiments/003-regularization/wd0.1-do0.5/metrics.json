@@ -1,0 +1,113 @@
+{
+  "settings": {
+    "features": "C:\\Projects\\data\\nutrition5k\\features\\clip_vitb32_original.npz",
+    "model": "mlp",
+    "loss": "l1",
+    "hidden": 128,
+    "dropout": 0.5,
+    "lr": 0.001,
+    "weight_decay": 0.1,
+    "batch_size": 32,
+    "epochs": 30,
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "exclude_flagged_train": false,
+    "name": "original-mlp-l1-wd0.1-do0.5"
+  },
+  "features_sha256_first16": "49225c72281ef059",
+  "split_files_sha256_first16": {
+    "train.csv": "b4713f8b5125b1f7",
+    "dev.csv": "e3025e1a9f47e963"
+  },
+  "n_train": 2135,
+  "n_dev": 538,
+  "torch": "2.15.0+cpu",
+  "per_seed": {
+    "0": {
+      "best_epoch": 26,
+      "dev": {
+        "n_dishes": 538,
+        "n_plates": 182,
+        "mae": {
+          "mass_g": 49.994,
+          "energy_kcal": 75.676,
+          "protein_g": 7.039,
+          "carbohydrate_g": 6.427,
+          "fat_g": 5.488
+        },
+        "mae_pct_of_mean": {
+          "mass_g": 23.0,
+          "energy_kcal": 29.2,
+          "protein_g": 38.4,
+          "carbohydrate_g": 34.7,
+          "fat_g": 40.6
+        },
+        "normalized_nutrient_mae": 0.361,
+        "normalized_nutrient_mae_95ci": [
+          0.3177,
+          0.4142
+        ]
+      }
+    },
+    "1": {
+      "best_epoch": 27,
+      "dev": {
+        "n_dishes": 538,
+        "n_plates": 182,
+        "mae": {
+          "mass_g": 49.238,
+          "energy_kcal": 73.644,
+          "protein_g": 6.907,
+          "carbohydrate_g": 6.356,
+          "fat_g": 5.38
+        },
+        "mae_pct_of_mean": {
+          "mass_g": 22.7,
+          "energy_kcal": 28.4,
+          "protein_g": 37.7,
+          "carbohydrate_g": 34.3,
+          "fat_g": 39.8
+        },
+        "normalized_nutrient_mae": 0.3542,
+        "normalized_nutrient_mae_95ci": [
+          0.3127,
+          0.4028
+        ]
+      }
+    },
+    "2": {
+      "best_epoch": 29,
+      "dev": {
+        "n_dishes": 538,
+        "n_plates": 182,
+        "mae": {
+          "mass_g": 49.647,
+          "energy_kcal": 72.555,
+          "protein_g": 6.964,
+          "carbohydrate_g": 6.591,
+          "fat_g": 5.28
+        },
+        "mae_pct_of_mean": {
+          "mass_g": 22.9,
+          "energy_kcal": 28.0,
+          "protein_g": 38.0,
+          "carbohydrate_g": 35.5,
+          "fat_g": 39.1
+        },
+        "normalized_nutrient_mae": 0.355,
+        "normalized_nutrient_mae_95ci": [
+          0.3148,
+          0.4022
+        ]
+      }
+    }
+  },
+  "summary": {
+    "normalized_nutrient_mae_mean": 0.3567,
+    "normalized_nutrient_mae_std": 0.0037,
+    "energy_mae_kcal_mean": 74.0
+  }
+}
