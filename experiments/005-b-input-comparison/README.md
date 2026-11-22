@@ -37,3 +37,5 @@ Final-test images and labels are excluded from preparation, training and this
 development comparison. Any later final evaluation requires a separately frozen
 record after method selection.
 
+For the selected Google Colab Pro execution path, follow [COLAB.md](COLAB.md).
+
