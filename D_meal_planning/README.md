@@ -57,3 +57,15 @@ Menu items accept `id` (or `item_id`/`name`), optional `name`, `station`, and `s
 `result["status"]` is `ok`, `already_met`, or `infeasible`. Ranked rows are in `result["rankings"]["joint"]` and `result["rankings"]["protein_only"]`; each row contains chosen items, meal nutrients, projected daily totals, remaining target values, and joint-score components. For macro ranges, remaining is positive below the range, zero inside it, and negative when above it. `result["comparison"]` reports whether the methods chose the same items and servings and the joint-score regret of the protein-only top choice. This is a ranking comparison over identical feasible candidates, not evidence of clinical benefit.
 
 The component accepts the dated Gordon menu from C; it does not fetch menus or update the intake ledger. Do not commit personal profiles/logs, raw datasets, or private identity mappings.
+
+For the direct C→D handoff, pass C's two output dictionaries without manually
+renaming fields:
+
+```python
+from src.meal_planner import plan_from_component_c
+
+result = plan_from_component_c(menu, daily_summary, top_k=5)
+```
+
+The adapter forwards C's `items`, `daily_totals`, targets, macro ranges, and
+`incomplete_log` flag. It does not change D's candidate generation or scores.

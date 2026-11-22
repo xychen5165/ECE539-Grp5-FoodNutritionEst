@@ -27,7 +27,7 @@ def _number(value: Any) -> float | None:
 
 
 def _nutrition(item: Mapping[str, Any]) -> dict[str, float] | None:
-    raw = item.get("nutrition", item)
+    raw = item.get("nutrition", item.get("nutrients", item))
     if not isinstance(raw, Mapping):
         return None
     values = {key: _number(raw.get(key)) for key in NUTRIENTS}
@@ -263,6 +263,34 @@ def plan_meals(
         },
         "comparison": compare_rankings(joint, protein_only),
     }
+
+
+def plan_from_component_c(
+    menu: Mapping[str, Any],
+    daily_summary: Mapping[str, Any],
+    **planner_options: Any,
+) -> dict[str, Any]:
+    """Run D directly from Component C menu and daily-summary dictionaries.
+
+    This adapter only maps the documented interface. It does not alter menu
+    nutrients, fill unknown intake values, or change the planner's scoring.
+    """
+
+    menu_items = menu.get("items")
+    daily_totals = daily_summary.get("daily_totals")
+    targets = daily_summary.get("targets")
+    if not isinstance(menu_items, list):
+        raise ValueError("Component C menu must contain an items list")
+    if not isinstance(daily_totals, Mapping):
+        raise ValueError("Component C summary must contain daily_totals")
+    if not isinstance(targets, Mapping):
+        raise ValueError("Component C summary must contain targets")
+
+    options = dict(planner_options)
+    options.setdefault("carbohydrate_range_g", targets.get("carbohydrate_range_g"))
+    options.setdefault("fat_range_g", targets.get("fat_range_g"))
+    options.setdefault("incomplete_log", bool(daily_summary.get("incomplete_log")))
+    return plan_meals(menu_items, daily_totals, targets, **options)
 
 
 def compare_rankings(joint: Sequence[Mapping[str, Any]], protein_only: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
