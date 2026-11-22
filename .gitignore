@@ -22,6 +22,8 @@ checkpoints/
 artifacts/
 wandb/
 mlruns/
+*.sqlite
+*.sqlite3
 *.pt
 *.pth
 *.ckpt
