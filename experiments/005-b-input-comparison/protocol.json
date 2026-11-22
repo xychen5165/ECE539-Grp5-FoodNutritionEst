@@ -1,0 +1,80 @@
+{
+  "status": "frozen_before_execution",
+  "execution_commit": "TO_BE_FILLED_AFTER_PROTOCOL_COMMIT",
+  "date": "2026-11-22 America/Chicago",
+  "contributor": "Tardirisu (Codex-assisted)",
+  "question": "Do masked, dual-view, or geometry-aware inputs improve development nutrient regression over a same-environment original-image baseline?",
+  "data": {
+    "train_count": 2135,
+    "dev_count": 538,
+    "test_count": 506,
+    "train_sha256": "0fe38b0f6ff50e7031dea091da19675a76adfba533e44e2bff3276cd9e5b9fbd",
+    "dev_sha256": "c6462b3444676502915de5606891b4fbe162e248e186c3df7d7bd4d7ee179a31",
+    "test_sha256_membership_check_only": "2fc67f6693e91c285ad23220c5d3469bbf957529633800f385aab44216a13c66",
+    "test_access_policy": "Do not read test images or labels during 005 execution"
+  },
+  "pretrained": {
+    "sam": "SAM ViT-B official",
+    "sam_sha256": "ec2df62732614e57411cdcf32a23ffdf28910380d03139ee0f4fcbe91eb8c912",
+    "decoder": "fine-tuned mask decoder without external prompts, selected Part A method",
+    "decoder_sha256": "456c7afdc12dcb8e6ec009526178f5bc542f35493492904f09bc3a1d6af2c4ba",
+    "clip": "OpenAI CLIP ViT-B/32 via OpenCLIP",
+    "clip_checkpoint_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+    "frozen": ["SAM image encoder", "SAM prompt encoder", "fine-tuned SAM mask decoder", "CLIP image encoder"]
+  },
+  "preprocessing": {
+    "masked_rgb": "preserve predicted foreground RGB exactly; replace background with RGB 128",
+    "clip": "pad to square with CLIP mean color, resize to 224x224, CLIP normalization",
+    "feature_normalization": "fit mean and standard deviation independently per input block on train only; add 1e-6 to standard deviation",
+    "target_normalization": "divide all five targets by train-set target means",
+    "geometry_order": ["foreground_fraction", "bbox_width_fraction", "bbox_height_fraction", "bbox_area_fraction", "bbox_fill_fraction", "centroid_x_fraction", "centroid_y_fraction", "log1p_component_count"],
+    "geometry_components": "8-connected components on the predicted binary mask"
+  },
+  "training": {
+    "targets": ["mass_g", "energy_kcal", "protein_g", "carbohydrate_g", "fat_g"],
+    "loss": "L1 over five train-mean-scaled targets",
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.001,
+    "dropout": 0.5,
+    "batch_size": 32,
+    "epochs": 30,
+    "seeds": [0, 1, 2],
+    "selection": "minimum dev normalized nutrient MAE epoch per seed"
+  },
+  "models": {
+    "B0": "original 512 -> 128 ReLU -> dropout -> 5 Softplus; 66309 parameters",
+    "B1": "masked 512 -> 128 ReLU -> dropout -> 5 Softplus; 66309 parameters",
+    "B2": "original 512 -> 64 ReLU and masked 512 -> 64 ReLU; concatenate -> dropout -> 5 Softplus; 66309 parameters",
+    "B3": "B2 128 fused values plus 8 standardized geometry values -> dropout -> 5 Softplus; 66349 parameters"
+  },
+  "metrics": {
+    "primary": "mean across energy/protein/carbohydrate/fat MAE divided by train means",
+    "secondary": "MAE for mass g, energy kcal, protein g, carbohydrate g, fat g",
+    "uncertainty": "1000 paired bootstrap draws of dev plate groups, seed 0; negative candidate-minus-baseline favors candidate",
+    "comparisons": ["B1-B0", "B2-B0", "B2-B1", "B3-B2", "B3-B0"]
+  },
+  "environment": {
+    "python": "3.11",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "pillow": "11.3.0",
+    "open_clip_torch": "2.24.0",
+    "opencv_python_headless": "4.11.0.86",
+    "hardware": "Intel Core i7 MacBook Pro, 6 cores, 16 GB RAM, CPU execution",
+    "initial_free_disk": "approximately 13 GiB"
+  },
+  "commands": {
+    "download": ".venv/bin/python B_nutrition_estimation/prepare_input_comparison.py download --root artifacts/b-input-comparison",
+    "segment": ".venv/bin/python B_nutrition_estimation/prepare_input_comparison.py segment --root artifacts/b-input-comparison --sam-checkpoint artifacts/ab-integration/checkpoints/sam_vit_b_01ec64.pth --device cpu",
+    "features": ".venv/bin/python B_nutrition_estimation/prepare_input_comparison.py features --root artifacts/b-input-comparison --clip-cache artifacts/ab-integration/checkpoints",
+    "train": ".venv/bin/python B_nutrition_estimation/train_input_comparison.py <B0|B1|B2|B3>",
+    "compare": ".venv/bin/python B_nutrition_estimation/compare_input_conditions.py"
+  },
+  "time_budget": {
+    "download": "up to 1 hour",
+    "segmentation_cpu": "up to 12 hours; resume-safe per-image artifacts",
+    "clip_features": "up to 2 hours",
+    "heads_and_comparison": "up to 1 hour"
+  }
+}
