@@ -77,3 +77,11 @@ Use the following format for each entry:
 - Outcome: Part A's five records conform with disclosed layout/checkpoint exceptions. B 001-003 remain honestly rated partial because historical per-run records or artifacts are missing; no facts were reconstructed. Integration record 004 metadata and the experiment index were repaired. The new 005 experiment has separate planned records for B0-B3, immutable split/model hashes, exact commands, matched budgets and paired statistics.
 - Validation: Existing 65-check A/B preflight passes. Four new unit tests pass; they cover train/dev-only selection, fixed mask geometry, train-only standardization and model interfaces/parameter counts. Refactored reusable SAM batch inference reproduced a retained mask pixel-for-pixel.
 - Evidence: [record audit](../experiments/record-audit.md) and [005 protocol](../experiments/005-b-input-comparison/README.md).
+
+### 2026-11-22 - Complete B0-B3 input comparison on Colab
+
+- Contributor: Tardirisu (Codex-assisted).
+- Attempt: Generated 2,673 selected no-prompt SAM masks and matched original/masked CLIP features, then trained B0 original, B1 masked, B2 dual-view and B3 dual-view-plus-geometry heads for three seeds under the frozen 005 protocol.
+- Outcome: Mean development normalized nutrient MAE was B0 0.3423, B1 0.3615, B2 0.3390 and B3 0.3384. B2 significantly improved over B1 in all seeds, but B2 and B3 did not significantly improve over B0; B3 did not significantly improve over B2. Final-test images and labels were not accessed.
+- Lesson and next action: Preserve original context. The gray-background mask and eight geometry values do not demonstrate added value; test a natural food crop plus an original-image residual/gated fusion in a separately frozen experiment.
+- Evidence: [005 run and retained results](../experiments/005-b-input-comparison/README.md), including per-run records, metrics, ID-keyed predictions, environment and artifact hashes.

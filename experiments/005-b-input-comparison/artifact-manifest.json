@@ -1,0 +1,18 @@
+{
+  "clip_original.npz": {
+    "sha256": "307f2e7cdad43bb635d88e1e0e49b237631e76d0ff32d16fdf8a1098e2aabaa2",
+    "bytes": 5636258
+  },
+  "clip_masked.npz": {
+    "sha256": "5a07c65bbbb239d14dbe1e3c63462cf1f2811b567dd85443ebca09fc1ff38800",
+    "bytes": 5636250
+  },
+  "geometry.npz": {
+    "sha256": "c36226a3e1b75ae5a257bac2fcdc8d1811892147858a1ab3d02f19392a9eaa81",
+    "bytes": 247348
+  },
+  "checkpoints/sam_vit_b_01ec64.pth": {
+    "sha256": "ec2df62732614e57411cdcf32a23ffdf28910380d03139ee0f4fcbe91eb8c912",
+    "bytes": 375042383
+  }
+}
