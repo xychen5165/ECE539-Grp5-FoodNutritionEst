@@ -1,0 +1,11 @@
+# Python 3.13. Install with:
+#   python -m venv .venv
+#   .venv/Scripts/python -m pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cpu
+# (CPU build of PyTorch; on a GPU machine install the matching CUDA build instead)
+torch==2.15.0+cpu
+torchvision==0.29.2+cpu
+open_clip_torch==4.2.2
+numpy==2.5.4
+pandas==3.1.1
+pyarrow==26.0.1
+pillow==13.0.0
