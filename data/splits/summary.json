@@ -1,0 +1,65 @@
+{
+  "source": "Nutrition5k Cafe 1 metadata + overhead_dirs.txt + official rgb split lists",
+  "extra_plate_groups": "calorie-lens dishes.parquet (sha256 e6816da329318a3d)",
+  "seed": 0,
+  "rules": {
+    "max_gap_seconds_for_plate_link": 120,
+    "ingredient_weight_tolerance": "5% or 1 g",
+    "total_mass_drop_tolerance": "5% or 1 g",
+    "min_mass_g": 5.0,
+    "max_mass_g": 2000.0,
+    "dev_fraction_of_official_train": 0.2
+  },
+  "counts": {
+    "cafe1_dishes_with_labels": 4768,
+    "cafe1_dishes_with_overhead_photo": 3262,
+    "kept_after_label_checks": 3258,
+    "train": 2135,
+    "dev": 538,
+    "test": 506,
+    "dropped": {
+      "zero energy": 2,
+      "photo shows a phone, not food": 1,
+      "mass over 2000 g": 1,
+      "same plate group as a test dish": 79
+    },
+    "plate_groups": {
+      "train": 746,
+      "dev": 182,
+      "test": 204
+    },
+    "plate_links_by_method": {
+      "calorie-lens + ingredient rule": 2392,
+      "calorie-lens": 166,
+      "ingredient rule": 261
+    },
+    "deprecated_ingredient_flagged": {
+      "train": 19,
+      "dev": 3,
+      "test": 8
+    },
+    "energy_mismatch_flagged": {
+      "train": 83,
+      "dev": 26,
+      "test": 7
+    }
+  },
+  "plate_group_size_distribution_kept": {
+    "1": 341,
+    "2": 214,
+    "3": 186,
+    "4": 190,
+    "5": 105,
+    "6": 53,
+    "7": 26,
+    "8": 11,
+    "9": 4,
+    "10": 1,
+    "12": 1
+  },
+  "sha256_first16": {
+    "train.csv": "b4713f8b5125b1f7",
+    "dev.csv": "e3025e1a9f47e963",
+    "test.csv": "e84f271f377164b4"
+  }
+}
