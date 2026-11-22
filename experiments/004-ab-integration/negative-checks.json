@@ -1,0 +1,10 @@
+{
+  "reject_existing_run_directory": {
+    "passed": true,
+    "exit_code": 1
+  },
+  "reject_missing_image": {
+    "passed": true,
+    "exit_code": 2
+  }
+}

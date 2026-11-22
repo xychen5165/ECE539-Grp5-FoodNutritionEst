@@ -1,0 +1,208 @@
+{
+  "status": "passed",
+  "scope": "smoke only, not a quality comparison",
+  "test_images_accessed": false,
+  "train_count": 6,
+  "dev_count": 3,
+  "a_method": "finetuned_no_prompt",
+  "sam_sha256": "ec2df62732614e57411cdcf32a23ffdf28910380d03139ee0f4fcbe91eb8c912",
+  "decoder_sha256": "456c7afdc12dcb8e6ec009526178f5bc542f35493492904f09bc3a1d6af2c4ba",
+  "images": [
+    {
+      "dish_id": "dish_1567110811",
+      "split": "train",
+      "image_sha256": "457aee2bdc41dddbaae4f9be19d22e5c666002cece49f9d8d31155d745a4d956",
+      "masked_sha256": "a3be7477ff0993eb7e3ae7f40ce8d1d1a94b1a9d38edd076c5ea9545b829238e",
+      "foreground_fraction": 0.2584049479166667,
+      "a_seconds_including_model_load": null
+    },
+    {
+      "dish_id": "dish_1559593722",
+      "split": "train",
+      "image_sha256": "b3f4a159c88983364a69f2cc3c9d9f3e4d9a4166e8065828ab0086d482ce3b86",
+      "masked_sha256": "bdded54ad062bf42bab4bfff5ffdb409a1278e4a248e8a4be3d2b8f38c02e7b9",
+      "foreground_fraction": 0.238876953125,
+      "a_seconds_including_model_load": null
+    },
+    {
+      "dish_id": "dish_1558632799",
+      "split": "train",
+      "image_sha256": "9ba0e1c524ecdfbea9a10b2613d520feb0efd11b5142d6b89d45a924a099e192",
+      "masked_sha256": "16ed2f8530ed53834a72eff79cdd2791dd93b6325f977dc9cef47746a032d50a",
+      "foreground_fraction": 0.024388020833333333,
+      "a_seconds_including_model_load": null
+    },
+    {
+      "dish_id": "dish_1558629517",
+      "split": "train",
+      "image_sha256": "1ddbacd275fd6c0d56a2b78c7bf614d3731eaca08a79dd426a517ea18817e0d2",
+      "masked_sha256": "6c14289b02fc9a873ddb6648f545bc27568eb39e28150c3aea02962e4c0d5f76",
+      "foreground_fraction": 0.16861328125,
+      "a_seconds_including_model_load": null
+    },
+    {
+      "dish_id": "dish_1561749818",
+      "split": "train",
+      "image_sha256": "435d67c2b0912fefa86ba3471be48d359c354ca396f2d3f1715da17fb1a136c9",
+      "masked_sha256": "5ddc457a2a70e1869309de4c67ec74667cb319740ee422d37ee54186a77c29c1",
+      "foreground_fraction": 0.34334635416666665,
+      "a_seconds_including_model_load": null
+    },
+    {
+      "dish_id": "dish_1563309315",
+      "split": "train",
+      "image_sha256": "e5312fb868c81e4a3246b0bc15eaf41d01be99e5683ad16430a6a350cd6315c1",
+      "masked_sha256": "e62f8a7f94ccce14f32a1edc6fb54389193bbf5f4bf089eb96fe26fd64cd9727",
+      "foreground_fraction": 0.35115885416666665,
+      "a_seconds_including_model_load": null
+    },
+    {
+      "dish_id": "dish_1562873838",
+      "split": "dev",
+      "image_sha256": "4c10d267189c8f332b17b752e8169be9872c7d5bc800c4557748881b18afb0cb",
+      "masked_sha256": "37f82c748e0666d77532715de13c269f0d612bacb6a2d826866495a605b761e5",
+      "foreground_fraction": 0.3583268229166667,
+      "a_seconds_including_model_load": null
+    },
+    {
+      "dish_id": "dish_1566501012",
+      "split": "dev",
+      "image_sha256": "91254cd6fc5c404548e45ed9906af22973d3609d103b50ad720d573dcd1e02b2",
+      "masked_sha256": "ef2c68ee50cddaa0d9c705c78c0f38ebd7d5e165ed746eea7a35f797935e9392",
+      "foreground_fraction": 0.3961588541666667,
+      "a_seconds_including_model_load": null
+    },
+    {
+      "dish_id": "dish_1561480460",
+      "split": "dev",
+      "image_sha256": "d3922ce5d9fdad15aed9268e704c4c5a6ad7a997854d84326e89fd52b26db2cc",
+      "masked_sha256": "7c06ae72e37e03f8ace8aab696f57a55c28032df5dac50cf8b4974694c5720d2",
+      "foreground_fraction": 0.199453125,
+      "a_seconds_including_model_load": null
+    }
+  ],
+  "preprocessing_source": "artifacts/ab-integration/smoke-001",
+  "reused_preprocessing": true,
+  "feature_sha256": {
+    "original": "7db896732e679d3e4f24bcd80c2e4b6a68f491d46f21e92946e0198b273b0141",
+    "masked": "43eeaa2af27be9d68f66b0a38a7ae17e3d8d62fb620e0062e10625b094f14bdd"
+  },
+  "trials": {
+    "original": {
+      "best_epoch": 3,
+      "weights_changed": true,
+      "checkpoint_roundtrip_passed": true,
+      "prediction_shape": [
+        3,
+        5
+      ],
+      "training_log": [
+        {
+          "seed": 0,
+          "epoch": 1,
+          "train_loss": 0.63015,
+          "dev_score": 0.40823
+        },
+        {
+          "seed": 0,
+          "epoch": 2,
+          "train_loss": 0.49384,
+          "dev_score": 0.40146
+        },
+        {
+          "seed": 0,
+          "epoch": 3,
+          "train_loss": 0.42009,
+          "dev_score": 0.39402
+        }
+      ],
+      "diagnostic_metrics_only": {
+        "n_dishes": 3,
+        "n_plates": 3,
+        "mae": {
+          "mass_g": 103.998,
+          "energy_kcal": 90.552,
+          "protein_g": 16.306,
+          "carbohydrate_g": 6.486,
+          "fat_g": 4.193
+        },
+        "mae_pct_of_mean": {
+          "mass_g": 40.1,
+          "energy_kcal": 32.1,
+          "protein_g": 69.5,
+          "carbohydrate_g": 41.0,
+          "fat_g": 29.1
+        },
+        "normalized_nutrient_mae": 0.394,
+        "normalized_nutrient_mae_95ci": [
+          0.3266,
+          0.4444
+        ]
+      }
+    },
+    "masked": {
+      "best_epoch": 3,
+      "weights_changed": true,
+      "checkpoint_roundtrip_passed": true,
+      "prediction_shape": [
+        3,
+        5
+      ],
+      "training_log": [
+        {
+          "seed": 0,
+          "epoch": 1,
+          "train_loss": 0.64673,
+          "dev_score": 0.4529
+        },
+        {
+          "seed": 0,
+          "epoch": 2,
+          "train_loss": 0.47969,
+          "dev_score": 0.42261
+        },
+        {
+          "seed": 0,
+          "epoch": 3,
+          "train_loss": 0.44924,
+          "dev_score": 0.39934
+        }
+      ],
+      "diagnostic_metrics_only": {
+        "n_dishes": 3,
+        "n_plates": 3,
+        "mae": {
+          "mass_g": 151.472,
+          "energy_kcal": 81.327,
+          "protein_g": 18.265,
+          "carbohydrate_g": 5.921,
+          "fat_g": 4.644
+        },
+        "mae_pct_of_mean": {
+          "mass_g": 58.3,
+          "energy_kcal": 28.8,
+          "protein_g": 77.9,
+          "carbohydrate_g": 37.4,
+          "fat_g": 32.3
+        },
+        "normalized_nutrient_mae": 0.3993,
+        "normalized_nutrient_mae_95ci": [
+          0.277,
+          0.5144
+        ]
+      }
+    }
+  },
+  "seconds": 4.818306366913021,
+  "versions": {
+    "torch": "2.2.2",
+    "numpy": "1.26.4"
+  },
+  "execution_note": "A and CLIP ran in smoke-001. That attempt stopped before head training because the harness omitted loss. smoke-002 validated and reused those artifacts, then completed both head training/reload checks. seconds measures smoke-002 only.",
+  "clip_checkpoint_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "source_merge_commit": "c4803e368b66626bb406a77c9967e6cba71a1450",
+  "split_sha256": {
+    "train": "0fe38b0f6ff50e7031dea091da19675a76adfba533e44e2bff3276cd9e5b9fbd",
+    "dev": "c6462b3444676502915de5606891b4fbe162e248e186c3df7d7bd4d7ee179a31"
+  }
+}

@@ -54,3 +54,12 @@ Use the following format for each entry:
 - Outcome: The network with absolute loss scores 0.360 (energy error 74.7 kcal) against 0.737 for the median baseline; the linear model scores 0.397 and squared loss 0.372. The network overfits after about 10 epochs. Weight decay 0.001 + dropout 0.5 gives 0.354, within noise, but steadier across seeds.
 - Lesson and next action: Overfitting is not the main limit; the input is. Next: food-only photos from part A, and log targets.
 - Evidence: [experiments/002-clip-head-original](../experiments/002-clip-head-original/README.md), [experiments/003-regularization](../experiments/003-regularization/README.md).
+
+### 2026-11-22 - A/B merge and real-image integration smoke test
+
+- Contributor: Tardirisu (Codex-assisted).
+- Attempt: Merged the SAM method-comparison and nutrition-estimation branches into `merge-A&B`. Configured an isolated Python 3.11 Intel Mac environment; downloaded official SAM/CLIP weights and nine deterministic train/dev RGBs. Ran the selected no-prompt decoder, both CLIP input paths, and two three-epoch trial heads.
+- Outcome: 65 preflight checks passed. A's 454 train / 103 dev records agree with B's split membership and groups. All nine real masks and both 512-dimensional feature paths passed interface checks; both trial heads changed weights, emitted finite nonnegative outputs, and reproduced predictions after checkpoint reload. B's complete dev median baseline rerun exactly matches its saved metrics. Missing images and output reuse are rejected.
+- Failures and fixes: Initial dependency installation failed to build sentencepiece 0.2.3; used the compatible 0.2.0 wheel. The first smoke attempt omitted B's loss setting after successfully generating images/features; added explicit L1 and reused validated preprocessing artifacts in a new run directory.
+- Lesson and next action: This proves basic integration, not nutritional accuracy. The full original-versus-masked, three-seed comparison requires identical environments and data coverage; final test remains reserved. A's masked filename and B's original filename are adapted by the smoke runner without changing historical component scripts.
+- Evidence: [integration protocol and results](../experiments/004-ab-integration/README.md). Raw images, model downloads, masks and temporary heads remain in ignored `artifacts/ab-integration/`.

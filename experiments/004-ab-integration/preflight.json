@@ -1,0 +1,275 @@
+{
+  "scope": "Static/data/artifact preflight only; no neural inference or retraining",
+  "commit": "c4803e368b66626bb406a77c9967e6cba71a1450",
+  "split_counts": {
+    "train": 2135,
+    "dev": 538,
+    "test": 506
+  },
+  "a_recomputed_dev_iou": 0.97171638421525,
+  "b_prediction_files_checked": 13,
+  "python_files_parsed": 23,
+  "checks": [
+    {
+      "check": "train: unique dish IDs",
+      "passed": true
+    },
+    {
+      "check": "dev: unique dish IDs",
+      "passed": true
+    },
+    {
+      "check": "test: unique dish IDs",
+      "passed": true
+    },
+    {
+      "check": "train/dev: disjoint IDs and inferred groups",
+      "passed": true
+    },
+    {
+      "check": "train/test: disjoint IDs and inferred groups",
+      "passed": true
+    },
+    {
+      "check": "dev/test: disjoint IDs and inferred groups",
+      "passed": true
+    },
+    {
+      "check": "A train_development.csv: matches B IDs and groups",
+      "passed": true
+    },
+    {
+      "check": "A dev_tuning.csv: matches B IDs and groups",
+      "passed": true
+    },
+    {
+      "check": "A selected decoder SHA256",
+      "passed": true
+    },
+    {
+      "check": "A result IDs match tuning manifest",
+      "passed": true
+    },
+    {
+      "check": "A IoU recomputed from TP/FP/FN",
+      "passed": true
+    },
+    {
+      "check": "A aggregate IoU matches model metadata",
+      "passed": true
+    },
+    {
+      "check": "experiments/001-median-baseline/dev_predictions.csv: complete unique dev IDs",
+      "passed": true
+    },
+    {
+      "check": "experiments/001-median-baseline/dev_predictions.csv: groups and rounded labels match",
+      "passed": true
+    },
+    {
+      "check": "experiments/001-median-baseline/dev_predictions.csv: finite nonnegative predictions",
+      "passed": true
+    },
+    {
+      "check": "experiments/001-median-baseline/dev_predictions.csv: MAE and normalized score reproduce",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/linear-l1/dev_predictions_seed0.csv: complete unique dev IDs",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/linear-l1/dev_predictions_seed0.csv: groups and rounded labels match",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/linear-l1/dev_predictions_seed0.csv: finite nonnegative predictions",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/linear-l1/dev_predictions_seed0.csv: MAE and normalized score reproduce",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/linear-l1/dev_predictions_seed1.csv: complete unique dev IDs",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/linear-l1/dev_predictions_seed1.csv: groups and rounded labels match",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/linear-l1/dev_predictions_seed1.csv: finite nonnegative predictions",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/linear-l1/dev_predictions_seed1.csv: MAE and normalized score reproduce",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/linear-l1/dev_predictions_seed2.csv: complete unique dev IDs",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/linear-l1/dev_predictions_seed2.csv: groups and rounded labels match",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/linear-l1/dev_predictions_seed2.csv: finite nonnegative predictions",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/linear-l1/dev_predictions_seed2.csv: MAE and normalized score reproduce",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/mlp-l1/dev_predictions_seed0.csv: complete unique dev IDs",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/mlp-l1/dev_predictions_seed0.csv: groups and rounded labels match",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/mlp-l1/dev_predictions_seed0.csv: finite nonnegative predictions",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/mlp-l1/dev_predictions_seed0.csv: MAE and normalized score reproduce",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/mlp-l1/dev_predictions_seed1.csv: complete unique dev IDs",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/mlp-l1/dev_predictions_seed1.csv: groups and rounded labels match",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/mlp-l1/dev_predictions_seed1.csv: finite nonnegative predictions",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/mlp-l1/dev_predictions_seed1.csv: MAE and normalized score reproduce",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/mlp-l1/dev_predictions_seed2.csv: complete unique dev IDs",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/mlp-l1/dev_predictions_seed2.csv: groups and rounded labels match",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/mlp-l1/dev_predictions_seed2.csv: finite nonnegative predictions",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/mlp-l1/dev_predictions_seed2.csv: MAE and normalized score reproduce",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/mlp-mse/dev_predictions_seed0.csv: complete unique dev IDs",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/mlp-mse/dev_predictions_seed0.csv: groups and rounded labels match",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/mlp-mse/dev_predictions_seed0.csv: finite nonnegative predictions",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/mlp-mse/dev_predictions_seed0.csv: MAE and normalized score reproduce",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/mlp-mse/dev_predictions_seed1.csv: complete unique dev IDs",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/mlp-mse/dev_predictions_seed1.csv: groups and rounded labels match",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/mlp-mse/dev_predictions_seed1.csv: finite nonnegative predictions",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/mlp-mse/dev_predictions_seed1.csv: MAE and normalized score reproduce",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/mlp-mse/dev_predictions_seed2.csv: complete unique dev IDs",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/mlp-mse/dev_predictions_seed2.csv: groups and rounded labels match",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/mlp-mse/dev_predictions_seed2.csv: finite nonnegative predictions",
+      "passed": true
+    },
+    {
+      "check": "experiments/002-clip-head-original/mlp-mse/dev_predictions_seed2.csv: MAE and normalized score reproduce",
+      "passed": true
+    },
+    {
+      "check": "experiments/003-regularization/wd0.001-do0.5/dev_predictions_seed0.csv: complete unique dev IDs",
+      "passed": true
+    },
+    {
+      "check": "experiments/003-regularization/wd0.001-do0.5/dev_predictions_seed0.csv: groups and rounded labels match",
+      "passed": true
+    },
+    {
+      "check": "experiments/003-regularization/wd0.001-do0.5/dev_predictions_seed0.csv: finite nonnegative predictions",
+      "passed": true
+    },
+    {
+      "check": "experiments/003-regularization/wd0.001-do0.5/dev_predictions_seed0.csv: MAE and normalized score reproduce",
+      "passed": true
+    },
+    {
+      "check": "experiments/003-regularization/wd0.001-do0.5/dev_predictions_seed1.csv: complete unique dev IDs",
+      "passed": true
+    },
+    {
+      "check": "experiments/003-regularization/wd0.001-do0.5/dev_predictions_seed1.csv: groups and rounded labels match",
+      "passed": true
+    },
+    {
+      "check": "experiments/003-regularization/wd0.001-do0.5/dev_predictions_seed1.csv: finite nonnegative predictions",
+      "passed": true
+    },
+    {
+      "check": "experiments/003-regularization/wd0.001-do0.5/dev_predictions_seed1.csv: MAE and normalized score reproduce",
+      "passed": true
+    },
+    {
+      "check": "experiments/003-regularization/wd0.001-do0.5/dev_predictions_seed2.csv: complete unique dev IDs",
+      "passed": true
+    },
+    {
+      "check": "experiments/003-regularization/wd0.001-do0.5/dev_predictions_seed2.csv: groups and rounded labels match",
+      "passed": true
+    },
+    {
+      "check": "experiments/003-regularization/wd0.001-do0.5/dev_predictions_seed2.csv: finite nonnegative predictions",
+      "passed": true
+    },
+    {
+      "check": "experiments/003-regularization/wd0.001-do0.5/dev_predictions_seed2.csv: MAE and normalized score reproduce",
+      "passed": true
+    },
+    {
+      "check": "Merged Python sources parse",
+      "passed": true
+    }
+  ],
+  "passed": true
+}
