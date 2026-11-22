@@ -61,9 +61,9 @@ Pipeline, in order (run from the repository folder with `.venv/Scripts/python`):
 |---|---|---|
 | Split files | `src/build_splits.py` | `data/splits/` ([README](data/splits/README.md)) |
 | Photos | `src/download_photos.py` | 3,262 overhead photos, 1.3 GB, outside Git |
-| Median baseline | `src/baseline_median.py` | [experiments/001-median-baseline](experiments/001-median-baseline/README.md) |
-| CLIP features | `src/extract_clip_features.py` | 512 numbers per photo, outside Git ([details](B_nutrition_estimation/README.md#clip-features)) |
-| Regression head | `src/train_head.py --model mlp --loss l1` | [experiments/002-clip-head-original](experiments/002-clip-head-original/README.md) |
+| Median baseline | `B_nutrition_estimation/baseline_median.py` | [experiments/001-median-baseline](experiments/001-median-baseline/README.md) |
+| CLIP features | `B_nutrition_estimation/extract_clip_features.py` | 512 numbers per photo, outside Git ([details](B_nutrition_estimation/README.md#clip-features)) |
+| Regression head | `B_nutrition_estimation/train_head.py --model mlp --loss l1` | [experiments/002-clip-head-original](experiments/002-clip-head-original/README.md) |
 
 ## Reproducibility and delivery
 

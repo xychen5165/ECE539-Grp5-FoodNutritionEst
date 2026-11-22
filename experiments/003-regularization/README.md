@@ -27,7 +27,7 @@ The weight decay 0.0001, dropout 0 cell is the network from 002.
 ## Setup
 Same data, features and settings as 002 except weight decay and dropout. Command for each cell:
 ```
-python src/train_head.py --model mlp --loss l1 --weight-decay <wd> --dropout <d> --name 003-regularization/wd<wd>-do<d>
+python B_nutrition_estimation/train_head.py --model mlp --loss l1 --weight-decay <wd> --dropout <d> --name 003-regularization/wd<wd>-do<d>
 ```
 
 ## Evidence

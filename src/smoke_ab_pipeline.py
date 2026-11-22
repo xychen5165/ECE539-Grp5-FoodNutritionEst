@@ -21,12 +21,13 @@ from PIL import Image
 import torch
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / 'A_food_segmentation'))
 from sam_runtime import infer_rgb, save_prediction
 from download_photos import download
-from extract_clip_features import pad_to_square
-from train_head import build_model, predict, train_one_seed
-from evaluate import TARGETS
+from B_nutrition_estimation.extract_clip_features import pad_to_square
+from B_nutrition_estimation.train_head import build_model, predict, train_one_seed
+from src.evaluate import TARGETS
 
 
 def sha(path):

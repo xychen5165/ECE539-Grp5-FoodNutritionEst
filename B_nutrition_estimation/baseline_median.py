@@ -1,7 +1,7 @@
 """Median baseline: predict each target's training-set median for every dish.
 
 Usage:
-    python src/baseline_median.py
+    python B_nutrition_estimation/baseline_median.py
 
 Fits on data/splits/train.csv and scores on data/splits/dev.csv (the test split is not used).
 Writes metrics.json and dev_predictions.csv to experiments/001-median-baseline/.
@@ -12,12 +12,16 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+import sys
 
 import numpy as np
 
-from evaluate import TARGETS, evaluate, load_split, write_predictions
-
 REPO_ROOT = Path(__file__).resolve().parents[1]
+if __package__ in (None, ""):
+    sys.path.insert(0, str(REPO_ROOT))
+
+from src.evaluate import TARGETS, evaluate, load_split, write_predictions
+
 SPLITS = REPO_ROOT / "data" / "splits"
 
 

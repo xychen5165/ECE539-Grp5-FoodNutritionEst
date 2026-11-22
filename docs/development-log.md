@@ -45,7 +45,7 @@ Use the following format for each entry:
 - Attempt: Set up a Python environment (`requirements.txt`) and extracted frozen CLIP ViT-B/32 features (OpenAI weights) for all 3,262 overhead photos. Photos are padded to a square instead of center-cropped so food at the edges and the sense of scale are kept.
 - Outcome: 3,262 × 512 features, no missing values. A 64-photo test ran in 5 seconds, but the full run took about 16 hours, most likely because the laptop slept or throttled.
 - Lesson and next action: Keep the computer awake for long runs (or use CHTC). Next: train the linear model and the regression head on these features.
-- Evidence: `src/extract_clip_features.py`, [B_nutrition_estimation/README.md](../B_nutrition_estimation/README.md).
+- Evidence: `B_nutrition_estimation/extract_clip_features.py`, [B_nutrition_estimation/README.md](../B_nutrition_estimation/README.md).
 
 ### 2026-11-21 - Regression head on CLIP features
 
@@ -63,3 +63,9 @@ Use the following format for each entry:
 - Failures and fixes: Initial dependency installation failed to build sentencepiece 0.2.3; used the compatible 0.2.0 wheel. The first smoke attempt omitted B's loss setting after successfully generating images/features; added explicit L1 and reused validated preprocessing artifacts in a new run directory.
 - Lesson and next action: This proves basic integration, not nutritional accuracy. The full original-versus-masked, three-seed comparison requires identical environments and data coverage; final test remains reserved. A's masked filename and B's original filename are adapted by the smoke runner without changing historical component scripts.
 - Evidence: [integration protocol and results](../experiments/004-ab-integration/README.md). Raw images, model downloads, masks and temporary heads remain in ignored `artifacts/ab-integration/`.
+
+### 2026-11-22 - Move B implementation into its component directory
+
+- Contributor: Tardirisu (Codex-assisted).
+- Change: At the project owner's request, moved feature extraction, head training and the median baseline from `src/` into `B_nutrition_estimation/`. Updated imports, run commands and documentation links. Shared data preparation, nutrition evaluation and A/B checks remain in `src/`. Earlier documentation links now point to the relocated files; historical commits retain the old layout.
+- Validation: Feature/training CLI help works from the new paths; the full dev median baseline is unchanged. All 65 preflight checks pass. Reused the nine validated image/feature artifacts and reran original/masked head training and checkpoint reload checks successfully in `artifacts/ab-integration/smoke-after-b-move/`. Segmentation and CLIP inference were not rerun for this path-only change.
