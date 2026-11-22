@@ -171,11 +171,13 @@ def main():
         serializable_settings = {key: str(value) if isinstance(value, Path) else value
                                  for key, value in vars(args).items()}
         checkpoint = {"condition": args.condition, "state_dict": model.state_dict(),
-                      "target_scale": target_scale_np, "targets": TARGETS,
-                      "normalization": {"original_mean": original_mean,
-                                        "original_std": original_std,
-                                        "masked_mean": masked_mean, "masked_std": masked_std,
-                                        "geometry_mean": geometry_mean, "geometry_std": geometry_std},
+                      "target_scale": torch.tensor(target_scale_np), "targets": TARGETS,
+                      "normalization": {"original_mean": torch.tensor(original_mean),
+                                        "original_std": torch.tensor(original_std),
+                                        "masked_mean": torch.tensor(masked_mean),
+                                        "masked_std": torch.tensor(masked_std),
+                                        "geometry_mean": torch.tensor(geometry_mean),
+                                        "geometry_std": torch.tensor(geometry_std)},
                       "settings": serializable_settings, "seed": seed,
                       "best_epoch": best["epoch"]}
         torch.save(checkpoint, out / "checkpoints" / f"seed{seed}.pt")
