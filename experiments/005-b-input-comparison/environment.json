@@ -1,0 +1,29 @@
+{
+  "status": "validated_before_execution",
+  "git_head": "b7b5dcd065274d262ad647f293ff9f181f2d626a",
+  "frozen_implementation": "112c26e98f99ee16984532b7798ba42c6bac6911",
+  "core_diff_empty": true,
+  "git_status": "",
+  "gpu": "Tesla T4, 580.82.07, 15360 MiB",
+  "cuda_device": "Tesla T4",
+  "cuda_runtime": "13.0",
+  "python": "3.13.16",
+  "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "dependencies": {
+    "torch": "2.14.1+cu130",
+    "torchvision": "0.29.1+cu130",
+    "numpy": "2.4.6",
+    "Pillow": "11.3.0",
+    "open_clip_torch": "2.24.0",
+    "opencv": "4.11.0",
+    "segment_anything_source_commit": "dca509fe793f601edb92606367a655c15ac00fdf"
+  },
+  "verified_sha256": {
+    "data/splits/train.csv": "0fe38b0f6ff50e7031dea091da19675a76adfba533e44e2bff3276cd9e5b9fbd",
+    "data/splits/dev.csv": "c6462b3444676502915de5606891b4fbe162e248e186c3df7d7bd4d7ee179a31",
+    "A_food_segmentation/model_weights/food_decoder_no_prompt.pt": "456c7afdc12dcb8e6ec009526178f5bc542f35493492904f09bc3a1d6af2c4ba"
+  },
+  "run_root": "/content/drive/MyDrive/ECE539-FoodNutritionEst/005-b-input-comparison",
+  "drive_free_bytes": 240047779840,
+  "test_images_or_labels_accessed": false
+}
