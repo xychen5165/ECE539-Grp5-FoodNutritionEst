@@ -168,13 +168,16 @@ def main():
                         "state": copy.deepcopy(model.state_dict()),
                         "prediction": dev_prediction.copy()}
         model.load_state_dict(best["state"])
+        serializable_settings = {key: str(value) if isinstance(value, Path) else value
+                                 for key, value in vars(args).items()}
         checkpoint = {"condition": args.condition, "state_dict": model.state_dict(),
                       "target_scale": target_scale_np, "targets": TARGETS,
                       "normalization": {"original_mean": original_mean,
                                         "original_std": original_std,
                                         "masked_mean": masked_mean, "masked_std": masked_std,
                                         "geometry_mean": geometry_mean, "geometry_std": geometry_std},
-                      "settings": vars(args), "seed": seed, "best_epoch": best["epoch"]}
+                      "settings": serializable_settings, "seed": seed,
+                      "best_epoch": best["epoch"]}
         torch.save(checkpoint, out / "checkpoints" / f"seed{seed}.pt")
         write_predictions(out / f"dev_predictions_seed{seed}.csv", dev_ids, dev_groups,
                           y_dev, best["prediction"])
@@ -194,8 +197,7 @@ def main():
         "status": "completed", "condition": args.condition,
         "code_commit": subprocess.check_output(["git", "rev-parse", "HEAD"],
                                                 cwd=ROOT, text=True).strip(),
-        "settings": {key: str(value) if isinstance(value, Path) else value
-                     for key, value in vars(args).items()},
+        "settings": serializable_settings,
         "parameter_count": sum(parameter.numel() for parameter in model.parameters()),
         "n_train": n_train, "n_dev": len(dev_ids), "target_order": TARGETS,
         "inputs_sha256": {name: sha256(args.input_root / filename) for name, filename in {
@@ -207,7 +209,8 @@ def main():
                         "numpy": np.__version__, "platform": platform.platform()},
         "per_seed": per_seed,
         "summary": {"normalized_nutrient_mae_mean": float(scores.mean()),
-                    "normalized_nutrient_mae_std": float(scores.std(ddof=1)),
+                    "normalized_nutrient_mae_std": (float(scores.std(ddof=1))
+                                                     if len(scores) > 1 else None),
                     "seconds": time.perf_counter() - started_all},
     }
     (out / "metrics.json").write_text(json.dumps(metrics, indent=2) + "\n")
