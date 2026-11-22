@@ -94,7 +94,8 @@ def main():
               all(abs(maes[t] - expected['mae'][t]) < 0.002 for t in TARGETS) and
               abs(score - expected['normalized_nutrient_mae']) < 0.0002)
 
-    source_files = list(a_root.rglob('*.py')) + list((ROOT / 'src').glob('*.py'))
+    source_files = (list(a_root.rglob('*.py')) + list((ROOT / 'src').glob('*.py'))
+                    + list((ROOT / 'B_nutrition_estimation').glob('*.py')))
     for path in source_files:
         ast.parse(path.read_text(), filename=str(path))
     check('Merged Python sources parse', True)

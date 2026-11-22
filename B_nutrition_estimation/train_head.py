@@ -1,12 +1,12 @@
 """Train a regression head on frozen CLIP features to predict the five nutrition targets.
 
 Usage:
-    python src/train_head.py --model mlp --loss l1                 # planned head, absolute loss
-    python src/train_head.py --model mlp --loss mse                # same, squared loss
-    python src/train_head.py --model linear --loss l1              # linear model
-    python src/train_head.py --features <npz> --name masked-mlp-l1 # e.g. food-only photo features
+    python B_nutrition_estimation/train_head.py --model mlp --loss l1                 # planned head, absolute loss
+    python B_nutrition_estimation/train_head.py --model mlp --loss mse                # same, squared loss
+    python B_nutrition_estimation/train_head.py --model linear --loss l1              # linear model
+    python B_nutrition_estimation/train_head.py --features <npz> --name masked-mlp-l1 # e.g. food-only photo features
 
-Data: features from src/extract_clip_features.py, matched to data/splits/train.csv and dev.csv by
+Data: features from B_nutrition_estimation/extract_clip_features.py, matched to data/splits/train.csv and dev.csv by
 dish ID. The test split is never read.
 
 Method (plan in docs/architecture.md; d2l.ai sections in brackets):
@@ -35,14 +35,18 @@ import csv
 import hashlib
 import json
 from pathlib import Path
+import sys
 
 import numpy as np
 import torch
 from torch import nn
 
-from evaluate import TARGETS, evaluate, load_split, normalized_nutrient_mae, write_predictions
-
 REPO_ROOT = Path(__file__).resolve().parents[1]
+if __package__ in (None, ""):
+    sys.path.insert(0, str(REPO_ROOT))
+
+from src.evaluate import TARGETS, evaluate, load_split, normalized_nutrient_mae, write_predictions
+
 SPLITS = REPO_ROOT / "data" / "splits"
 
 

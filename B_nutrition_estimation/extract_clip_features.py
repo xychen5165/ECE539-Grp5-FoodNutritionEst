@@ -1,8 +1,8 @@
 """Extract frozen CLIP ViT-B/32 image features (512 numbers per photo).
 
 Usage:
-    python src/extract_clip_features.py                       # original overhead photos
-    python src/extract_clip_features.py --image-dir <folder> --name masked   # e.g. food-only photos
+    python B_nutrition_estimation/extract_clip_features.py                       # original overhead photos
+    python B_nutrition_estimation/extract_clip_features.py --image-dir <folder> --name masked   # e.g. food-only photos
 
 Reads <image-dir>/<dish_id>/rgb.png for every Cafe 1 dish with an overhead photo and writes
 <data-root>/features/clip_vitb32_<name>.npz with:

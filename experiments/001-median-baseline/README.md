@@ -12,7 +12,7 @@ The baseline ignores the photo and predicts the same "typical" value for every d
 
 ## Procedure
 
-Run with `python src/baseline_median.py`. Scoring code is in [src/evaluate.py](../../src/evaluate.py) and is shared by all models.
+Run with `python B_nutrition_estimation/baseline_median.py`. Scoring code is in [src/evaluate.py](../../src/evaluate.py) and is shared by all models.
 
 ### Step 1: Compute the guess from the training split
 
@@ -77,7 +77,7 @@ Draw 182 development plates at random with replacement, recompute the normalized
 
 - Contributor: xychen5165
 - Date: 2026-11-20 (America/Chicago), rerun on the combined-grouping splits
-- Code: `src/evaluate.py` and `src/baseline_median.py` (commit `dcde4c8`), splits from `src/build_splits.py` with combined grouping
+- Code: `src/evaluate.py` and `B_nutrition_estimation/baseline_median.py` (commit `dcde4c8`), splits from `src/build_splits.py` with combined grouping
 - Data: [data/splits/train.csv](../../data/splits/train.csv) (hash `b4713f8b5125b1f7`) and [data/splits/dev.csv](../../data/splits/dev.csv) (hash `e3025e1a9f47e963`). The test split is not used.
 
 ## Evidence

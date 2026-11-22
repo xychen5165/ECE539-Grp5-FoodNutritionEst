@@ -31,7 +31,7 @@ Can a regression head on frozen CLIP features beat the median baseline, and does
 
 ## Setup
 - Contributor: xychen5165; 2026-11-21 (America/Chicago)
-- Code: [src/train_head.py](../../src/train_head.py), scored with [src/evaluate.py](../../src/evaluate.py); repository at `aec9a6c` plus the training script (committed with this record)
+- Code: [B_nutrition_estimation/train_head.py](../../B_nutrition_estimation/train_head.py), scored with [src/evaluate.py](../../src/evaluate.py); repository at `aec9a6c` plus the training script (committed with this record)
 - Features: frozen CLIP ViT-B/32 (OpenAI weights), original photos padded to square ([B_nutrition_estimation/README.md](../../B_nutrition_estimation/README.md#clip-features)); file fingerprint `49225c72281ef059`
 - Data: `train.csv` (2,135 dishes, `b4713f8b5125b1f7`), `dev.csv` (538 dishes, `e3025e1a9f47e963`). Test not used.
 - Settings (plan): inputs standardized and targets divided by training averages; AdamW, learning rate 0.001, weight decay 0.0001, batch size 32, 30 epochs, best development epoch kept; seeds 0, 1, 2. Linear predictions clipped at 0; the network uses Softplus.
@@ -39,9 +39,9 @@ Can a regression head on frozen CLIP features beat the median baseline, and does
 
 Commands:
 ```
-python src/train_head.py --model linear --loss l1 --name 002-clip-head-original/linear-l1
-python src/train_head.py --model mlp --loss l1 --name 002-clip-head-original/mlp-l1
-python src/train_head.py --model mlp --loss mse --name 002-clip-head-original/mlp-mse
+python B_nutrition_estimation/train_head.py --model linear --loss l1 --name 002-clip-head-original/linear-l1
+python B_nutrition_estimation/train_head.py --model mlp --loss l1 --name 002-clip-head-original/mlp-l1
+python B_nutrition_estimation/train_head.py --model mlp --loss mse --name 002-clip-head-original/mlp-mse
 ```
 
 ## Evidence
