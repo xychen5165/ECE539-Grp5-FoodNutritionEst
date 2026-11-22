@@ -15,3 +15,9 @@ The evaluation plan includes a training-set median baseline, an original-versus-
 | [001-median-baseline](001-median-baseline/README.md) | Completed | Normalized nutrient error 0.737; energy error 172.1 kcal |
 | [002-clip-head-original](002-clip-head-original/README.md) | Completed | Network on CLIP features: 0.360; energy error 74.7 kcal |
 | [003-regularization](003-regularization/README.md) | Completed | Best (weight decay 0.001, dropout 0.5): 0.354; gain within noise |
+| [004-ab-integration](004-ab-integration/README.md) | Completed smoke / full comparison pending | Real-image A→B smoke passed; no predictive-benefit claim |
+| [Part A method comparison](../A_food_segmentation/method_comparison/README.md) | Completed on development | Five template-based run records; selected no-prompt fine-tuned decoder reached 0.9717 mean IoU |
+
+Record-format and evidence compliance for all entries above is reviewed in
+[record-audit.md](record-audit.md). “Completed” describes the recorded development
+run, not final-test evaluation or teammate approval.
