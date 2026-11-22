@@ -164,11 +164,12 @@ def segment(rows, root, sam_checkpoint, decoder_checkpoint, requested_device):
              features=np.stack(geometries), names=np.array(GEOMETRY_NAMES))
 
 
-def extract_features(rows, root, condition, batch_size, clip_cache):
+def extract_features(rows, root, condition, batch_size, clip_cache, requested_device):
     torch.manual_seed(0)
+    device = resolve_device(requested_device)
     model, _, preprocess = open_clip.create_model_and_transforms(
         "ViT-B-32", pretrained="openai", cache_dir=str(clip_cache))
-    model.eval()
+    model.to(device).eval()
     all_features, started = [], time.perf_counter()
     with torch.inference_mode():
         for offset in range(0, len(rows), batch_size):
@@ -181,7 +182,8 @@ def extract_features(rows, root, condition, batch_size, clip_cache):
                     path = root / "masked" / row["dish_id"] / "masked_rgb.png"
                 with Image.open(path) as image:
                     images.append(preprocess(pad_to_square(image.convert("RGB"))))
-            all_features.append(model.encode_image(torch.stack(images)).float().numpy())
+            batch_tensor = torch.stack(images).to(device)
+            all_features.append(model.encode_image(batch_tensor).float().cpu().numpy())
             done = min(offset + batch_size, len(rows))
             if done % (batch_size * 5) == 0 or done == len(rows):
                 print(f"{condition} features {done}/{len(rows)}", flush=True)
@@ -189,6 +191,7 @@ def extract_features(rows, root, condition, batch_size, clip_cache):
     if features.shape != (len(rows), 512) or not np.isfinite(features).all():
         raise ValueError(f"Invalid {condition} feature matrix {features.shape}")
     settings = {"condition": condition, "model": "ViT-B-32", "weights": "openai",
+                "device": str(device),
                 "n_images": len(rows), "seconds": time.perf_counter() - started,
                 "preprocessing": "pad square with CLIP mean, resize 224, normalize"}
     np.savez(root / f"clip_{condition}.npz",
@@ -220,8 +223,8 @@ def main():
             parser.error("--sam-checkpoint is required for segmentation")
         segment(rows, args.root, args.sam_checkpoint, args.decoder_checkpoint, args.device)
     if args.action in ("features", "all"):
-        extract_features(rows, args.root, "original", args.batch_size, args.clip_cache)
-        extract_features(rows, args.root, "masked", args.batch_size, args.clip_cache)
+        extract_features(rows, args.root, "original", args.batch_size, args.clip_cache, args.device)
+        extract_features(rows, args.root, "masked", args.batch_size, args.clip_cache, args.device)
 
 
 if __name__ == "__main__":
