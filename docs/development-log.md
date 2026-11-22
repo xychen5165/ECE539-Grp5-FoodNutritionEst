@@ -69,3 +69,11 @@ Use the following format for each entry:
 - Contributor: Tardirisu (Codex-assisted).
 - Change: At the project owner's request, moved feature extraction, head training and the median baseline from `src/` into `B_nutrition_estimation/`. Updated imports, run commands and documentation links. Shared data preparation, nutrition evaluation and A/B checks remain in `src/`. Earlier documentation links now point to the relocated files; historical commits retain the old layout.
 - Validation: Feature/training CLI help works from the new paths; the full dev median baseline is unchanged. All 65 preflight checks pass. Reused the nine validated image/feature artifacts and reran original/masked head training and checkpoint reload checks successfully in `artifacts/ab-integration/smoke-after-b-move/`. Segmentation and CLIP inference were not rerun for this path-only change.
+
+### 2026-11-22 - Audit records and freeze B0-B3 protocol
+
+- Contributor: Tardirisu (Codex-assisted).
+- Attempt: Audited every retained Part A/B/integration experiment against `CONTRIBUTING.md` and the run template. Added a frozen four-condition protocol for original, masked, parameter-matched dual-view and geometry-aware nutrition regression before running models.
+- Outcome: Part A's five records conform with disclosed layout/checkpoint exceptions. B 001-003 remain honestly rated partial because historical per-run records or artifacts are missing; no facts were reconstructed. Integration record 004 metadata and the experiment index were repaired. The new 005 experiment has separate planned records for B0-B3, immutable split/model hashes, exact commands, matched budgets and paired statistics.
+- Validation: Existing 65-check A/B preflight passes. Four new unit tests pass; they cover train/dev-only selection, fixed mask geometry, train-only standardization and model interfaces/parameter counts. Refactored reusable SAM batch inference reproduced a retained mask pixel-for-pixel.
+- Evidence: [record audit](../experiments/record-audit.md) and [005 protocol](../experiments/005-b-input-comparison/README.md).

@@ -34,20 +34,17 @@ def load_sam(checkpoint,device):
     return model.to(device).eval()
 
 
-def infer_rgb(rgb,sam_checkpoint,decoder_checkpoint=None,device='auto',prompt_factory=None):
-    """A factory, if supplied, sees original SAM + RGB before decoder loading."""
-    device=resolve_device(device)
-    model=load_sam(sam_checkpoint,device)
-    prompt=None
-    if prompt_factory is not None:
-        prompt=prompt_factory(model,rgb)
-    selected_epoch=None
-    if decoder_checkpoint is not None:
-        checkpoint=torch.load(decoder_checkpoint,map_location='cpu',weights_only=True)
-        if 'decoder' not in checkpoint:
-            raise ValueError('Expected a decoder checkpoint produced by train_decoder.py')
-        model.mask_decoder.load_state_dict(checkpoint['decoder'])
-        selected_epoch=checkpoint.get('epoch')
+def load_decoder(model,decoder_checkpoint):
+    """Load a selected decoder into an already initialized SAM model."""
+    checkpoint=torch.load(decoder_checkpoint,map_location='cpu',weights_only=True)
+    if 'decoder' not in checkpoint:
+        raise ValueError('Expected a decoder checkpoint produced by train_decoder.py')
+    model.mask_decoder.load_state_dict(checkpoint['decoder'])
+    return checkpoint.get('epoch')
+
+
+def infer_rgb_with_model(rgb,model,device='cpu',prompt=None,selected_epoch=None):
+    """Run inference with a reusable loaded model for controlled batches."""
     transform=ResizeLongestSide(model.image_encoder.img_size)
     resized=transform.apply_image(rgb)
     image=torch.as_tensor(resized.copy(),device=device).permute(2,0,1)[None]
@@ -66,9 +63,22 @@ def infer_rgb(rgb,sam_checkpoint,decoder_checkpoint=None,device='auto',prompt_fa
             sparse_prompt_embeddings=sparse,dense_prompt_embeddings=dense,multimask_output=False)
         logits=model.postprocess_masks(logits,resized.shape[:2],rgb.shape[:2])
         mask=(logits[0,0]>0).cpu().numpy()
-    return mask,{'device':device,'selected_epoch':selected_epoch,'prompt':prompt,
+    return mask,{'device':str(device),'selected_epoch':selected_epoch,'prompt':prompt,
         'annotation_files_read':False,'feature_cache_read':False,'multimask_output':False,
         'logit_threshold':0.0,'embedding_storage_roundtrip':'float16 -> float32'}
+
+
+def infer_rgb(rgb,sam_checkpoint,decoder_checkpoint=None,device='auto',prompt_factory=None):
+    """A factory, if supplied, sees original SAM + RGB before decoder loading."""
+    device=resolve_device(device)
+    model=load_sam(sam_checkpoint,device)
+    prompt=None
+    if prompt_factory is not None:
+        prompt=prompt_factory(model,rgb)
+    selected_epoch=None
+    if decoder_checkpoint is not None:
+        selected_epoch=load_decoder(model,decoder_checkpoint)
+    return infer_rgb_with_model(rgb,model,device,prompt,selected_epoch)
 
 
 def save_prediction(rgb,mask,output_dir,record):
