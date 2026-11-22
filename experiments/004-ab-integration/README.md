@@ -1,10 +1,21 @@
 # A/B integration: test protocol and execution record
 
+Status: Completed smoke test; full controlled comparison and final test pending.
+
 Date: November 22, 2026 (America/Chicago).
+
+Contributor: `Tardirisu` (Codex-assisted).
+
+Execution provenance: the smoke test ran from an uncommitted working tree based
+on merge commit `c4803e3`; the exact scripts, environment record and small results
+were published together in `5e8c6ad`. Later commit `01b1c5b` moved component-B
+scripts without changing the recorded smoke result. This provenance is stated
+instead of assigning a false clean execution commit.
 
 Merged `origin/yifei/part-a-sam-method-comparison` and `origin/xin-workspace`
 into `merge-A&B`, with merge commits `ff82a6b` and `c4803e3` respectively.
-Neither branch needed conflict resolution. Nothing has been pushed.
+Neither branch needed conflict resolution. The combined branch was later pushed
+as `origin/merge-A&B`; that later push does not change the execution evidence.
 
 Execution status: preflight, real-image smoke, baseline rerun and two negative
 checks passed. Full-data controlled training and final test remain pending.
