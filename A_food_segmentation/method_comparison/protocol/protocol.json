@@ -1,0 +1,77 @@
+{
+  "project_split_commit": "aec9a6c0f6ef6826185529602a7c6af72b638a80",
+  "previous_experiment_split_commit": "dcde4c8330b5ad663845c25f611f096b08a462b2",
+  "annotation_commit": "0997586b5c177fa8f2c0a61eb7f958ab18605362",
+  "annotation_csv_sha256": "e8f420ccd81c2aa3fa97470d28a2f43a42bdf0a88ba56659c82dfd20c11dbd45",
+  "builder_sha256": "5c79b5f37b9ed5f873ca70b4015a6d056d23bd3a69cf9a538f990a0211721c43",
+  "project_source_sha256": {
+    "aec9a6c0f6ef6826185529602a7c6af72b638a80:data/splits/train.csv": "0fe38b0f6ff50e7031dea091da19675a76adfba533e44e2bff3276cd9e5b9fbd",
+    "aec9a6c0f6ef6826185529602a7c6af72b638a80:data/splits/dev.csv": "c6462b3444676502915de5606891b4fbe162e248e186c3df7d7bd4d7ee179a31",
+    "aec9a6c0f6ef6826185529602a7c6af72b638a80:data/splits/test.csv": "2fc67f6693e91c285ad23220c5d3469bbf957529633800f385aab44216a13c66",
+    "aec9a6c0f6ef6826185529602a7c6af72b638a80:data/splits/plate_links.csv": "a7400256720e2ce7e455dd266cb4da987394f3b424e1fdec26d20d728e2cae77",
+    "aec9a6c0f6ef6826185529602a7c6af72b638a80:data/splits/dropped.csv": "81050bcc6befc318e4da7c114471070fa12c3cf3a689bb7db2bdb84751660a4b",
+    "aec9a6c0f6ef6826185529602a7c6af72b638a80:data/splits/README.md": "debb43da871e109798883034747eaef8fdd0812f37cbd853c4f4d61293fc4ab3",
+    "aec9a6c0f6ef6826185529602a7c6af72b638a80:data/splits/summary.json": "c27cbfc490b6528bb481c1cb41cd7f5aaeaec9e3bd96bf218cb32aca61e78cf5",
+    "dcde4c8330b5ad663845c25f611f096b08a462b2:data/splits/train.csv": "ff14da1aac65db7a4e48904d400685da58507fa9038d5f28a6177fd967f1b88b",
+    "dcde4c8330b5ad663845c25f611f096b08a462b2:data/splits/dev.csv": "8139d182230208914fbc7ffde2df4d31e9a2053bfb46cca63dddf2166cd7bbf8",
+    "dcde4c8330b5ad663845c25f611f096b08a462b2:data/splits/test.csv": "2b39077937d12d2139311eab509dbd005bd8d79d28b910d1da95d884ef19b165"
+  },
+  "annotation_dish_count": 1056,
+  "annotation_region_count": 2922,
+  "current_project_split_counts": {
+    "train": 2135,
+    "dev": 538,
+    "test": 506
+  },
+  "annotation_roles": {
+    "train_development": 454,
+    "dev_tuning": 103,
+    "test_no_recorded_access": 485,
+    "test_previously_accessed": 1,
+    "excluded_test_plate": 13,
+    "excluded_not_in_project_split": 0
+  },
+  "annotation_groups_by_role": {
+    "train_development": 357,
+    "dev_tuning": 81,
+    "test_no_recorded_access": 198,
+    "test_previously_accessed": 1,
+    "excluded_test_plate": 10,
+    "excluded_not_in_project_split": 0
+  },
+  "all_test_annotations_reserved": 486,
+  "accessed_dish_count": 25,
+  "no_recorded_access_scope": "This chat and local files only; teammate access unknown.",
+  "default_tuning_manifest": "dev_tuning.csv",
+  "thresholds": {
+    "pass_iou_min": 0.85,
+    "pass_precision_min": 0.9,
+    "pass_recall_min": 0.9,
+    "fail_iou_below": 0.5
+  },
+  "threshold_origin": "Project convention, not supplied by the paper; no change based on test outcomes.",
+  "assertions": {
+    "all_1056_assigned_exactly_once": true,
+    "tuning_and_train_disjoint_from_all_test_groups": true,
+    "train_dev_groups_disjoint": true,
+    "no_recorded_access_test_groups_disjoint_from_accessed_groups": true
+  },
+  "limitations": [
+    "Plate grouping is inferred, not guaranteed physical identity.",
+    "No recorded access is not proof that a teammate has never viewed an image.",
+    "No model or metric was run on reserved test images in this operation.",
+    "Training/development records seen earlier are not independent validation data."
+  ],
+  "generated_csv_sha256": {
+    "assignment.csv": "891e914855f8bbf48b5d9474061b4599c049aa3b530982a98142ee3ca409b47a",
+    "dev_tuning.csv": "fa5fccc8164a587fa8ec411b46fed431bedaa330751cf0bced33990b178fc6c0",
+    "excluded_not_in_project_split.csv": "dd6e6553731fd95de554d59fb3885117835d9df3f2af34b71d2f1749f834f32b",
+    "excluded_test_plate.csv": "d17760d58f8bb0f4a964f6f2865ea876258635f0f3db9485b818d344f55c1899",
+    "previous_split_changes.csv": "a77b7920b5e99fe8ea5e96a9e6df184bef16b0362a52f6c52a27f362d6566868",
+    "prior_access.csv": "dd800039009f398193bfc977c5489e7e2eceafe6dd57f652c910f4add23fd40c",
+    "test_no_recorded_access.csv": "b179aa297a91a1b15130d785805ab8b17c124569c582e34c92cfbe5444fd8413",
+    "test_previously_accessed.csv": "fa51edde6505dbddabe485c80d4f73b084b37788a4035b7b7b8bfb049672e0a2",
+    "test_reserved.csv": "c269ae2371879b7dfeda68634e9352e00144f9796c458bddef6833fb353e1439",
+    "train_development.csv": "6912e399315c44f966215704ce179790c454d0d43697457a758cad635ccba77c"
+  }
+}

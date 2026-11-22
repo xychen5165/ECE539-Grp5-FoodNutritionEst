@@ -1,0 +1,59 @@
+{
+  "record_scope": "Historical pre-commit packaging verification; publication flags describe the state when these checks ran, not live Git status.",
+  "branch": "yifei/part-a-sam-method-comparison",
+  "base_commit": "786c94294e0db9e0ff063e87ae9153d0b5688d8f",
+  "scope": "Packaging and path reorganization; no full retraining in this change.",
+  "cli_help_entries_passed": 9,
+  "both_training_epoch_loops_ast_unchanged": true,
+  "approved_data_pairs_verified": 557,
+  "test_pixels_used": false,
+  "default_checkpoint_hashes_match_recorded_models": true,
+  "primary_inference_passed": true,
+  "pretrained_no_prompt_mask_matches_historical_cuda": true,
+  "variant_inference_checks": [
+    {
+      "method": "02_pretrained_auto_prompt",
+      "foreground_pixels": 96002,
+      "device": "mps",
+      "shape": [
+        480,
+        640
+      ],
+      "changed_pixels_from_historical_cuda": 6,
+      "mask_iou_agreement_with_historical_cuda": 0.9999375032550388,
+      "prompt_generation_device": "cpu"
+    },
+    {
+      "method": "03_finetuned_no_prompt",
+      "foreground_pixels": 102663,
+      "device": "mps",
+      "shape": [
+        480,
+        640
+      ],
+      "changed_pixels_from_historical_cuda": 0,
+      "mask_iou_agreement_with_historical_cuda": 1.0,
+      "exact_match_to_primary_entry": true
+    },
+    {
+      "method": "04_finetuned_auto_prompt",
+      "foreground_pixels": 104294,
+      "device": "mps",
+      "shape": [
+        480,
+        640
+      ],
+      "changed_pixels_from_historical_cuda": 0,
+      "mask_iou_agreement_with_historical_cuda": 1.0,
+      "prompt_generation_device": "cpu"
+    }
+  ],
+  "new_image_fixture": "dish_1559590005 (previously used development image)",
+  "compatibility_note": "On MPS, original SAM automatic candidate generation uses CPU; point/box coordinates use float32. CUDA behavior is unchanged.",
+  "existing_output_overwrite_rejected": true,
+  "pretrained_and_finetuned_weight_mixing_rejected": true,
+  "raw_data_weights_and_output_images_ignored": true,
+  "changes_outside_part_a": false,
+  "commit_created": false,
+  "remote_push_performed": false
+}
