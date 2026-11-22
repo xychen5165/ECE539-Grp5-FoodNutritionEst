@@ -22,7 +22,11 @@ particular GPU model.
 %cd /content/food-nutrition
 !git rev-parse HEAD
 !git diff --exit-code 79a3e117b44de42983551984da2350542da6a7da -- \
-  A_food_segmentation B_nutrition_estimation src tests
+  A_food_segmentation/sam_runtime.py \
+  B_nutrition_estimation/prepare_input_comparison.py \
+  B_nutrition_estimation/train_input_comparison.py \
+  B_nutrition_estimation/compare_input_conditions.py \
+  tests/test_b_input_comparison.py
 ```
 
 The final command must print no diff. Record-only commits after `79a3e11` are
@@ -51,8 +55,10 @@ drive.mount('/content/drive')
 
 ```python
 from pathlib import Path
+import os
 RUN_ROOT = Path('/content/drive/MyDrive/ECE539-FoodNutritionEst/005-b-input-comparison')
 RUN_ROOT.mkdir(parents=True, exist_ok=True)
+os.environ['RUN_ROOT'] = str(RUN_ROOT)
 print(RUN_ROOT)
 ```
 
@@ -105,7 +111,8 @@ unchanged foreground pixels and RGB-128 background before recording each item.
 
 ```bash
 !python B_nutrition_estimation/prepare_input_comparison.py features \
-  --root "$RUN_ROOT" --clip-cache "$RUN_ROOT/checkpoints" --batch-size 64
+  --root "$RUN_ROOT" --clip-cache "$RUN_ROOT/checkpoints" \
+  --batch-size 64 --device cuda
 ```
 
 If GPU memory is insufficient, rerun this cell with `--batch-size 32` or 16 and
