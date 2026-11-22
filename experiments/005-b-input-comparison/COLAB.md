@@ -21,7 +21,7 @@ particular GPU model.
   https://github.com/xychen5165/ECE539-Grp5-FoodNutritionEst.git food-nutrition
 %cd /content/food-nutrition
 !git rev-parse HEAD
-!git diff --exit-code 79a3e117b44de42983551984da2350542da6a7da -- \
+!git diff --exit-code 112c26e98f99ee16984532b7798ba42c6bac6911 -- \
   A_food_segmentation/sam_runtime.py \
   B_nutrition_estimation/prepare_input_comparison.py \
   B_nutrition_estimation/train_input_comparison.py \
@@ -29,7 +29,7 @@ particular GPU model.
   tests/test_b_input_comparison.py
 ```
 
-The final command must print no diff. Record-only commits after `79a3e11` are
+The final command must print no diff. Record-only commits after `112c26e` are
 allowed; implementation changes are not.
 
 ## 3. Install the experiment dependencies

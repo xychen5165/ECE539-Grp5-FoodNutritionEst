@@ -17,7 +17,7 @@ from PIL import Image
 import torch
 
 ROOT = Path(__file__).resolve().parents[1]
-FROZEN_IMPLEMENTATION = "79a3e117b44de42983551984da2350542da6a7da"
+FROZEN_IMPLEMENTATION = "112c26e98f99ee16984532b7798ba42c6bac6911"
 EXPECTED = {
     "data/splits/train.csv": "0fe38b0f6ff50e7031dea091da19675a76adfba533e44e2bff3276cd9e5b9fbd",
     "data/splits/dev.csv": "c6462b3444676502915de5606891b4fbe162e248e186c3df7d7bd4d7ee179a31",
