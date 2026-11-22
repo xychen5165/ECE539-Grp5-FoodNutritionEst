@@ -55,25 +55,27 @@
     "comparisons": ["B1-B0", "B2-B0", "B2-B1", "B3-B2", "B3-B0"]
   },
   "environment": {
-    "python": "3.11",
-    "torch": "2.2.2",
-    "numpy": "1.26.4",
-    "pillow": "11.3.0",
+    "execution_target": "Google Colab Pro with an NVIDIA GPU",
+    "exact_runtime_record": "capture before data/model execution in Drive environment.json",
+    "torch": "Colab CUDA build, exact version recorded and unchanged across B0-B3",
+    "numpy": ">=1.26,<3",
+    "pillow": ">=10,<13",
     "open_clip_torch": "2.24.0",
     "opencv_python_headless": "4.11.0.86",
-    "hardware": "Intel Core i7 MacBook Pro, 6 cores, 16 GB RAM, CPU execution",
-    "initial_free_disk": "approximately 13 GiB"
+    "segment_anything_source": "dca509fe793f601edb92606367a655c15ac00fdf",
+    "hardware": "Exact assigned GPU, CPU, RAM and disk captured before execution",
+    "comparability": "All B0-B3 conditions execute in the same captured Colab runtime; historical B scores are context only"
   },
   "commands": {
     "download": ".venv/bin/python B_nutrition_estimation/prepare_input_comparison.py download --root artifacts/b-input-comparison",
-    "segment": ".venv/bin/python B_nutrition_estimation/prepare_input_comparison.py segment --root artifacts/b-input-comparison --sam-checkpoint artifacts/ab-integration/checkpoints/sam_vit_b_01ec64.pth --device cpu",
-    "features": ".venv/bin/python B_nutrition_estimation/prepare_input_comparison.py features --root artifacts/b-input-comparison --clip-cache artifacts/ab-integration/checkpoints",
-    "train": ".venv/bin/python B_nutrition_estimation/train_input_comparison.py <B0|B1|B2|B3>",
-    "compare": ".venv/bin/python B_nutrition_estimation/compare_input_conditions.py"
+    "segment": "python B_nutrition_estimation/prepare_input_comparison.py segment --root <drive-run-root> --sam-checkpoint <drive-run-root>/checkpoints/sam_vit_b_01ec64.pth --device cuda",
+    "features": "python B_nutrition_estimation/prepare_input_comparison.py features --root <drive-run-root> --clip-cache <drive-run-root>/checkpoints --batch-size 64",
+    "train": "python B_nutrition_estimation/train_input_comparison.py <B0|B1|B2|B3> --input-root <drive-run-root> --output-root <drive-run-root>/results",
+    "compare": "python B_nutrition_estimation/compare_input_conditions.py --results <drive-run-root>/results --output <drive-run-root>/comparison.json"
   },
   "time_budget": {
     "download": "up to 1 hour",
-    "segmentation_cpu": "up to 12 hours; resume-safe per-image artifacts",
+    "segmentation_gpu": "up to 4 hours; resume-safe per-image artifacts; actual duration recorded",
     "clip_features": "up to 2 hours",
     "heads_and_comparison": "up to 1 hour"
   }
