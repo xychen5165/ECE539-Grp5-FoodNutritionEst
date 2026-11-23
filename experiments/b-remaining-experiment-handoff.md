@@ -55,29 +55,29 @@ Important historical anchors:
 - C/D branches are out of scope for these model comparisons. Do not base B
   experiments on `merge-C&D`.
 
-Before starting each condition:
+Use one shared supplementary experiment branch for B6-B10. The five conditions
+remain separated by experiment directories, result paths and commits; separate
+Git branches are not required.
 
 ```bash
 git fetch origin --prune
-git switch -c experiment/b6-two-block-clip 'origin/merge-A&B'
-# Use the corresponding focused name for B7-B10.
+git switch --track origin/ab-supplementary-experiments
 git status --short
 git rev-parse HEAD
 ```
 
-Suggested branches:
+If the remote branch has not yet been created, the project owner creates it once
+from the latest integration branch:
 
-```text
-experiment/b6-two-block-clip
-experiment/b7-full-visual-clip
-experiment/b8-gated-residual
-experiment/b9-log-huber
-experiment/b10-energy-consistency
+```bash
+git switch -c ab-supplementary-experiments 'origin/merge-A&B'
+git push -u origin ab-supplementary-experiments
 ```
 
-Never place two conditions in one result directory or silently overwrite a
-failed attempt. Preserve a failed directory with an attempt suffix and record
-the failure.
+Commit each planned protocol, implementation and completed result separately so
+reviewers can inspect B6, B7, B8, B9 and B10 independently. Never place two
+conditions in one result directory or silently overwrite a failed attempt.
+Preserve a failed directory with an attempt suffix and record the failure.
 
 ## 3. Shared data, inputs and non-notebook setup
 
@@ -88,16 +88,26 @@ Colab/Drive setup it is:
 /content/drive/MyDrive/ECE539-FoodNutritionEst/005-b-input-comparison
 ```
 
-Required external artifacts:
+External artifacts that must be transferred through shared storage, not Git:
 
 ```text
 images/<dish_id>/rgb.png
 crops/<dish_id>/crop_rgb.png
 clip_original.npz
 clip_crop.npz
-results/B4/dev_predictions_seed{0,1,2}.csv
-results/B4/metrics.json
 ```
+
+The B4 metrics and three development prediction CSVs are already committed
+under `experiments/006-b-natural-crop/results/B4/`; the teammate gets them by
+cloning the repository and does not need a second copy from Drive.
+
+Do **not** upload raw images, crops or `.npz` arrays to the GitHub repository.
+Share the external run folder through a team-approved Google Drive folder,
+school storage or another approved large-artifact location. The path shown below
+is local to the owner's mounted Drive and will not automatically exist in the
+teammate's account. Grant the teammate read access; they should add a Drive
+shortcut or copy the folder to their own approved workspace, set `SOURCE_ROOT`
+to that mounted path, and verify the hashes/counts before use.
 
 Verified feature hashes:
 
@@ -449,18 +459,22 @@ meaningful attempt, including OOMs and negative results. Update
 
 ## 12. Git and review handoff
 
-For each condition:
+Use the single `ab-supplementary-experiments` branch for all five conditions:
 
-1. Start from the specified baseline branch/commit and create a focused branch.
-2. Commit the planned protocol before the full run.
-3. Push implementation/protocol so the exact execution commit exists remotely.
-4. Run from a clean checkout and capture `git rev-parse HEAD` plus `git status`.
-5. Commit only small reviewable evidence and English records.
-6. Push the branch and open a PR into `merge-A&B` (not directly into `main`).
-7. PR description must state purpose, technical change, commands, environment,
+1. Pull the latest shared supplementary branch before starting a condition.
+2. Create that condition's separate experiment directory and result path.
+3. Commit the planned protocol before the full run; use one identifiable commit
+   per planned condition rather than combining multiple protocols.
+4. Push implementation/protocol so the exact execution commit exists remotely.
+5. Run from a clean checkout and capture `git rev-parse HEAD` plus `git status`.
+6. Commit only small reviewable evidence and English records, with a separate
+   result commit for each condition.
+7. Push the shared branch regularly. After the assigned conditions are complete,
+   open one PR from `ab-supplementary-experiments` into `merge-A&B`, not `main`.
+8. PR description must state purpose, technical change, commands, environment,
    results, uncertainty, files kept externally, interface changes and final-test
    access status.
-8. Request review from a teammate who did not run the condition.
+9. Request review from a teammate who did not run the conditions.
 
 Do not merge B9 before B8's implementation/result source is explicit, or B10
 before B9's source is explicit. Preserve negative results; do not rewrite an
@@ -478,5 +492,5 @@ A condition is complete only when all are true:
 - [ ] Large artifacts have hashes and external access instructions.
 - [ ] Unit/interface tests and `git diff --check` pass.
 - [ ] README, run record, experiment index and development log agree.
-- [ ] Branch is pushed and another teammate is requested for review.
+- [ ] The shared supplementary branch is pushed and another teammate is requested for review.
 
