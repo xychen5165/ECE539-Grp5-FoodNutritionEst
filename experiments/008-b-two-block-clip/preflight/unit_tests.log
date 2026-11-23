@@ -1,0 +1,16 @@
+$BASE_GPU_ENV/lib/python3.9/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+test_shared_visual_update_freeze_and_checkpoint_reload (test_b6_two_block_clip.B6Tests) ... ok
+test_two_blocks_selected_and_block_nine_frozen (test_b6_two_block_clip.B6Tests) ... ok
+test_b5_selects_only_last_visual_block_and_post_projection (test_b_input_comparison.InputComparisonTests) ... ok
+test_geometry_has_declared_order_and_values (test_b_input_comparison.InputComparisonTests) ... ok
+test_models_have_expected_interfaces_and_matched_capacity (test_b_input_comparison.InputComparisonTests) ... ok
+test_natural_crop_rejects_degenerate_masks (test_b_input_comparison.InputComparisonTests) ... ok
+test_natural_crop_uses_mask_bbox_margin_and_clamps (test_b_input_comparison.InputComparisonTests) ... ok
+test_selection_reads_only_train_and_dev (test_b_input_comparison.InputComparisonTests) ... ok
+test_standardization_fits_training_only (test_b_input_comparison.InputComparisonTests) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.701s
+
+OK

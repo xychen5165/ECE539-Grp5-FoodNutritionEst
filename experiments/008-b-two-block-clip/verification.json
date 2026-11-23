@@ -1,0 +1,100 @@
+{
+  "status": "passed",
+  "execution_commit": "b45165e6824513989a65cad6edab3deb210ff9fc",
+  "training_log_rows": 90,
+  "canonical_dev_dishes": 538,
+  "dev_plate_groups": 182,
+  "all_three_seeds_verified": true,
+  "source_matches_clean_execution_snapshot": true,
+  "csv_rounding_tolerances": {
+    "normalized_mae": 0.0001,
+    "physical_mae": 0.002,
+    "bootstrap_endpoints": 0.0002
+  },
+  "seeds": {
+    "0": {
+      "normalized_nutrient_mae_from_csv": 0.3002506481554893,
+      "mae_from_csv": {
+        "mass_g": 39.643446096654266,
+        "energy_kcal": 60.24394237918214,
+        "protein_g": 5.399029739776951,
+        "carbohydrate_g": 5.888824907063201,
+        "fat_g": 4.652461152416353
+      },
+      "bootstrap_95ci_from_csv": [
+        0.26051816593811855,
+        0.34184145240223573
+      ],
+      "best_epoch": 30,
+      "prediction_rows": 538,
+      "parameter_and_reload_checks": true
+    },
+    "1": {
+      "normalized_nutrient_mae_from_csv": 0.2976383925831923,
+      "mae_from_csv": {
+        "mass_g": 39.526715613382905,
+        "energy_kcal": 62.059823791821564,
+        "protein_g": 5.43329033457249,
+        "carbohydrate_g": 5.570894795539035,
+        "fat_g": 4.616006877323421
+      },
+      "bootstrap_95ci_from_csv": [
+        0.2596883954889535,
+        0.3406861017013303
+      ],
+      "best_epoch": 24,
+      "prediction_rows": 538,
+      "parameter_and_reload_checks": true
+    },
+    "2": {
+      "normalized_nutrient_mae_from_csv": 0.30082845234579925,
+      "mae_from_csv": {
+        "mass_g": 40.346200743494435,
+        "energy_kcal": 58.8930702602231,
+        "protein_g": 5.491428252788105,
+        "carbohydrate_g": 5.925731970260222,
+        "fat_g": 4.660731784386612
+      },
+      "bootstrap_95ci_from_csv": [
+        0.25994530191134635,
+        0.3446082657626479
+      ],
+      "best_epoch": 29,
+      "prediction_rows": 538,
+      "parameter_and_reload_checks": true
+    }
+  },
+  "paired_comparisons_recomputed": [
+    {
+      "comparison": "B6_minus_B4",
+      "seed": 0,
+      "passed": true
+    },
+    {
+      "comparison": "B6_minus_B4",
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "comparison": "B6_minus_B4",
+      "seed": 2,
+      "passed": true
+    },
+    {
+      "comparison": "B6_minus_B5",
+      "seed": 0,
+      "passed": true
+    },
+    {
+      "comparison": "B6_minus_B5",
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "comparison": "B6_minus_B5",
+      "seed": 2,
+      "passed": true
+    }
+  ],
+  "test_images_or_labels_read": false
+}

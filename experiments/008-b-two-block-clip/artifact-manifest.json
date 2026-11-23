@@ -1,0 +1,92 @@
+{
+  "results/B6/checkpoints/seed0.pt": {
+    "sha256": "934a396358e55dee873976e4f867347a856ce869f2bb25ae8861ec783d3af5ff",
+    "bytes": 58565913,
+    "location": "$B6_RUN_ROOT/results/B6/checkpoints/seed0.pt"
+  },
+  "results/B6/checkpoints/seed1.pt": {
+    "sha256": "8527e10d071baf40974277f0dbc615200733e36c3a6d6b6f75d3d061ba5c6aa9",
+    "bytes": 58565913,
+    "location": "$B6_RUN_ROOT/results/B6/checkpoints/seed1.pt"
+  },
+  "results/B6/checkpoints/seed2.pt": {
+    "sha256": "81d9dc60f213623903860d511f58efb7e9c259456ef43ac7750e6ef74c23c2c0",
+    "bytes": 58565913,
+    "location": "$B6_RUN_ROOT/results/B6/checkpoints/seed2.pt"
+  },
+  "input_artifacts": {
+    "source_root": "$SOURCE_ROOT",
+    "access": "Team-designated cs539 server workspace or approved shared storage; obtain access from project owner.",
+    "original_images": {
+      "count": 2673,
+      "handoff_manifest_sha256": "be582d554de639e493c29ab0faff5b3a7dcdee1ce6b49ead1c2f57857fd13787"
+    },
+    "natural_crops": {
+      "count": 2673,
+      "handoff_manifest_sha256": "460f2960dbfc248790860098c29977bde7bcf1d64e9cc486e4d962844bb0aab1"
+    },
+    "feature_sha256": {
+      "clip_original.npz": "307f2e7cdad43bb635d88e1e0e49b237631e76d0ff32d16fdf8a1098e2aabaa2",
+      "clip_crop.npz": "3e7d4a418445c3914f29fd2eb4b13115fc124b94f8c6ebebb26460e748ea55fd"
+    },
+    "official_clip_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+    "features": {
+      "clip_original.npz": {
+        "sha256": "307f2e7cdad43bb635d88e1e0e49b237631e76d0ff32d16fdf8a1098e2aabaa2",
+        "bytes": 5636258,
+        "location": "$SOURCE_ROOT/clip_original.npz"
+      },
+      "clip_crop.npz": {
+        "sha256": "3e7d4a418445c3914f29fd2eb4b13115fc124b94f8c6ebebb26460e748ea55fd",
+        "bytes": 5636254,
+        "location": "$SOURCE_ROOT/clip_crop.npz"
+      }
+    },
+    "official_clip": {
+      "sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+      "bytes": 353976522,
+      "location": "$CLIP_CACHE/ViT-B-32.pt",
+      "access": "Obtain official OpenAI weights through OpenCLIP 2.24.0 pretrained=openai; verify SHA256."
+    }
+  },
+  "small_results_archive": {
+    "bytes": 134670,
+    "sha256": "2ca0d014db585b1e7a0588ab3eee0ad600f6f8e0a54e6b18878dc8ae24374c42",
+    "location": "$B6_RUN_ROOT/b6-small-results.zip"
+  },
+  "publication_note": "Unit-test package paths use $BASE_GPU_ENV; numeric result files and supplied B5 evidence are otherwise unchanged.",
+  "published_small_file_sha256": {
+    "CONTRIBUTING_REVIEW.md": "323d064fe1fe8f9f72444c0aa626808decd8a52c3ee60c61f694d6cb97e3a5bf",
+    "README.md": "62bcd6a0e5e81f3a9d0af6aaf02fac7ee22a3f50a385951bc8b649288e55e102",
+    "baseline-comparison-status.json": "2249d2e8533bfbf8cfc75f9157910a2bdc85ca9b9697fe872d3c76d799ee64cf",
+    "baselines/B5/dev_predictions_seed0.csv": "9739b1b0c8a49f8ba1bc88039fd5fc1847eb8fa88dd73376facf67f981be9139",
+    "baselines/B5/dev_predictions_seed1.csv": "c463b4728cbd162b0e650ede9055804181983b6ad78cbcce0059903ccb8751d5",
+    "baselines/B5/dev_predictions_seed2.csv": "ab5a34efce58a5ad4452cc8652c904e1865530e3016724e2850cbbe36b58152c",
+    "baselines/B5/metrics.json": "68b17a8048c0dff48ad8d53e43152a6dcc62e64089ccc92194d1309fe9269dd4",
+    "baselines/B5/training_log.csv": "a5309f7ad25f29f480f1f4f6b8093be60a82c42bd404951b7148c007e0e2de0d",
+    "baselines/b5-handoff-check.json": "972c9f80bafac663b1bd41c97c7bdee655fe272fd9ab7a4f99e7e08f56dd017e",
+    "comparison-initial-B4.json": "103b6eed6ed547a36c618f63ae12f759f3eb39781f8c89e8705078b869f59429",
+    "comparison.json": "6cdf27c5812a75765c7862c90a5843ad7d2c35e9edb9a91f9afa07248b0493e8",
+    "data-preflight.json": "3bc3e88733adc6d19c0d6bd6ae5b1cffd93e46c73189d4e63f5eb0f0428f6d18",
+    "environment.json": "ef369c6b4361c49ac452b4911180d0e35c54118d5291b11693644445efc9d038",
+    "execution-status-initial.json": "58026163b7af6b178af8f6ed1982e8a7dc928c18d78477600de1ee713b18499a",
+    "execution-status.json": "fb294d355bca7bc300dab90d35a83d358c67841a6ba068d60f26e024f62d94ed",
+    "learning_curves.png": "a64ca5713eb5eb0b5d98bf671c4d132fb5972449193b609c733ac69d04eab9b4",
+    "plot_curves.py": "a74fed2f37d6072292ff5646b7e2a9e3e1d3d0ebdaf6808652d686279e4409de",
+    "preflight/final-source-check.json": "9c10f780fe27602a2f41ce1cba5becc1d21388e20cf0c82fa8f66699a89833ea",
+    "preflight/gpu-preflight.json": "2752fff48e5e69779a6fd83bcb864fb356d09f59f1fe68169cfb6abd95cda78b",
+    "preflight/smoke_metrics.json": "5071b4126b28906d97274a8b2c954aa7cdc5f1ba4a79fcf846505ced710c58c9",
+    "preflight/unit_tests.log": "62ee24ff5c487be8def326440b50350f8a42c588d12f767d8eeaff16f63a0450",
+    "protocol.json": "3f81e34de2bab1c952af6092b846a9810ba4cc9789ff325eba2f9ced7d549489",
+    "reporting-environment.json": "510017d18db596a6a7a3bc2c148b91091630ec393992d911fabb7b1098fbc64e",
+    "results/B6/dev_predictions_seed0.csv": "5e492a1195cc55ea1d52d5562705b55e72877fdb534fe9f3ca14a3e252513dd8",
+    "results/B6/dev_predictions_seed1.csv": "9a665b2b8db5a10265c74abeea28de7534ff08048544b9501b08f164c20694da",
+    "results/B6/dev_predictions_seed2.csv": "9fc7410fb92c79f58477a1744a01b7702193b0687deebdad9b6ca6da7795895d",
+    "results/B6/metrics.json": "44e9890790ccfd2c3688fbb2eb3c36b5a0df7a3df2711051525b73d6e0a6afb9",
+    "results/B6/training_log.csv": "1c404b8c3a2f2b2c79764cc105b54c79b8c331503361ba99e412f71820f5057f",
+    "run-records/B6.md": "f228141b47a3279565fd013d83756f4ea6b96363e62d489515471c66db5c31e9",
+    "verification.json": "b6343e8dd499c20ad1115504d1b652e61da44972e7ef2bb405c39fe9f65e9334",
+    "verify_b5_handoff.py": "2b124304f4cc79273448a15c35d37fd096dada4cff1238647e77d59be07cb8b7",
+    "verify_report.py": "64911029bf31b8fbabb0df6799fecf51e5b49cf01dbd03239b0d966f618df9b0"
+  }
+}

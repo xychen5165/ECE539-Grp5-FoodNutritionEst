@@ -1,0 +1,99 @@
+{
+  "interpretation": "Negative candidate-minus-baseline deltas favor B6",
+  "n_dev": 538,
+  "n_dev_groups": 182,
+  "bootstrap_draws": 1000,
+  "bootstrap_seed": 0,
+  "primary_comparison_status": "completed",
+  "comparisons": {
+    "B6_minus_B4": {
+      "0": {
+        "mae_delta": {
+          "mass_g": -5.01909107806695,
+          "energy_kcal": -3.6059862453531863,
+          "protein_g": -0.6520122676579945,
+          "carbohydrate_g": -0.39422379182156053,
+          "fat_g": -0.3898873605948019
+        },
+        "normalized_nutrient_mae_delta": -0.025171653144942963,
+        "paired_plate_bootstrap_95ci": [
+          -0.03804774070638366,
+          -0.012368178301471099
+        ]
+      },
+      "1": {
+        "mae_delta": {
+          "mass_g": -4.426566914498153,
+          "energy_kcal": -5.1790828996282485,
+          "protein_g": -0.6440457249070715,
+          "carbohydrate_g": -0.569542379182157,
+          "fat_g": -0.4390460966542742
+        },
+        "normalized_nutrient_mae_delta": -0.02984717069862597,
+        "paired_plate_bootstrap_95ci": [
+          -0.041349024588065844,
+          -0.01881129504516137
+        ]
+      },
+      "2": {
+        "mae_delta": {
+          "mass_g": -6.412011152416341,
+          "energy_kcal": -6.423082156133731,
+          "protein_g": -0.4533959107806709,
+          "carbohydrate_g": -0.46460223048327176,
+          "fat_g": -0.21708587360595022
+        },
+        "normalized_nutrient_mae_delta": -0.022744921849104927,
+        "paired_plate_bootstrap_95ci": [
+          -0.034427591725274403,
+          -0.011525003663015652
+        ]
+      }
+    },
+    "B6_minus_B5": {
+      "0": {
+        "mae_delta": {
+          "mass_g": -4.124189591078036,
+          "energy_kcal": -4.3831988847583645,
+          "protein_g": -0.38939962825278585,
+          "carbohydrate_g": -0.15121635687731505,
+          "fat_g": -0.22464014869888782
+        },
+        "normalized_nutrient_mae_delta": -0.015954787416766314,
+        "paired_plate_bootstrap_95ci": [
+          -0.026431469527330283,
+          -0.006762754180783202
+        ]
+      },
+      "1": {
+        "mae_delta": {
+          "mass_g": -1.343873605947941,
+          "energy_kcal": -1.8523773234201073,
+          "protein_g": -0.3199758364312304,
+          "carbohydrate_g": -0.3318851301115249,
+          "fat_g": -0.22528921933085666
+        },
+        "normalized_nutrient_mae_delta": -0.014901666282296888,
+        "paired_plate_bootstrap_95ci": [
+          -0.026058130047436595,
+          -0.004454415073227869
+        ]
+      },
+      "2": {
+        "mae_delta": {
+          "mass_g": -0.7497992565055824,
+          "energy_kcal": -8.912739405204434,
+          "protein_g": -0.4285368029739791,
+          "carbohydrate_g": -0.09791970260222715,
+          "fat_g": -0.2713293680297477
+        },
+        "normalized_nutrient_mae_delta": -0.02113668670267177,
+        "paired_plate_bootstrap_95ci": [
+          -0.031918699438702486,
+          -0.01142566084432418
+        ]
+      }
+    }
+  },
+  "final_test_accessed": false
+}

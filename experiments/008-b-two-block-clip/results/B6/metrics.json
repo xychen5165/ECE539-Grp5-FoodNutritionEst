@@ -1,0 +1,182 @@
+{
+  "status": "completed",
+  "condition": "B6",
+  "code_commit": "b45165e6824513989a65cad6edab3deb210ff9fc",
+  "settings": {
+    "image_root": "/home/yuyf/cs539/b6-inputs",
+    "artifact_root": "/home/yuyf/cs539/b6-inputs",
+    "output_root": "/home/yuyf/cs539/b6-run-20261122/results",
+    "clip_cache": "/home/yuyf/cs539/b6-clip-cache",
+    "epochs": 30,
+    "warmup_epochs": 3,
+    "batch_size": 8,
+    "accumulation_steps": 4,
+    "head_lr": 0.001,
+    "clip_lr": 1e-05,
+    "weight_decay": 0.001,
+    "workers": 2,
+    "seeds": [
+      0,
+      1,
+      2
+    ]
+  },
+  "n_train": 2135,
+  "n_dev": 538,
+  "target_order": [
+    "mass_g",
+    "energy_kcal",
+    "protein_g",
+    "carbohydrate_g",
+    "fat_g"
+  ],
+  "parameter_counts": {
+    "head": 66309,
+    "selected_visual": 14570496
+  },
+  "selected_visual_names": [
+    "proj",
+    "transformer.resblocks.10.ln_1.weight",
+    "transformer.resblocks.10.ln_1.bias",
+    "transformer.resblocks.10.attn.in_proj_weight",
+    "transformer.resblocks.10.attn.in_proj_bias",
+    "transformer.resblocks.10.attn.out_proj.weight",
+    "transformer.resblocks.10.attn.out_proj.bias",
+    "transformer.resblocks.10.ln_2.weight",
+    "transformer.resblocks.10.ln_2.bias",
+    "transformer.resblocks.10.mlp.c_fc.weight",
+    "transformer.resblocks.10.mlp.c_fc.bias",
+    "transformer.resblocks.10.mlp.c_proj.weight",
+    "transformer.resblocks.10.mlp.c_proj.bias",
+    "transformer.resblocks.11.ln_1.weight",
+    "transformer.resblocks.11.ln_1.bias",
+    "transformer.resblocks.11.attn.in_proj_weight",
+    "transformer.resblocks.11.attn.in_proj_bias",
+    "transformer.resblocks.11.attn.out_proj.weight",
+    "transformer.resblocks.11.attn.out_proj.bias",
+    "transformer.resblocks.11.ln_2.weight",
+    "transformer.resblocks.11.ln_2.bias",
+    "transformer.resblocks.11.mlp.c_fc.weight",
+    "transformer.resblocks.11.mlp.c_fc.bias",
+    "transformer.resblocks.11.mlp.c_proj.weight",
+    "transformer.resblocks.11.mlp.c_proj.bias",
+    "ln_post.weight",
+    "ln_post.bias"
+  ],
+  "inputs_sha256": {
+    "original": "307f2e7cdad43bb635d88e1e0e49b237631e76d0ff32d16fdf8a1098e2aabaa2",
+    "crop": "3e7d4a418445c3914f29fd2eb4b13115fc124b94f8c6ebebb26460e748ea55fd"
+  },
+  "environment": {
+    "python": "3.9.25",
+    "torch": "2.8.0+cu128",
+    "numpy": "2.0.2",
+    "platform": "Linux-5.14.0-687.15.1.el9_8.x86_64-x86_64-with-glibc2.34"
+  },
+  "per_seed": {
+    "0": {
+      "checkpoint_reload_verified": true,
+      "best_epoch": 30,
+      "seconds": 539.2568887090019,
+      "dev": {
+        "n_dishes": 538,
+        "n_plates": 182,
+        "mae": {
+          "mass_g": 39.643,
+          "energy_kcal": 60.244,
+          "protein_g": 5.399,
+          "carbohydrate_g": 5.889,
+          "fat_g": 4.652
+        },
+        "mae_pct_of_mean": {
+          "mass_g": 18.3,
+          "energy_kcal": 23.2,
+          "protein_g": 29.5,
+          "carbohydrate_g": 31.8,
+          "fat_g": 34.4
+        },
+        "normalized_nutrient_mae": 0.3003,
+        "normalized_nutrient_mae_95ci": [
+          0.2605,
+          0.3418
+        ]
+      },
+      "parameter_checks": {
+        "frozen_visual_unchanged": true,
+        "text_tower_unchanged": true,
+        "selected_visual_updated": true
+      }
+    },
+    "1": {
+      "checkpoint_reload_verified": true,
+      "best_epoch": 24,
+      "seconds": 539.8150084289955,
+      "dev": {
+        "n_dishes": 538,
+        "n_plates": 182,
+        "mae": {
+          "mass_g": 39.527,
+          "energy_kcal": 62.06,
+          "protein_g": 5.433,
+          "carbohydrate_g": 5.571,
+          "fat_g": 4.616
+        },
+        "mae_pct_of_mean": {
+          "mass_g": 18.2,
+          "energy_kcal": 23.9,
+          "protein_g": 29.6,
+          "carbohydrate_g": 30.0,
+          "fat_g": 34.1
+        },
+        "normalized_nutrient_mae": 0.2976,
+        "normalized_nutrient_mae_95ci": [
+          0.2597,
+          0.3407
+        ]
+      },
+      "parameter_checks": {
+        "frozen_visual_unchanged": true,
+        "text_tower_unchanged": true,
+        "selected_visual_updated": true
+      }
+    },
+    "2": {
+      "checkpoint_reload_verified": true,
+      "best_epoch": 29,
+      "seconds": 541.446793406998,
+      "dev": {
+        "n_dishes": 538,
+        "n_plates": 182,
+        "mae": {
+          "mass_g": 40.346,
+          "energy_kcal": 58.893,
+          "protein_g": 5.491,
+          "carbohydrate_g": 5.926,
+          "fat_g": 4.661
+        },
+        "mae_pct_of_mean": {
+          "mass_g": 18.6,
+          "energy_kcal": 22.7,
+          "protein_g": 30.0,
+          "carbohydrate_g": 32.0,
+          "fat_g": 34.5
+        },
+        "normalized_nutrient_mae": 0.3008,
+        "normalized_nutrient_mae_95ci": [
+          0.2599,
+          0.3446
+        ]
+      },
+      "parameter_checks": {
+        "frozen_visual_unchanged": true,
+        "text_tower_unchanged": true,
+        "selected_visual_updated": true
+      }
+    }
+  },
+  "summary": {
+    "normalized_nutrient_mae_mean": 0.2995666666666667,
+    "normalized_nutrient_mae_std": 0.0017214335111567349,
+    "seconds": 1625.1842434610007
+  }
+}

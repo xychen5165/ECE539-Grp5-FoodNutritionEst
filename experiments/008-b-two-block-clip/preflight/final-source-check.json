@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "execution_commit": "b45165e6824513989a65cad6edab3deb210ff9fc",
+  "compileall_exit_code": 0,
+  "git_diff_check_exit_code": 0,
+  "final_git_status": "",
+  "source_record_location": "$B6_RUN_ROOT/final-source-check.json"
+}

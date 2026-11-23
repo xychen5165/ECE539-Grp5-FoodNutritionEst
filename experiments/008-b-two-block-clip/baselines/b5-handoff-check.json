@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "method": "B5 last visual block, not obsolete gated-fusion numbering",
+  "source_name": "B5",
+  "source_kind": "already_extracted_directory",
+  "source_archive_sha256": null,
+  "source_code_commit": "a71cdd71d333b8ea46be18514388cfd58a4cdbe4",
+  "frozen_B5_implementation_matches": true,
+  "n_train": 2135,
+  "n_dev": 538,
+  "dev_plate_groups": 182,
+  "training_log_rows": 90,
+  "seeds": {
+    "0": {
+      "normalized_nutrient_mae_from_csv": 0.3162054355722556,
+      "reported": 0.3162,
+      "best_epoch": 30
+    },
+    "1": {
+      "normalized_nutrient_mae_from_csv": 0.3125400588654892,
+      "reported": 0.3125,
+      "best_epoch": 29
+    },
+    "2": {
+      "normalized_nutrient_mae_from_csv": 0.321965139048471,
+      "reported": 0.322,
+      "best_epoch": 29
+    }
+  },
+  "feature_hashes_match_handoff": true,
+  "canonical_labels_and_ids_match": true,
+  "checkpoint_weights_loaded_or_executed": false,
+  "test_images_or_labels_read": false,
+  "small_file_sha256": {
+    "metrics.json": "68b17a8048c0dff48ad8d53e43152a6dcc62e64089ccc92194d1309fe9269dd4",
+    "training_log.csv": "a5309f7ad25f29f480f1f4f6b8093be60a82c42bd404951b7148c007e0e2de0d",
+    "dev_predictions_seed0.csv": "9739b1b0c8a49f8ba1bc88039fd5fc1847eb8fa88dd73376facf67f981be9139",
+    "dev_predictions_seed1.csv": "c463b4728cbd162b0e650ede9055804181983b6ad78cbcce0059903ccb8751d5",
+    "dev_predictions_seed2.csv": "ab5a34efce58a5ad4452cc8652c904e1865530e3016724e2850cbbe36b58152c"
+  }
+}

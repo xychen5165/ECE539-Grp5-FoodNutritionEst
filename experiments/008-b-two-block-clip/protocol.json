@@ -1,6 +1,6 @@
 {
-  "status": "planned_before_execution",
-  "implementation_commit": null,
+  "status": "frozen_before_execution",
+  "implementation_commit": "b45165e6824513989a65cad6edab3deb210ff9fc",
   "date": "2026-11-22 America/Chicago",
   "question": "Does adapting visual blocks 10 and 11 improve over last-block B5 and frozen B4?",
   "data": {
@@ -89,5 +89,6 @@
     ],
     "data_requirement": "Verify all 2673 original/crop pairs against handoff checksums before measured training",
     "failure_policy": "Preserve failed attempts separately; never silently drop dishes or report smoke runs as final results."
-  }
+  },
+  "execution_record": "run-records/B6.md"
 }

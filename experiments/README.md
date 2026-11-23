@@ -18,8 +18,8 @@ The evaluation plan includes a training-set median baseline, an original-versus-
 | [004-ab-integration](004-ab-integration/README.md) | Completed smoke / full comparison pending | Real-image A→B smoke passed; no predictive-benefit claim |
 | [005-b-input-comparison](005-b-input-comparison/README.md) | Completed | B3 0.3384; gray-mask-only B1 worsened, and B2/B3 did not establish improvement over B0 |
 | [006-b-natural-crop](006-b-natural-crop/README.md) | Completed | B4 0.3255; all three paired B4−B0 intervals favored natural-crop dual view |
-| [007-b-partial-clip-finetune](007-b-partial-clip-finetune/README.md) | Running | B5 adapts shared CLIP visual block 11; no final result until all seeds finish |
-| [008-b-two-block-clip](008-b-two-block-clip/README.md) | Preparing | B6 protocol and implementation committed; tests passed, input verification pending; no measured result |
+| [007-b-partial-clip-finetune](007-b-partial-clip-finetune/README.md) | Completed handoff; source record pending | B5 0.3169 +/- 0.0048; verified baseline copy retained with [008](008-b-two-block-clip/baselines/b5-handoff-check.json) |
+| [008-b-two-block-clip](008-b-two-block-clip/README.md) | Completed | B6 0.2996 +/- 0.0017; all paired intervals versus supplied B5 and retained B4 below zero |
 | [Part A method comparison](../A_food_segmentation/method_comparison/README.md) | Completed on development | Five template-based run records; selected no-prompt fine-tuned decoder reached 0.9717 mean IoU |
 
 Record-format and evidence compliance for all entries above is reviewed in
@@ -28,3 +28,7 @@ run, not final-test evaluation or teammate approval.
 
 The remaining B6–B10 numbering, controlled settings, branch workflow and report
 requirements are frozen in the [Part B experiment handoff](b-remaining-experiment-handoff.md).
+
+B5 evidence was supplied during B6 and verified without rerunning B5. Its original
+007 setup record remains historical; the immutable baseline copy and provenance
+used for B6 are retained under 008. B6 stopped before B7-B10.

@@ -1,0 +1,11 @@
+{
+  "experiment": "B6",
+  "git_head": "b45165e6824513989a65cad6edab3deb210ff9fc",
+  "stage": "B6_finished",
+  "measured_training_started": true,
+  "scope": "B6 only; no B7-B10",
+  "start_unix": 1795406455.042255,
+  "primary_B5_comparison": "pending_B5_results",
+  "stop_after_B6": true,
+  "elapsed_seconds": 1689.1605801582336
+}

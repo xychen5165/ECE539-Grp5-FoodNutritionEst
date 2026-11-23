@@ -114,3 +114,18 @@ Inputs must match the handoff byte hashes and canonical train/dev IDs. The
 selected server environment differs from historical Colab and will be reported.
 Completed B5 predictions remain unavailable for the primary comparison. Scope
 is B6 only: B7-B10 are not started.
+
+
+## 2026-11-22 - B6 completed; stop before B7-B10
+
+All 2673 train/dev raw/crop files matched the handoff hashes. Nine unit tests,
+GPU update/freeze checks, smoke/reload validation and compile checks passed.
+B6 ran seeds 0/1/2 for 30 epochs on GPU 0 from clean commit b45165e; selected
+epochs were 30/24/29. Mean normalized nutrient MAE was 0.2996 +/- 0.0017,
+compared with supplied B5 0.3169 +/- 0.0048 and retained B4 0.3255 +/- 0.0020.
+All six paired plate-group intervals favored B6. Numeric results and comparisons
+were independently recomputed from saved predictions. B5's complete handoff
+was verified rather than retrained; its copy is retained with B6. Different
+runtimes are disclosed, and no final-test or isolated architecture-effect claim
+is made. See [008](../experiments/008-b-two-block-clip/README.md) for full evidence.
+All jobs finished; B7-B10 were not started, and no deployment/merge was performed.

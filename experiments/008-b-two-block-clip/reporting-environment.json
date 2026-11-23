@@ -1,0 +1,11 @@
+{
+  "plotting_python": "3.10.12",
+  "matplotlib": "3.9.2",
+  "numpy": "1.26.4",
+  "usage": "Numeric reporting/plots only; model training environment is recorded separately in environment.json.",
+  "numeric_verification": {
+    "python": "3.10.12",
+    "numpy": "2.2.6",
+    "neural_inference_performed": false
+  }
+}

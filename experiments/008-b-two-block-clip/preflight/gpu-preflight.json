@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "synthetic_only": true,
+  "batch": 8,
+  "output_shape": [
+    8,
+    5
+  ],
+  "selected_visual_parameters": 14570496,
+  "text_tower_frozen": true,
+  "block10_updated": true,
+  "block9_unchanged": true,
+  "peak_gpu_memory_mib": 601.8203125,
+  "cold_step_seconds": 0.21169481999822892
+}
