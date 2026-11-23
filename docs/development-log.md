@@ -109,3 +109,18 @@ Use the following format for each entry:
 - Outcome: Development normalized nutrient MAE was 0.3162, 0.3125 and 0.3220 (mean 0.3169, sample SD 0.0048), compared with B4 mean 0.3255. All point deltas favored B5, but only seed 1's paired plate-bootstrap 95% interval excluded zero; seed 0 and 2 crossed zero. Final-test images and labels were not accessed.
 - Lesson and next action: Partial CLIP adaptation is numerically the best B condition so far, but the gain is seed-dependent. It does not alone meet the predeclared two-of-three-interval gate for full visual fine-tuning; B6 can test whether adapting two visual blocks produces more consistent gains.
 - Evidence: [007 protocol, run record and retained results](../experiments/007-b-partial-clip-finetune/README.md), including environment, feature hashes, logs, metrics, ID-keyed predictions and independently reproduced paired comparisons.
+### 2026-11-22 - Component C first runnable implementation
+
+- Contributor: Tardirisu
+- Attempt: Implement adult reference targets, correction-safe local intake records, Chicago-date summaries, and dated Gordon Nutrislice menu normalization/cache.
+- Outcome: Added a standard-library implementation and deterministic tests covering official formula coefficients, editable targets, consumed fractions, corrections, incomplete logs, date rollover, meal-specific caching, and nutrient validation.
+- Lesson and next action: Live Nutrislice availability is external and should be verified separately before integration; connect Component B output and Component D's planner against the documented dictionaries next.
+- Evidence: `tests/test_daily_tracking.py`; command `python -m unittest tests.test_daily_tracking -v`.
+
+### 2026-11-22 - Component C/D interface integration
+
+- Contributor: Tardirisu
+- Attempt: Merge the current C and D branches from `origin/main`, then pass C's normalized menu and daily summary directly into D.
+- Outcome: The initial review found a `nutrients`/`nutrition` field mismatch. Added a narrow adapter and integration tests without changing D's ranking algorithm.
+- Lesson and next action: Maintain the C output dictionaries as the integration contract and run the same test whenever either component changes.
+- Evidence: `tests/test_cd_integration.py`; command `python -m unittest discover -s tests -v`.
