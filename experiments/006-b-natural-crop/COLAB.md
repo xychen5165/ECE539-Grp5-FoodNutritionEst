@@ -8,7 +8,7 @@ not rerun downloads, SAM segmentation, original features, B0 or B2.
 !git pull origin 'merge-A&B'
 !git status --short
 !git rev-parse HEAD
-!git diff --exit-code cd32266dbfe944e832650ac088c6bf858874c404 -- \
+!git diff --exit-code c059502fe6998cb54507897ddc140a4d5070627d -- \
   B_nutrition_estimation/prepare_crop_comparison.py \
   B_nutrition_estimation/train_crop_comparison.py \
   B_nutrition_estimation/compare_crop_condition.py \
