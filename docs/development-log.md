@@ -101,3 +101,11 @@ Use the following format for each entry:
 - Outcome: Defined branch and experiment directories, exact intended changes, matched settings, B7 run gate, preflight tests, paired comparisons, evidence layout, final-test prohibition and contribution/review checklist for teammate handoff.
 - Lesson and next action: B6/B7 test encoder adaptation depth; B8-B10 test fusion and objective changes as a separate cumulative route. Each condition must freeze its own protocol before execution and preserve negative results.
 - Evidence: [Part B remaining experiment handoff](../experiments/b-remaining-experiment-handoff.md).
+
+### 2026-11-22 - Partial CLIP adaptation B5 on Colab
+
+- Contributor: Tardirisu (Codex-assisted).
+- Attempt: Reused B4's original plus 10%-context natural-crop inputs and dual-view head. After three head-only warmup epochs, fine-tuned the shared CLIP ViT-B/32 visual block 11, post-layer normalization and projection for seeds 0–2.
+- Outcome: Development normalized nutrient MAE was 0.3162, 0.3125 and 0.3220 (mean 0.3169, sample SD 0.0048), compared with B4 mean 0.3255. All point deltas favored B5, but only seed 1's paired plate-bootstrap 95% interval excluded zero; seed 0 and 2 crossed zero. Final-test images and labels were not accessed.
+- Lesson and next action: Partial CLIP adaptation is numerically the best B condition so far, but the gain is seed-dependent. It does not alone meet the predeclared two-of-three-interval gate for full visual fine-tuning; B6 can test whether adapting two visual blocks produces more consistent gains.
+- Evidence: [007 protocol, run record and retained results](../experiments/007-b-partial-clip-finetune/README.md), including environment, feature hashes, logs, metrics, ID-keyed predictions and independently reproduced paired comparisons.

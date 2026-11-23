@@ -1,0 +1,10 @@
+{
+  "clip_original.npz": {
+    "sha256": "307f2e7cdad43bb635d88e1e0e49b237631e76d0ff32d16fdf8a1098e2aabaa2",
+    "bytes": 5636258
+  },
+  "clip_crop.npz": {
+    "sha256": "3e7d4a418445c3914f29fd2eb4b13115fc124b94f8c6ebebb26460e748ea55fd",
+    "bytes": 5636254
+  }
+}
