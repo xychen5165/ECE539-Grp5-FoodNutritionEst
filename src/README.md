@@ -6,4 +6,4 @@ Experiments and the future product interface should call the same shared logic. 
 
 ## Implemented packages
 
-- `daily_tracking`: Component C adult reference targets, correction-safe local intake tracking, Chicago-date daily summaries, and normalized Gordon Nutrislice menu access. It uses only the Python standard library; see [`C_daily_tracking/README.md`](../C_daily_tracking/README.md).
+- Component C and D implementations live in their component directories: [`C_daily_tracking`](../C_daily_tracking/) and [`D_meal_planning`](../D_meal_planning/).

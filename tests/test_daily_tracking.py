@@ -5,7 +5,7 @@ import unittest
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
-from src.daily_tracking import (
+from C_daily_tracking import (
     DailyTracker,
     GordonMenuClient,
     IntakeEntry,

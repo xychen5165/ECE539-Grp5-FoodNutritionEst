@@ -1,6 +1,6 @@
 # C - Daily nutrition tracking
 
-Component workspace for reference targets, confirmed intake records and menu access. The reusable implementation is in [`src/daily_tracking`](../src/daily_tracking/).
+Component workspace and implementation for reference targets, confirmed intake records and menu access.
 
 ## Deliverables
 - Implement sourced, editable reference targets from profile and goal inputs.
@@ -31,7 +31,7 @@ from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from src.daily_tracking import DailyTracker, IntakeEntry, Profile, calculate_reference_targets
+from C_daily_tracking import DailyTracker, IntakeEntry, Profile, calculate_reference_targets
 
 targets = calculate_reference_targets(Profile(30, 180, 80, "male", "active"))
 tracker = DailyTracker(Path.home() / ".food-nutrition" / "intake.sqlite3")

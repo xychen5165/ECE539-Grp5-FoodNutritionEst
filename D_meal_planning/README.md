@@ -1,6 +1,6 @@
 # D - Gordon meal planning
 
-Component D is implemented in [`src/meal_planner.py`](../src/meal_planner.py). It ranks Gordon menu combinations for review. A recommendation enters component C's intake log only after the user confirms consumption.
+Component D is implemented in [`meal_planner.py`](meal_planner.py). It ranks Gordon menu combinations for review. A recommendation enters component C's intake log only after the user confirms consumption.
 
 ## What it does
 
@@ -15,7 +15,7 @@ Component D is implemented in [`src/meal_planner.py`](../src/meal_planner.py). I
 ## Python interface
 
 ```python
-from src.meal_planner import plan_meals
+from D_meal_planning import plan_meals
 
 result = plan_meals(
     menu_items=[
@@ -62,7 +62,7 @@ For the direct C→D handoff, pass C's two output dictionaries without manually
 renaming fields:
 
 ```python
-from src.meal_planner import plan_from_component_c
+from D_meal_planning import plan_from_component_c
 
 result = plan_from_component_c(menu, daily_summary, top_k=5)
 ```

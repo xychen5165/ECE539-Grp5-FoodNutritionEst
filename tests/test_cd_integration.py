@@ -5,8 +5,8 @@ import unittest
 from datetime import date, datetime, timezone
 from pathlib import Path
 
-from src.daily_tracking import DailyTracker, IntakeEntry, Profile, calculate_reference_targets
-from src.meal_planner import plan_from_component_c
+from C_daily_tracking import DailyTracker, IntakeEntry, Profile, calculate_reference_targets
+from D_meal_planning import plan_from_component_c
 
 
 class ComponentCDIntegrationTests(unittest.TestCase):
