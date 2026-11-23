@@ -37,21 +37,21 @@ print(RUN_ROOT)
 Capture the new runtime without replacing experiment 005's environment record:
 
 ```bash
-!python B_nutrition_estimation/capture_colab_environment.py \
+!python /content/food-nutrition/B_nutrition_estimation/capture_crop_environment.py \
   --output "$RUN_ROOT/environment-006.json" --run-root "$RUN_ROOT"
 ```
 
 Generate deterministic crops locally in the Drive run root:
 
 ```bash
-!python B_nutrition_estimation/prepare_crop_comparison.py crop \
+!python /content/food-nutrition/B_nutrition_estimation/prepare_crop_comparison.py crop \
   --root "$RUN_ROOT" --margin-fraction 0.10
 ```
 
 Extract frozen CLIP features on the GPU:
 
 ```bash
-!python B_nutrition_estimation/prepare_crop_comparison.py features \
+!python /content/food-nutrition/B_nutrition_estimation/prepare_crop_comparison.py features \
   --root "$RUN_ROOT" --clip-cache "$RUN_ROOT/checkpoints" \
   --batch-size 64 --device cuda
 ```
@@ -60,16 +60,16 @@ Train B4. An existing `results/B4` is rejected; preserve failed attempts under a
 renamed directory before retrying.
 
 ```bash
-!python B_nutrition_estimation/train_crop_comparison.py \
+!python /content/food-nutrition/B_nutrition_estimation/train_crop_comparison.py \
   --input-root "$RUN_ROOT" --output-root "$RUN_ROOT/results"
 ```
 
 Compare with the retained B0 and B2 predictions, then package small evidence:
 
 ```bash
-!python B_nutrition_estimation/compare_crop_condition.py \
+!python /content/food-nutrition/B_nutrition_estimation/compare_crop_condition.py \
   --results "$RUN_ROOT/results" --output "$RUN_ROOT/comparison-006.json"
-!python B_nutrition_estimation/package_crop_results.py \
+!python /content/food-nutrition/B_nutrition_estimation/package_crop_results.py \
   --run-root "$RUN_ROOT" --output "$RUN_ROOT/006-small-results.zip"
 !ls -lh "$RUN_ROOT/006-small-results.zip"
 ```
