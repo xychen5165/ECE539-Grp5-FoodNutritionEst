@@ -44,7 +44,26 @@ experiments/              Experiment settings, notebooks, and small results
 docs/                     Architecture, work plan, development log, and references
 ```
 
-Add `app/` when product development starts and `tests/` alongside implementation checks. Include dependency versions and setup/run commands with the first runnable implementation.
+Add `app/` when product development starts and `tests/` alongside implementation checks.
+
+## Setup and run
+
+Python 3.13. Data stays outside the repository, in `data/` next to the repository folder (`c:\Projects\data\nutrition5k`); scripts look there by default or take `--data-root`.
+
+```
+python -m venv .venv
+.venv/Scripts/python -m pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cpu
+```
+
+Pipeline, in order (run from the repository folder with `.venv/Scripts/python`):
+
+| Step | Command | Output |
+|---|---|---|
+| Split files | `src/build_splits.py` | `data/splits/` ([README](data/splits/README.md)) |
+| Photos | `src/download_photos.py` | 3,262 overhead photos, 1.3 GB, outside Git |
+| Median baseline | `B_nutrition_estimation/baseline_median.py` | [experiments/001-median-baseline](experiments/001-median-baseline/README.md) |
+| CLIP features | `B_nutrition_estimation/extract_clip_features.py` | 512 numbers per photo, outside Git ([details](B_nutrition_estimation/README.md#clip-features)) |
+| Regression head | `B_nutrition_estimation/train_head.py --model mlp --loss l1` | [experiments/002-clip-head-original](experiments/002-clip-head-original/README.md) |
 
 ## Reproducibility and delivery
 

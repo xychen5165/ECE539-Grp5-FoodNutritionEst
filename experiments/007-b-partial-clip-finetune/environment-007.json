@@ -1,0 +1,27 @@
+{
+  "status": "validated_before_execution",
+  "experiment": "007-b-partial-clip-finetune",
+  "git_head": "a71cdd71d333b8ea46be18514388cfd58a4cdbe4",
+  "frozen_implementation": "20a0bc8c80f47ccd154f8d5982d1833cd01032ef",
+  "core_diff_empty": true,
+  "git_status": "",
+  "gpu": "Tesla T4, 580.82.07, 15360 MiB",
+  "cuda_device": "Tesla T4",
+  "cuda_runtime": "13.0",
+  "python": "3.13.16",
+  "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "dependencies": {
+    "torch": "2.14.1+cu130",
+    "torchvision": "0.29.1+cu130",
+    "numpy": "2.4.6",
+    "Pillow": "11.3.0",
+    "open_clip_torch": "2.24.0"
+  },
+  "verified_sha256": {
+    "data/splits/train.csv": "0fe38b0f6ff50e7031dea091da19675a76adfba533e44e2bff3276cd9e5b9fbd",
+    "data/splits/dev.csv": "c6462b3444676502915de5606891b4fbe162e248e186c3df7d7bd4d7ee179a31"
+  },
+  "run_root": "/content/drive/MyDrive/ECE539-FoodNutritionEst/005-b-input-comparison",
+  "drive_free_bytes": 240044236800,
+  "test_images_or_labels_accessed": false
+}

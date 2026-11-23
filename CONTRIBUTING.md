@@ -18,6 +18,7 @@ Keep PRs focused. Describe the purpose, changes, verification, and related issue
 ## Code organization
 
 - Put reusable data, model, training, evaluation, and inference logic in `src/`.
+- Component B's feature extraction, regression training and median baseline live in `B_nutrition_estimation/` at the project owner's request; shared data preparation and evaluation remain in `src/`.
 - Keep experiment-specific configuration, optional notebooks, and small results together under `experiments/<id>-<name>/`.
 - Have experiments import reusable pipeline code from `src/`.
 - Add `app/` and `tests/` when needed. Product code should call shared inference logic.

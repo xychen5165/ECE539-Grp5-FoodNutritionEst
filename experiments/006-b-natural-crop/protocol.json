@@ -1,0 +1,48 @@
+{
+  "status": "frozen_before_execution",
+  "implementation_commit": "c059502fe6998cb54507897ddc140a4d5070627d",
+  "date": "2026-11-22 America/Chicago",
+  "question": "Does a natural predicted-mask crop add value beyond original RGB and improve over the gray-background dual view?",
+  "reuse": {
+    "experiment": "005-b-input-comparison",
+    "run_root": "/content/drive/MyDrive/ECE539-FoodNutritionEst/005-b-input-comparison",
+    "required": ["images", "masked/*/mask.png", "clip_original.npz", "results/B0", "results/B2"],
+    "original_features_sha256": "307f2e7cdad43bb635d88e1e0e49b237631e76d0ff32d16fdf8a1098e2aabaa2"
+  },
+  "data": {
+    "train_count": 2135,
+    "dev_count": 538,
+    "test_policy": "Do not read final-test images or labels",
+    "train_sha256": "0fe38b0f6ff50e7031dea091da19675a76adfba533e44e2bff3276cd9e5b9fbd",
+    "dev_sha256": "c6462b3444676502915de5606891b4fbe162e248e186c3df7d7bd4d7ee179a31"
+  },
+  "crop": {
+    "source": "experiment-005 selected no-prompt predicted binary mask",
+    "definition": "tight mask bounding box plus 10% of bbox width/height on each side, clamped to RGB bounds",
+    "clip_preprocessing": "pad natural crop to square with CLIP mean color, resize 224, OpenAI CLIP normalization",
+    "forbidden": ["gray background replacement", "human mask", "test image"]
+  },
+  "model": {
+    "name": "B4",
+    "architecture": "original 512->64 ReLU; crop 512->64 ReLU; concatenate; dropout 0.5; 128->5 Softplus",
+    "parameter_count": 66309,
+    "frozen": ["OpenAI CLIP ViT-B/32", "experiment-005 SAM and decoder outputs"]
+  },
+  "training": {
+    "targets": ["mass_g", "energy_kcal", "protein_g", "carbohydrate_g", "fat_g"],
+    "loss": "L1 over train-mean-scaled targets",
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.001,
+    "dropout": 0.5,
+    "batch_size": 32,
+    "epochs": 30,
+    "seeds": [0, 1, 2],
+    "selection": "minimum development normalized nutrient MAE epoch per seed"
+  },
+  "evaluation": {
+    "primary": "mean energy/protein/carbohydrate/fat MAE divided by training means",
+    "comparisons": ["B4-B0", "B4-B2"],
+    "uncertainty": "1000 paired bootstrap draws of development plate groups, seed 0"
+  }
+}

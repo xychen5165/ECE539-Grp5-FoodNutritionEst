@@ -1,0 +1,26 @@
+{
+  "historical_metrics_match_exactly": true,
+  "dev": {
+    "n_dishes": 538,
+    "n_plates": 182,
+    "mae": {
+      "mass_g": 120.292,
+      "energy_kcal": 172.089,
+      "protein_g": 15.144,
+      "carbohydrate_g": 11.965,
+      "fat_g": 10.556
+    },
+    "mae_pct_of_mean": {
+      "mass_g": 55.4,
+      "energy_kcal": 66.3,
+      "protein_g": 82.6,
+      "carbohydrate_g": 64.5,
+      "fat_g": 78.1
+    },
+    "normalized_nutrient_mae": 0.737,
+    "normalized_nutrient_mae_95ci": [
+      0.6718,
+      0.8116
+    ]
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "status": "completed",
+  "condition": "B0",
+  "code_commit": "b7b5dcd065274d262ad647f293ff9f181f2d626a",
+  "settings": {
+    "condition": "B0",
+    "input_root": "/content/drive/MyDrive/ECE539-FoodNutritionEst/005-b-input-comparison",
+    "output_root": "/content/drive/MyDrive/ECE539-FoodNutritionEst/005-b-input-comparison/results",
+    "epochs": 30,
+    "batch_size": 32,
+    "lr": 0.001,
+    "weight_decay": 0.001,
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "limit_per_split": null
+  },
+  "parameter_count": 66309,
+  "n_train": 2135,
+  "n_dev": 538,
+  "target_order": [
+    "mass_g",
+    "energy_kcal",
+    "protein_g",
+    "carbohydrate_g",
+    "fat_g"
+  ],
+  "inputs_sha256": {
+    "original": "307f2e7cdad43bb635d88e1e0e49b237631e76d0ff32d16fdf8a1098e2aabaa2",
+    "masked": "5a07c65bbbb239d14dbe1e3c63462cf1f2811b567dd85443ebca09fc1ff38800",
+    "geometry": "c36226a3e1b75ae5a257bac2fcdc8d1811892147858a1ab3d02f19392a9eaa81"
+  },
+  "split_sha256": {
+    "train": "0fe38b0f6ff50e7031dea091da19675a76adfba533e44e2bff3276cd9e5b9fbd",
+    "dev": "c6462b3444676502915de5606891b4fbe162e248e186c3df7d7bd4d7ee179a31"
+  },
+  "environment": {
+    "python": "3.13.16",
+    "torch": "2.14.1+cu130",
+    "numpy": "2.4.6",
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39"
+  },
+  "per_seed": {
+    "0": {
+      "best_epoch": 17,
+      "seconds": 4.751710499000183,
+      "dev": {
+        "n_dishes": 538,
+        "n_plates": 182,
+        "mae": {
+          "mass_g": 47.17,
+          "energy_kcal": 69.862,
+          "protein_g": 6.284,
+          "carbohydrate_g": 6.651,
+          "fat_g": 5.255
+        },
+        "mae_pct_of_mean": {
+          "mass_g": 21.7,
+          "energy_kcal": 26.9,
+          "protein_g": 34.3,
+          "carbohydrate_g": 35.9,
+          "fat_g": 38.9
+        },
+        "normalized_nutrient_mae": 0.3434,
+        "normalized_nutrient_mae_95ci": [
+          0.3029,
+          0.3867
+        ]
+      }
+    },
+    "1": {
+      "best_epoch": 16,
+      "seconds": 3.4257238599998345,
+      "dev": {
+        "n_dishes": 538,
+        "n_plates": 182,
+        "mae": {
+          "mass_g": 46.745,
+          "energy_kcal": 66.965,
+          "protein_g": 6.205,
+          "carbohydrate_g": 6.82,
+          "fat_g": 5.208
+        },
+        "mae_pct_of_mean": {
+          "mass_g": 21.5,
+          "energy_kcal": 25.8,
+          "protein_g": 33.8,
+          "carbohydrate_g": 36.8,
+          "fat_g": 38.5
+        },
+        "normalized_nutrient_mae": 0.3408,
+        "normalized_nutrient_mae_95ci": [
+          0.3039,
+          0.3799
+        ]
+      }
+    },
+    "2": {
+      "best_epoch": 12,
+      "seconds": 3.344117668999843,
+      "dev": {
+        "n_dishes": 538,
+        "n_plates": 182,
+        "mae": {
+          "mass_g": 46.248,
+          "energy_kcal": 66.971,
+          "protein_g": 6.432,
+          "carbohydrate_g": 6.675,
+          "fat_g": 5.25
+        },
+        "mae_pct_of_mean": {
+          "mass_g": 21.3,
+          "energy_kcal": 25.8,
+          "protein_g": 35.1,
+          "carbohydrate_g": 36.0,
+          "fat_g": 38.8
+        },
+        "normalized_nutrient_mae": 0.3428,
+        "normalized_nutrient_mae_95ci": [
+          0.3021,
+          0.3875
+        ]
+      }
+    }
+  },
+  "summary": {
+    "normalized_nutrient_mae_mean": 0.3423333333333333,
+    "normalized_nutrient_mae_std": 0.001361371857110806,
+    "seconds": 13.782552921999923
+  }
+}

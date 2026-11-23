@@ -1,0 +1,152 @@
+{
+  "status": "completed",
+  "condition": "B5",
+  "code_commit": "a71cdd71d333b8ea46be18514388cfd58a4cdbe4",
+  "settings": {
+    "image_root": "/content/b5-data",
+    "artifact_root": "/content/drive/MyDrive/ECE539-FoodNutritionEst/005-b-input-comparison",
+    "output_root": "/content/drive/MyDrive/ECE539-FoodNutritionEst/005-b-input-comparison/results",
+    "clip_cache": "/content/drive/MyDrive/ECE539-FoodNutritionEst/005-b-input-comparison/checkpoints",
+    "epochs": 30,
+    "warmup_epochs": 3,
+    "batch_size": 8,
+    "accumulation_steps": 4,
+    "head_lr": 0.001,
+    "clip_lr": 1e-05,
+    "weight_decay": 0.001,
+    "workers": 2,
+    "seeds": [
+      0,
+      1,
+      2
+    ]
+  },
+  "n_train": 2135,
+  "n_dev": 538,
+  "target_order": [
+    "mass_g",
+    "energy_kcal",
+    "protein_g",
+    "carbohydrate_g",
+    "fat_g"
+  ],
+  "parameter_counts": {
+    "head": 66309,
+    "selected_visual": 7482624
+  },
+  "selected_visual_names": [
+    "proj",
+    "transformer.resblocks.11.ln_1.weight",
+    "transformer.resblocks.11.ln_1.bias",
+    "transformer.resblocks.11.attn.in_proj_weight",
+    "transformer.resblocks.11.attn.in_proj_bias",
+    "transformer.resblocks.11.attn.out_proj.weight",
+    "transformer.resblocks.11.attn.out_proj.bias",
+    "transformer.resblocks.11.ln_2.weight",
+    "transformer.resblocks.11.ln_2.bias",
+    "transformer.resblocks.11.mlp.c_fc.weight",
+    "transformer.resblocks.11.mlp.c_fc.bias",
+    "transformer.resblocks.11.mlp.c_proj.weight",
+    "transformer.resblocks.11.mlp.c_proj.bias",
+    "ln_post.weight",
+    "ln_post.bias"
+  ],
+  "inputs_sha256": {
+    "original": "307f2e7cdad43bb635d88e1e0e49b237631e76d0ff32d16fdf8a1098e2aabaa2",
+    "crop": "3e7d4a418445c3914f29fd2eb4b13115fc124b94f8c6ebebb26460e748ea55fd"
+  },
+  "environment": {
+    "python": "3.13.16",
+    "torch": "2.14.1+cu130",
+    "numpy": "2.4.6",
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39"
+  },
+  "per_seed": {
+    "0": {
+      "best_epoch": 30,
+      "seconds": 2115.699464305,
+      "dev": {
+        "n_dishes": 538,
+        "n_plates": 182,
+        "mae": {
+          "mass_g": 43.768,
+          "energy_kcal": 64.627,
+          "protein_g": 5.788,
+          "carbohydrate_g": 6.04,
+          "fat_g": 4.877
+        },
+        "mae_pct_of_mean": {
+          "mass_g": 20.2,
+          "energy_kcal": 24.9,
+          "protein_g": 31.6,
+          "carbohydrate_g": 32.6,
+          "fat_g": 36.1
+        },
+        "normalized_nutrient_mae": 0.3162,
+        "normalized_nutrient_mae_95ci": [
+          0.2765,
+          0.3586
+        ]
+      }
+    },
+    "1": {
+      "best_epoch": 29,
+      "seconds": 2105.675700566,
+      "dev": {
+        "n_dishes": 538,
+        "n_plates": 182,
+        "mae": {
+          "mass_g": 40.871,
+          "energy_kcal": 63.912,
+          "protein_g": 5.753,
+          "carbohydrate_g": 5.903,
+          "fat_g": 4.841
+        },
+        "mae_pct_of_mean": {
+          "mass_g": 18.8,
+          "energy_kcal": 24.6,
+          "protein_g": 31.4,
+          "carbohydrate_g": 31.8,
+          "fat_g": 35.8
+        },
+        "normalized_nutrient_mae": 0.3125,
+        "normalized_nutrient_mae_95ci": [
+          0.2718,
+          0.3586
+        ]
+      }
+    },
+    "2": {
+      "best_epoch": 29,
+      "seconds": 2102.583756128999,
+      "dev": {
+        "n_dishes": 538,
+        "n_plates": 182,
+        "mae": {
+          "mass_g": 41.096,
+          "energy_kcal": 67.806,
+          "protein_g": 5.92,
+          "carbohydrate_g": 6.024,
+          "fat_g": 4.932
+        },
+        "mae_pct_of_mean": {
+          "mass_g": 18.9,
+          "energy_kcal": 26.1,
+          "protein_g": 32.3,
+          "carbohydrate_g": 32.5,
+          "fat_g": 36.5
+        },
+        "normalized_nutrient_mae": 0.322,
+        "normalized_nutrient_mae_95ci": [
+          0.2785,
+          0.3699
+        ]
+      }
+    }
+  },
+  "summary": {
+    "normalized_nutrient_mae_mean": 0.3169,
+    "normalized_nutrient_mae_std": 0.004788527957525157,
+    "seconds": 6342.520617122
+  }
+}
