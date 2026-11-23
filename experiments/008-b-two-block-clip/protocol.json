@@ -20,7 +20,12 @@
     "sha256": {
       "clip_original.npz": "307f2e7cdad43bb635d88e1e0e49b237631e76d0ff32d16fdf8a1098e2aabaa2",
       "clip_crop.npz": "3e7d4a418445c3914f29fd2eb4b13115fc124b94f8c6ebebb26460e748ea55fd"
-    }
+    },
+    "handoff_metadata_sha256": {
+      "crop_metadata.json": "460f2960dbfc248790860098c29977bde7bcf1d64e9cc486e4d962844bb0aab1",
+      "downloads.json": "be582d554de639e493c29ab0faff5b3a7dcdee1ce6b49ead1c2f57857fd13787"
+    },
+    "recovery_policy": "Already-acquired metadata may restore crops from official public RGBs only when every RGB/crop file SHA256 exactly matches the handoff. This uses no browser, Drive credentials, SAM inference, human masks or test data."
   },
   "model": {
     "name": "B6",
