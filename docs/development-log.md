@@ -93,3 +93,11 @@ Use the following format for each entry:
 - Outcome: B4 development normalized nutrient MAE was 0.3254, 0.3275 and 0.3236 (mean 0.3255), versus B0 mean 0.3423 and B2 mean 0.3390. All three paired B4−B0 plate-bootstrap intervals were below zero. B4−B2 favored B4 in every seed, but only seed 2 excluded zero. Final-test images and labels were not accessed.
 - Lesson and next action: Preserving natural RGB while using the predicted mask for cropping is more effective than gray-background masking and provides evidence beyond original-only input. Treat B4 as the current development-selected B input; independently freeze any final evaluation before opening final-test data.
 - Evidence: [006 protocol, run record and retained results](../experiments/006-b-natural-crop/README.md).
+
+### 2026-11-22 - Freeze remaining Part B handoff plan
+
+- Contributor: Tardirisu (Codex-assisted).
+- Attempt: Resolved conflicting draft condition labels and specified terminal-based controlled experiments for B6 two-block CLIP adaptation, conditional B7 full visual adaptation, B8 gated residual fusion, B9 log1p/Huber targets and B10 energy consistency.
+- Outcome: Defined branch and experiment directories, exact intended changes, matched settings, B7 run gate, preflight tests, paired comparisons, evidence layout, final-test prohibition and contribution/review checklist for teammate handoff.
+- Lesson and next action: B6/B7 test encoder adaptation depth; B8-B10 test fusion and objective changes as a separate cumulative route. Each condition must freeze its own protocol before execution and preserve negative results.
+- Evidence: [Part B remaining experiment handoff](../experiments/b-remaining-experiment-handoff.md).
