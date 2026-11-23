@@ -198,6 +198,7 @@ def main():
         best = {"score": float("inf")}
         started = time.perf_counter()
         for epoch in range(1, args.epochs + 1):
+            epoch_started = time.perf_counter()
             tune_clip = epoch > args.warmup_epochs
             model.set_clip_trainable(tune_clip)
             model.train()
@@ -224,6 +225,7 @@ def main():
             row = {"seed": seed, "epoch": epoch,
                    "phase": "partial_clip" if tune_clip else "head_warmup",
                    "train_loss": round(loss_sum / n_train, 6),
+                   "epoch_seconds": round(time.perf_counter() - epoch_started, 3),
                    "dev_normalized_nutrient_mae": round(score, 6)}
             all_logs.append(row)
             with (out / "training_log.csv").open("w", newline="") as stream:
@@ -283,7 +285,7 @@ def main():
                                "numpy": np.__version__, "platform": platform.platform()},
                "per_seed": per_seed,
                "summary": {"normalized_nutrient_mae_mean": float(scores.mean()),
-                           "normalized_nutrient_mae_std": float(scores.std(ddof=1)),
+                           "normalized_nutrient_mae_std": float(scores.std(ddof=1)) if len(scores) > 1 else None,
                            "seconds": time.perf_counter() - started_all}}
     (out / "metrics.json").write_text(json.dumps(metrics, indent=2) + "\n")
 

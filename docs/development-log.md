@@ -101,3 +101,16 @@ Use the following format for each entry:
 - Outcome: Defined branch and experiment directories, exact intended changes, matched settings, B7 run gate, preflight tests, paired comparisons, evidence layout, final-test prohibition and contribution/review checklist for teammate handoff.
 - Lesson and next action: B6/B7 test encoder adaptation depth; B8-B10 test fusion and objective changes as a separate cumulative route. Each condition must freeze its own protocol before execution and preserve negative results.
 - Evidence: [Part B remaining experiment handoff](../experiments/b-remaining-experiment-handoff.md).
+
+
+## 2026-11-22 - B6 preparation
+
+Created a separate checkout of `ab-supplementary-experiments`, preserving the
+uncommitted Mobile Food Segmenter evaluation. Committed B6 protocol before
+execution, then added two-block CLIP training, input verification and paired
+comparison code. Nine server unit tests passed. Data and official CLIP weights
+are being prepared under tmux; no measured B6 training result is available yet.
+Inputs must match the handoff byte hashes and canonical train/dev IDs. The
+selected server environment differs from historical Colab and will be reported.
+Completed B5 predictions remain unavailable for the primary comparison. Scope
+is B6 only: B7-B10 are not started.

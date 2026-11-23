@@ -19,6 +19,7 @@ The evaluation plan includes a training-set median baseline, an original-versus-
 | [005-b-input-comparison](005-b-input-comparison/README.md) | Completed | B3 0.3384; gray-mask-only B1 worsened, and B2/B3 did not establish improvement over B0 |
 | [006-b-natural-crop](006-b-natural-crop/README.md) | Completed | B4 0.3255; all three paired B4−B0 intervals favored natural-crop dual view |
 | [007-b-partial-clip-finetune](007-b-partial-clip-finetune/README.md) | Running | B5 adapts shared CLIP visual block 11; no final result until all seeds finish |
+| [008-b-two-block-clip](008-b-two-block-clip/README.md) | Preparing | B6 protocol and implementation committed; tests passed, input verification pending; no measured result |
 | [Part A method comparison](../A_food_segmentation/method_comparison/README.md) | Completed on development | Five template-based run records; selected no-prompt fine-tuned decoder reached 0.9717 mean IoU |
 
 Record-format and evidence compliance for all entries above is reviewed in
