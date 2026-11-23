@@ -57,7 +57,7 @@ Use the following format for each entry:
 
 ### 2026-11-22 - A/B merge and real-image integration smoke test
 
-- Contributor: Tardirisu (Codex-assisted).
+- Contributor: Tardirisu
 - Attempt: Merged the SAM method-comparison and nutrition-estimation branches into `merge-A&B`. Configured an isolated Python 3.11 Intel Mac environment; downloaded official SAM/CLIP weights and nine deterministic train/dev RGBs. Ran the selected no-prompt decoder, both CLIP input paths, and two three-epoch trial heads.
 - Outcome: 65 preflight checks passed. A's 454 train / 103 dev records agree with B's split membership and groups. All nine real masks and both 512-dimensional feature paths passed interface checks; both trial heads changed weights, emitted finite nonnegative outputs, and reproduced predictions after checkpoint reload. B's complete dev median baseline rerun exactly matches its saved metrics. Missing images and output reuse are rejected.
 - Failures and fixes: Initial dependency installation failed to build sentencepiece 0.2.3; used the compatible 0.2.0 wheel. The first smoke attempt omitted B's loss setting after successfully generating images/features; added explicit L1 and reused validated preprocessing artifacts in a new run directory.
@@ -66,13 +66,13 @@ Use the following format for each entry:
 
 ### 2026-11-22 - Move B implementation into its component directory
 
-- Contributor: Tardirisu (Codex-assisted).
+- Contributor: Tardirisu
 - Change: At the project owner's request, moved feature extraction, head training and the median baseline from `src/` into `B_nutrition_estimation/`. Updated imports, run commands and documentation links. Shared data preparation, nutrition evaluation and A/B checks remain in `src/`. Earlier documentation links now point to the relocated files; historical commits retain the old layout.
 - Validation: Feature/training CLI help works from the new paths; the full dev median baseline is unchanged. All 65 preflight checks pass. Reused the nine validated image/feature artifacts and reran original/masked head training and checkpoint reload checks successfully in `artifacts/ab-integration/smoke-after-b-move/`. Segmentation and CLIP inference were not rerun for this path-only change.
 
 ### 2026-11-22 - Audit records and freeze B0-B3 protocol
 
-- Contributor: Tardirisu (Codex-assisted).
+- Contributor: Tardirisu
 - Attempt: Audited every retained Part A/B/integration experiment against `CONTRIBUTING.md` and the run template. Added a frozen four-condition protocol for original, masked, parameter-matched dual-view and geometry-aware nutrition regression before running models.
 - Outcome: Part A's five records conform with disclosed layout/checkpoint exceptions. B 001-003 remain honestly rated partial because historical per-run records or artifacts are missing; no facts were reconstructed. Integration record 004 metadata and the experiment index were repaired. The new 005 experiment has separate planned records for B0-B3, immutable split/model hashes, exact commands, matched budgets and paired statistics.
 - Validation: Existing 65-check A/B preflight passes. Four new unit tests pass; they cover train/dev-only selection, fixed mask geometry, train-only standardization and model interfaces/parameter counts. Refactored reusable SAM batch inference reproduced a retained mask pixel-for-pixel.
@@ -80,7 +80,7 @@ Use the following format for each entry:
 
 ### 2026-11-22 - Complete B0-B3 input comparison on Colab
 
-- Contributor: Tardirisu (Codex-assisted).
+- Contributor: Tardirisu
 - Attempt: Generated 2,673 selected no-prompt SAM masks and matched original/masked CLIP features, then trained B0 original, B1 masked, B2 dual-view and B3 dual-view-plus-geometry heads for three seeds under the frozen 005 protocol.
 - Outcome: Mean development normalized nutrient MAE was B0 0.3423, B1 0.3615, B2 0.3390 and B3 0.3384. B2 significantly improved over B1 in all seeds, but B2 and B3 did not significantly improve over B0; B3 did not significantly improve over B2. Final-test images and labels were not accessed.
 - Lesson and next action: Preserve original context. The gray-background mask and eight geometry values do not demonstrate added value; test a natural food crop plus an original-image residual/gated fusion in a separately frozen experiment.
@@ -88,7 +88,7 @@ Use the following format for each entry:
 
 ### 2026-11-22 - Natural crop B4 comparison on Colab
 
-- Contributor: Tardirisu (Codex-assisted).
+- Contributor: Tardirisu
 - Attempt: Reused the frozen experiment-005 original RGBs, selected predicted masks, original CLIP features and B0/B2 predictions. Generated a natural RGB crop from each predicted-mask bounding box with 10% context, extracted frozen CLIP features, and trained a parameter-matched original+crop B4 head for seeds 0–2.
 - Outcome: B4 development normalized nutrient MAE was 0.3254, 0.3275 and 0.3236 (mean 0.3255), versus B0 mean 0.3423 and B2 mean 0.3390. All three paired B4−B0 plate-bootstrap intervals were below zero. B4−B2 favored B4 in every seed, but only seed 2 excluded zero. Final-test images and labels were not accessed.
 - Lesson and next action: Preserving natural RGB while using the predicted mask for cropping is more effective than gray-background masking and provides evidence beyond original-only input. Treat B4 as the current development-selected B input; independently freeze any final evaluation before opening final-test data.
@@ -96,7 +96,7 @@ Use the following format for each entry:
 
 ### 2026-11-22 - Freeze remaining Part B handoff plan
 
-- Contributor: Tardirisu (Codex-assisted).
+- Contributor: Tardirisu
 - Attempt: Resolved conflicting draft condition labels and specified terminal-based controlled experiments for B6 two-block CLIP adaptation, conditional B7 full visual adaptation, B8 gated residual fusion, B9 log1p/Huber targets and B10 energy consistency.
 - Outcome: Defined branch and experiment directories, exact intended changes, matched settings, B7 run gate, preflight tests, paired comparisons, evidence layout, final-test prohibition and contribution/review checklist for teammate handoff.
 - Lesson and next action: B6/B7 test encoder adaptation depth; B8-B10 test fusion and objective changes as a separate cumulative route. Each condition must freeze its own protocol before execution and preserve negative results.
@@ -104,7 +104,7 @@ Use the following format for each entry:
 
 ### 2026-11-22 - Partial CLIP adaptation B5 on Colab
 
-- Contributor: Tardirisu (Codex-assisted).
+- Contributor: Tardirisu
 - Attempt: Reused B4's original plus 10%-context natural-crop inputs and dual-view head. After three head-only warmup epochs, fine-tuned the shared CLIP ViT-B/32 visual block 11, post-layer normalization and projection for seeds 0–2.
 - Outcome: Development normalized nutrient MAE was 0.3162, 0.3125 and 0.3220 (mean 0.3169, sample SD 0.0048), compared with B4 mean 0.3255. All point deltas favored B5, but only seed 1's paired plate-bootstrap 95% interval excluded zero; seed 0 and 2 crossed zero. Final-test images and labels were not accessed.
 - Lesson and next action: Partial CLIP adaptation is numerically the best B condition so far, but the gain is seed-dependent. It does not alone meet the predeclared two-of-three-interval gate for full visual fine-tuning; B6 can test whether adapting two visual blocks produces more consistent gains.

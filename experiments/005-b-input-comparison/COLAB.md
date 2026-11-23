@@ -143,7 +143,7 @@ Existing output directories are rejected instead of overwritten.
   --output "$RUN_ROOT/005-small-results.zip"
 ```
 
-Download `005-small-results.zip` from Drive and attach it to the Codex task.
+Download `005-small-results.zip` from Drive and attach it to the experiment task.
 It excludes raw RGBs, masks, feature arrays and checkpoints; those remain in
 Drive. The archive contains environment, hashes, logs, metrics, predictions and
 the paired comparison needed to complete the English run records.

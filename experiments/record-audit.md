@@ -2,7 +2,7 @@
 
 Audit date: November 22, 2026 (America/Chicago).
 
-Auditor: `Tardirisu` (Codex-assisted).
+Auditor: `Tardirisu`.
 
 Scope: every measured experiment record present on `merge-A&B` before the
 planned B0–B3 comparison. Standard: [CONTRIBUTING.md](../CONTRIBUTING.md) and

@@ -4,7 +4,7 @@ Status: Completed smoke test; full controlled comparison and final test pending.
 
 Date: November 22, 2026 (America/Chicago).
 
-Contributor: `Tardirisu` (Codex-assisted).
+Contributor: `Tardirisu`.
 
 Execution provenance: the smoke test ran from an uncommitted working tree based
 on merge commit `c4803e3`; the exact scripts, environment record and small results
