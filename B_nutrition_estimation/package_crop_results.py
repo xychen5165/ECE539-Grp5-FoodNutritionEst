@@ -22,7 +22,7 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     required = [args.run_root / name for name in (
-        "environment.json", "crop_metadata.json", "clip_original.npz",
+        "environment-006.json", "crop_metadata.json", "clip_original.npz",
         "clip_crop.npz", "comparison-006.json", "results/B4/metrics.json")]
     missing = [str(path) for path in required if not path.is_file()]
     if missing:
@@ -31,7 +31,7 @@ def main():
     manifest = {str(path.relative_to(args.run_root)): {
         "sha256": sha256(path), "bytes": path.stat().st_size} for path in large}
     include = [args.run_root / name for name in (
-        "environment.json", "crop_metadata.json", "comparison-006.json")]
+        "environment-006.json", "crop_metadata.json", "comparison-006.json")]
     result = args.run_root / "results/B4"
     include.extend(sorted(path for path in result.iterdir()
                           if path.is_file() and path.suffix in (".json", ".csv")))

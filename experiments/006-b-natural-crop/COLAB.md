@@ -8,6 +8,11 @@ not rerun downloads, SAM segmentation, original features, B0 or B2.
 !git pull origin 'merge-A&B'
 !git status --short
 !git rev-parse HEAD
+!git diff --exit-code cd32266dbfe944e832650ac088c6bf858874c404 -- \
+  B_nutrition_estimation/prepare_crop_comparison.py \
+  B_nutrition_estimation/train_crop_comparison.py \
+  B_nutrition_estimation/compare_crop_condition.py \
+  B_nutrition_estimation/package_crop_results.py
 ```
 
 If this is a fresh runtime, install the same dependencies as experiment 005 and
@@ -22,6 +27,13 @@ assert (RUN_ROOT / 'clip_original.npz').is_file()
 assert (RUN_ROOT / 'results/B0/metrics.json').is_file()
 assert (RUN_ROOT / 'results/B2/metrics.json').is_file()
 print(RUN_ROOT)
+```
+
+Capture the new runtime without replacing experiment 005's environment record:
+
+```bash
+!python B_nutrition_estimation/capture_colab_environment.py \
+  --output "$RUN_ROOT/environment-006.json" --run-root "$RUN_ROOT"
 ```
 
 Generate deterministic crops locally in the Drive run root:
