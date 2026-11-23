@@ -85,3 +85,11 @@ Use the following format for each entry:
 - Outcome: Mean development normalized nutrient MAE was B0 0.3423, B1 0.3615, B2 0.3390 and B3 0.3384. B2 significantly improved over B1 in all seeds, but B2 and B3 did not significantly improve over B0; B3 did not significantly improve over B2. Final-test images and labels were not accessed.
 - Lesson and next action: Preserve original context. The gray-background mask and eight geometry values do not demonstrate added value; test a natural food crop plus an original-image residual/gated fusion in a separately frozen experiment.
 - Evidence: [005 run and retained results](../experiments/005-b-input-comparison/README.md), including per-run records, metrics, ID-keyed predictions, environment and artifact hashes.
+
+### 2026-11-22 - Natural crop B4 comparison on Colab
+
+- Contributor: Tardirisu (Codex-assisted).
+- Attempt: Reused the frozen experiment-005 original RGBs, selected predicted masks, original CLIP features and B0/B2 predictions. Generated a natural RGB crop from each predicted-mask bounding box with 10% context, extracted frozen CLIP features, and trained a parameter-matched original+crop B4 head for seeds 0–2.
+- Outcome: B4 development normalized nutrient MAE was 0.3254, 0.3275 and 0.3236 (mean 0.3255), versus B0 mean 0.3423 and B2 mean 0.3390. All three paired B4−B0 plate-bootstrap intervals were below zero. B4−B2 favored B4 in every seed, but only seed 2 excluded zero. Final-test images and labels were not accessed.
+- Lesson and next action: Preserving natural RGB while using the predicted mask for cropping is more effective than gray-background masking and provides evidence beyond original-only input. Treat B4 as the current development-selected B input; independently freeze any final evaluation before opening final-test data.
+- Evidence: [006 protocol, run record and retained results](../experiments/006-b-natural-crop/README.md).
