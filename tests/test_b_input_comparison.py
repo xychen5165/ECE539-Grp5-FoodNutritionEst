@@ -9,10 +9,31 @@ import torch
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from B_nutrition_estimation.prepare_input_comparison import geometry, load_rows
+from B_nutrition_estimation.prepare_crop_comparison import crop_from_mask
 from B_nutrition_estimation.train_input_comparison import DualView, SingleView, standardize
 
 
 class InputComparisonTests(unittest.TestCase):
+    def test_natural_crop_uses_mask_bbox_margin_and_clamps(self):
+        rgb = np.arange(10 * 20 * 3, dtype=np.uint8).reshape(10, 20, 3)
+        mask = np.zeros((10, 20), dtype=bool)
+        mask[2:6, 4:12] = True
+        crop, box = crop_from_mask(rgb, mask, margin_fraction=0.10)
+        self.assertEqual(box, [3, 1, 13, 7])
+        np.testing.assert_array_equal(crop, rgb[1:7, 3:13])
+
+        edge = np.zeros((10, 20), dtype=bool)
+        edge[0:2, 0:3] = True
+        _, edge_box = crop_from_mask(rgb, edge, margin_fraction=0.10)
+        self.assertEqual(edge_box[:2], [0, 0])
+
+    def test_natural_crop_rejects_degenerate_masks(self):
+        rgb = np.zeros((4, 5, 3), dtype=np.uint8)
+        with self.assertRaises(ValueError):
+            crop_from_mask(rgb, np.zeros((4, 5), dtype=bool))
+        with self.assertRaises(ValueError):
+            crop_from_mask(rgb, np.ones((4, 5), dtype=bool))
+
     def test_selection_reads_only_train_and_dev(self):
         rows = load_rows(limit=2)
         self.assertEqual([row["split"] for row in rows], ["train", "train", "dev", "dev"])
