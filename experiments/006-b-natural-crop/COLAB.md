@@ -4,6 +4,11 @@ Use a GPU runtime. This experiment reuses the completed 005 Drive root and does
 not rerun downloads, SAM segmentation, original features, B0 or B2.
 
 ```bash
+%cd /content
+![ -d /content/food-nutrition/.git ] || git clone \
+  --branch 'merge-A&B' --single-branch \
+  https://github.com/xychen5165/ECE539-Grp5-FoodNutritionEst.git \
+  /content/food-nutrition
 %cd /content/food-nutrition
 !git pull origin 'merge-A&B'
 !git status --short
