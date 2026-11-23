@@ -1,0 +1,47 @@
+{
+  "status": "frozen_before_execution",
+  "implementation_commit": "PENDING_IMPLEMENTATION_COMMIT",
+  "date": "2026-11-22 America/Chicago",
+  "question": "Does partial CLIP visual fine-tuning improve the frozen-CLIP B4 natural-crop model?",
+  "data": {
+    "train_count": 2135,
+    "dev_count": 538,
+    "train_sha256": "0fe38b0f6ff50e7031dea091da19675a76adfba533e44e2bff3276cd9e5b9fbd",
+    "dev_sha256": "c6462b3444676502915de5606891b4fbe162e248e186c3df7d7bd4d7ee179a31",
+    "test_policy": "Do not read final-test images or labels"
+  },
+  "inputs": {
+    "views": ["original RGB", "experiment-006 predicted-mask bbox natural crop with 10% context"],
+    "preprocessing": "B4 deterministic CLIP validation preprocessing; no augmentation",
+    "frozen_feature_arrays": "used only to reproduce B4 train-only standardization statistics"
+  },
+  "model": {
+    "name": "B5",
+    "encoder": "one shared OpenAI CLIP ViT-B/32 called for both views",
+    "trainable_visual": ["transformer.resblocks.11", "ln_post", "proj"],
+    "frozen_visual": "all earlier visual parameters and entire text tower",
+    "head": "original 512->64 ReLU; crop 512->64 ReLU; concatenate; dropout 0.5; 128->5 Softplus"
+  },
+  "training": {
+    "targets": ["mass_g", "energy_kcal", "protein_g", "carbohydrate_g", "fat_g"],
+    "loss": "L1 over training-mean-scaled targets",
+    "optimizer": "AdamW",
+    "head_learning_rate": 0.001,
+    "clip_learning_rate": 0.00001,
+    "weight_decay": 0.001,
+    "epochs": 30,
+    "head_only_warmup_epochs": 3,
+    "physical_batch_size": 8,
+    "gradient_accumulation_steps": 4,
+    "effective_batch_size": 32,
+    "precision": "CUDA float16 autocast with gradient scaling",
+    "seeds": [0, 1, 2],
+    "selection": "minimum development normalized nutrient MAE epoch independently per seed"
+  },
+  "evaluation": {
+    "baseline": "retained experiment-006 B4 predictions",
+    "primary": "mean energy/protein/carbohydrate/fat MAE divided by training means",
+    "comparison": "B5-B4",
+    "uncertainty": "1000 paired bootstrap draws of development plate groups, seed 0"
+  }
+}

@@ -11,6 +11,7 @@ sys.path.insert(0, str(ROOT))
 from B_nutrition_estimation.prepare_input_comparison import geometry, load_rows
 from B_nutrition_estimation.prepare_crop_comparison import crop_from_mask
 from B_nutrition_estimation.train_input_comparison import DualView, SingleView, standardize
+from B_nutrition_estimation.train_clip_finetune import B5Model, selected_visual_parameters
 
 
 class InputComparisonTests(unittest.TestCase):
@@ -67,6 +68,23 @@ class InputComparisonTests(unittest.TestCase):
         counts = [sum(p.numel() for p in model.parameters()) for model in (b0, b2, b3)]
         self.assertEqual(counts, [66309, 66309, 66349])
         self.assertTrue((b3(original, masked, geo) > 0).all())
+
+    def test_b5_selects_only_last_visual_block_and_post_projection(self):
+        import open_clip
+        clip = open_clip.create_model("ViT-B-32", pretrained=None)
+        selected = selected_visual_parameters(clip.visual)
+        names = [name for name, _ in selected]
+        self.assertTrue(any(name.startswith("transformer.resblocks.11.") for name in names))
+        self.assertIn("ln_post.weight", names)
+        self.assertIn("proj", names)
+        self.assertFalse(any(name.startswith("transformer.resblocks.10.") for name in names))
+        model = B5Model(clip.visual, np.zeros(512, np.float32), np.ones(512, np.float32),
+                        np.zeros(512, np.float32), np.ones(512, np.float32))
+        self.assertFalse(any(parameter.requires_grad for parameter in model.visual.parameters()))
+        model.set_clip_trainable(True)
+        trainable = [name for name, parameter in model.visual.named_parameters()
+                     if parameter.requires_grad]
+        self.assertEqual(trainable, names)
 
 
 if __name__ == "__main__":
