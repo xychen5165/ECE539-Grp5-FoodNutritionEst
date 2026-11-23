@@ -1,6 +1,6 @@
 {
   "status": "frozen_before_execution",
-  "implementation_commit": "PENDING_IMPLEMENTATION_COMMIT",
+  "implementation_commit": "20a0bc8c80f47ccd154f8d5982d1833cd01032ef",
   "date": "2026-11-22 America/Chicago",
   "question": "Does partial CLIP visual fine-tuning improve the frozen-CLIP B4 natural-crop model?",
   "data": {
