@@ -1,5 +1,6 @@
 {
   "status": "frozen_before_execution",
+  "implementation_commit": "cd32266dbfe944e832650ac088c6bf858874c404",
   "date": "2026-11-22 America/Chicago",
   "question": "Does a natural predicted-mask crop add value beyond original RGB and improve over the gray-background dual view?",
   "reuse": {
